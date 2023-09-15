@@ -1,13 +1,13 @@
-import React from "react";
+import ActivityForm from "./component/Activity";
+import { Dashboard } from "./component/Dashboard";
 import { Navbar } from "./component/Navber";
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <h1 className="text-[#8278D9] text-3xl font-bold underline">Hello world!</h1>
-      <p>test</p>
-      
+      {/* <Navbar /> */}
+      <Dashboard />
+      {/* <ActivityForm /> */}
     </>
   );
 }
