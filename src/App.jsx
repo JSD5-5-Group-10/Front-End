@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-import "./App.css";
-import ActivityForm from "./component/Activity";
+import ActivityForm from '../src/component/Activity/ActivityForm'
+import Navbar from "./component/Navbar";
 
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
 
   return (
     <>
-      
+      <Navbar/>
       <ActivityForm Data={Data} />
     </>
   );

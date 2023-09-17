@@ -29,7 +29,7 @@ const ActivityForm = ({Data}) => {
     }
 
     return (
-    <div className="w-[425px] flex flex-col justify-center m-5">
+    <div className="w-[425px] flex flex-col justify-center m-auto">
         <div className="flex flex-col items-center">
             <h1 className="text-2xl underline font-bold ">ActivityForm</h1>
 
