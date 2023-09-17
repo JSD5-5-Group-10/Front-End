@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Outlet, Link } from "react-router-dom";
 export default function Navbar() {
 
     const [isHidden, setIsHidden] = useState(true);
@@ -28,7 +29,7 @@ export default function Navbar() {
                             </li>
                             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">setting</li>
                             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                                exercise content
+                            <Link to="/dashboard">Dashboard</Link>
                             </li>
                         </ul>
                         <hr className="my-2 text-gray-600" />
@@ -51,7 +52,9 @@ export default function Navbar() {
 
                             </ul>
                         </div>
-                        <button className=" h-10 px-5  text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">sing up</button>
+                        <button className=" h-10 px-5  text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+                        <Link to="/login">Login</Link>
+                        </button>
 
                     </div>
                 </div>
