@@ -1,8 +1,9 @@
 import React from "react";
-
+import Navbar from "../../component/Navbar";
 export const Login = () => {
   return (
     <>
+    <Navbar />
       <div className="flex h-screen ">
         <div className=" w-2/3 m-auto hidden lg:inline">
           <img
