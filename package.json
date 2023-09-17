@@ -10,9 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/system": "^5.14.9",
+    "@mui/x-charts": "^6.0.0-alpha.11",
+    "chart.js": "^4.4.0",
+    "d3node-barchart": "^0.1.1",
     "react": "^18.2.0",
+<<<<<<< HEAD
     "react-dom": "^18.2.0",
     "uuidv4": "^6.2.13"
+=======
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0"
+>>>>>>> 79183006d5fb7c698d2a2b97295fcca97c5245d6
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

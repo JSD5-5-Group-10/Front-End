@@ -1,21 +1,20 @@
-import ActivityForm from "./component/Activity/ActivityForm";
+import { useState } from "react";
 
 import "./App.css";
-import { useState } from "react";
-import ActivityDisplay from "./component/Activity/ActivityDisplay";
+import ActivityForm from "./component/Activity";
 
 
 function App() {
-    const test = [
+  const test = [
     {
       id: 1,
-      type: "Run",
-      name: "อยากผอม",
-      descrition: "ออกกำลังกายกันเถอะ",
-      startdate: "2023-09-01",
-      enddate: "2023-09-03",
-      time: 60,
-      weight: 60,
+      type: "test",
+      name: "test",
+      descrition: "tes",
+      startdate: "2023-09-20",
+      enddate: "2023-09-30",
+      time: 10,
+      weight: 50,
     },
   ];
   const [activity, setActivity] = useState(test);
@@ -28,24 +27,10 @@ function App() {
   };
   console.log(activity)
 
-
   return (
     <>
       
       <ActivityForm Data={Data} />
-      {activity.map((item) => {
-        <ActivityDisplay 
-          key={item.id}
-          type={item.type}
-          name={item.name}
-          descrition={item.descrition}
-          startDate={item.startdate}
-          endDate={item.enddate}
-          time={item.time}
-          weight={item.weight}
-          />
-      })}
-      
     </>
   );
 }
