@@ -50,7 +50,7 @@ export default function PieChartWithCenterLabel() {
           alt=""
         />
       </div>
-      <PieChart series={[{ data, innerRadius: 90 }]} {...size} >
+      <PieChart series={[{ data, innerRadius: 90 }]} {...size}>
         <PieCenterLabel>Calories : {sumCalories}</PieCenterLabel>
       </PieChart>
     </div>
