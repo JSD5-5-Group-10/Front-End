@@ -30,6 +30,7 @@ export const data = {
     },
   ],
 };
+
 const averageCalories =
   data.datasets[0].data.reduce((sum, value) => sum + value, 0) 
 
