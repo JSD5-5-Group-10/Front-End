@@ -4,7 +4,7 @@ export const Login = () => {
   return (
     <>
     <Navbar />
-      <div className="flex h-screen ">
+      <div className="flex h-screen">
         <div className=" w-2/3 m-auto hidden lg:inline">
           <img
             className="rounded-xl shadow-lg border-2"

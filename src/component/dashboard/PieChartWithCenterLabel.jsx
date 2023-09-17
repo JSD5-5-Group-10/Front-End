@@ -3,8 +3,9 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
 
+
 const data = [
-  { value: 1499, label: "Run" },
+  { value: 9999, label: "Run" },
   { value: 900.2, label: "Yoga" },
   { value: 1125, label: "Aerobics" },
   { value: 2550, label: "Muaythai" },
