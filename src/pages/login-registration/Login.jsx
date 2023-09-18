@@ -4,7 +4,7 @@ export const Login = () => {
   return (
     <>
     <Navbar />
-      <div className="flex h-screen ">
+      <div className="flex h-screen">
         <div className=" w-2/3 m-auto hidden lg:inline">
           <img
             className="rounded-xl shadow-lg border-2"
@@ -14,9 +14,11 @@ export const Login = () => {
         </div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h1 className="text-3xl text-center font-bold leading-9 ">ธอร์ลอยไข่หวาน</h1>
+            <h1 className="text-3xl text-center font-bold leading-9 ">
+              ธอร์ลอยไข่หวาน
+            </h1>
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Sign in to your account
+              Login to your account
             </h2>
           </div>
 
@@ -31,8 +33,6 @@ export const Login = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    id="email"
-                    name="email"
                     type="email"
                     autoComplete="email"
                     required
@@ -60,8 +60,7 @@ export const Login = () => {
                 </div>
                 <div className="mt-2">
                   <input
-                    id="password"
-                    name="password"
+             
                     type="password"
                     autoComplete="current-password"
                     required
@@ -73,9 +72,9 @@ export const Login = () => {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-[#8278d9] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Sign in
+                  Login
                 </button>
               </div>
             </form>
