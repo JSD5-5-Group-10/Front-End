@@ -1,5 +1,5 @@
 import React from "react";
-// import { Dashboard1 } from "../component/dashboard/Dashboard1";
+import { Dashboard1 } from "../component/dashboard/Dashboard1";
 import BasicStacking from "../component/dashboard/BasicStacking";
 import StraightAnglePieChart from "../component/dashboard/StraightAnglePieChart";
 import PieChartWithCenterLabel from "../component/dashboard/PieChartWithCenterLabel";
@@ -21,7 +21,7 @@ export const Dashboard = () => {
           <StraightAnglePieChart />
           <Chartsbar />
           <BasicStacking />
-          {/* <Dashboard1 /> */}
+          <Dashboard1 />
         </div>
       </div>
     </div>
