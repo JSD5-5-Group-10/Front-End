@@ -1,7 +1,22 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import ActivityDisplay from "./ActivityDisplay";
+const test = [
+    {
+      id: 1,
+      type: "test",
+      name: "test",
+      descrition: "tes",
+      startdate: "2023-09-20",
+      enddate: "2023-09-30",
+      time: 10,
+      weight: 50,
+    },
+  ];
 
-const ActivityForm = ({Data}) => {
+const ActivityForm = () => {
 
         const [type, setType] = useState("");
         const [name, setName] = useState("");
@@ -10,29 +25,83 @@ const ActivityForm = ({Data}) => {
         const [enddate, setEnddate] = useState("");
         const [time, setTime] = useState(0);
         const [weight, setWeight] = useState(0);
+        const [activity, setActivity] = useState(test);
         
-    const saveData = (e) => {
-        e.preventDefault();
-        const formData = {
-            id: uuidv4(),
-            type: type,
-            name: name,
-            descrition: descrition,
-            startdate: startdate,
-            enddate: enddate,
-            time: parseInt(time),
-            weight: parseFloat(weight),
-        }
-       
-        Data(formData);
-        
-    }
+          const Data = (newData) => {
+            setActivity((prevItem) => {
+              return [newData, ...prevItem];
+            });
+            
+          };
 
+          console.log(activity)
+
+    const isValidate = () => {
+            let proceed = true;
+            let errMsg = "Please enter the value in : ";
+            if (type === null || type === "") {
+              proceed = false;
+              errMsg += "Please Select Activity Type..";
+            }
+            if (descrition === null || descrition === "" || descrition <= 10 ) {
+              proceed = false;
+              errMsg += "Descrition will be must more than 10 character ";
+            }
+            if (startdate === null || startdate === "") {
+              proceed = false;
+              errMsg += "Start Date ";
+            }
+            if (enddate === null || enddate === "") {
+                proceed = false;
+                errMsg += "End Date ";
+              }
+            if (time === null || time === "" || time <= 0) {
+                proceed = false;
+                errMsg += "time ";
+            }
+            if (weight === null || weight === "" || weight <= 0) {
+                proceed = false;
+                errMsg += "End Date ";
+              }
+            if (!proceed) {
+              toast.warning(errMsg);
+              console.log(errMsg);
+            }
+            return proceed;
+          };
+
+const saveData = (e) => {
+       
+    e.preventDefault();
+    if (isValidate()){
+            const formData = {
+                id: uuidv4(),
+                type: type,
+                name: name,
+                descrition: descrition,
+                startdate: startdate,
+                enddate: enddate,
+                time: parseInt(time),
+                weight: parseFloat(weight),
+            }
+    
+            
+                Data(formData);
+                setType();
+                setName("");
+                setDescrition("");
+                setTime(0);
+                setStartdate("");
+                setEnddate("");
+                setWeight(0);
+        }
+}
     return (
+       
     <div className="w-[425px] flex flex-col justify-center m-auto">
         <div className="flex flex-col items-center">
             <h1 className="text-2xl underline font-bold ">ActivityForm</h1>
-
+        
         <form onSubmit={saveData} className="m-1 mt-3">
             
             <label className="max-w-[378px] h-[58px] mt-4 flex transparent">
@@ -40,53 +109,49 @@ const ActivityForm = ({Data}) => {
                     ชื่อกิจกรรม
                 </span>
             </label>
+            
+        
+        <div className="max-w-[378px] h-[58px] my-2 flex bg-gray-200 ">
+            <label htmlFor="type" className="w-[188px] flex items-center justify-center">Activity Type:</label>
 
-            <div className="flex items-center pl-4 justify-between max-w-[378px] bg-gray-200 rounded-t-lg border-gray-500 border-b">
-              
-              <input
-                type="radio"
-                className="h-4 w-4"
+            <select name="type" onChange={(e)=>setType(e.target.value)} className="w-[186px]">
+                <option 
+                value=''>
+                    Please Select Activity type 
+                </option>
+                <option 
                 value="Run"
-                name="type"
-                onChange={(e) => setType(e.target.value)}
-                required
-              />
-              <label className="text-blank m-1">Run</label>
-              <input
-                type="radio"
-                className="h-4 w-4"
+                // onChange={(e) => setType(e.target.value)}
+                >
+                    Run 
+                </option>
+                <option 
                 value="Yoga"
-                name="type"
-                onChange={(e) => setType(e.target.value)}
-              />
-              <label className="text-blank m-1">Yoga</label>
-              <input
-                type="radio"
-                className="h-4 w-4"
+                // onChange={(e) => setType(e.target.value)}
+                >
+                    Yoga 
+                </option>
+                <option 
                 value="Aerobics"
-                name="type"
-                onChange={(e) => setType(e.target.value)}
-              />
-              <label className="text-blank m-1">Aerobics</label>
-              <input
-                type="radio"
-                className="h-4 w-4"
+                // onChange={(e) => setType(e.target.value)}
+                >
+                    Aerobics 
+                </option>
+                <option 
                 value="Muaythai"
-                name="type"
-                onChange={(e) => setType(e.target.value)}
-              />
-              <label className="text-blank m-1">Kita Muaythai</label>
-              <input
-                type="radio"
-                className="h-4 w-4"
+                // onChange={(e) => setType(e.target.value)}
+                >
+                    Muaythai 
+                </option>
+                <option 
                 value="Training"
-                name="type"
-                onChange={(e) => setType(e.target.value)}
-              />
-              <label className="text-blank m-1 mr-3">Weight training</label>
-            </div>
+                // onChange={(e) => setType(e.target.value)}
+                >
+                    Weight Training 
+                </option>
+            </select>
 
-
+        </div>
             <label className="max-w-[378px] h-[58px] my-2 flex bg-gray-200">
                 <span className="w-[188px]  flex items-center justify-center  bg-gray-200">คำอธิบายกิจกรรม</span>
                 <input 
@@ -140,7 +205,8 @@ const ActivityForm = ({Data}) => {
             </label>
             <button type="submit" className="w-[154px] h-[58px] border mt-4 bg-green-800 text-white rounded-lg shadow-md text-2xl">CONFIRM</button>
         </form>
- 
+        <ToastContainer />
+        {/* <ActivityDisplay/> */}
     </div>  
     </div>
     )
