@@ -2,7 +2,9 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import ActivityDisplay from "./ActivityDisplay";
+// import ActivityDisplay from "./ActivityDisplay";
+import IndexActivity from '../Activity/index'
+
 const test = [
     {
       id: 1,
@@ -121,31 +123,26 @@ const saveData = (e) => {
                 </option>
                 <option 
                 value="Run"
-                // onChange={(e) => setType(e.target.value)}
                 >
                     Run 
                 </option>
                 <option 
                 value="Yoga"
-                // onChange={(e) => setType(e.target.value)}
                 >
                     Yoga 
                 </option>
                 <option 
-                value="Aerobics"
-                // onChange={(e) => setType(e.target.value)}
+                value="Aerobics" 
                 >
                     Aerobics 
                 </option>
                 <option 
-                value="Muaythai"
-                // onChange={(e) => setType(e.target.value)}
+                value="KitaMuaythai"
                 >
-                    Muaythai 
+                    Kita Muaythai 
                 </option>
                 <option 
                 value="Training"
-                // onChange={(e) => setType(e.target.value)}
                 >
                     Weight Training 
                 </option>
@@ -207,6 +204,7 @@ const saveData = (e) => {
         </form>
         <ToastContainer />
         {/* <ActivityDisplay/> */}
+        {/* <IndexActivity/> */}
     </div>  
     </div>
     )
