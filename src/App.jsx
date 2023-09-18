@@ -1,9 +1,12 @@
-import { useState } from "react";
-import { Index } from "./pages/Index/Index";
+
+
+import ActivityForm from '../src/component/Activity/ActivityForm'
 import Navbar from "./component/Navbar";
+import { Index } from './pages/Index/Index';
 
 
 function App() {
+
   return (
     <div className="flex justify-betwee min-h-screen  bg-slate-300">
       <div >
@@ -14,6 +17,6 @@ function App() {
       </div>
     </div>
   )
-}
 
+}
 export default App;

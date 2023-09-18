@@ -32,7 +32,7 @@ export default function Navbar() {
                             <Link to="/dashboard">Dashboard</Link>
                             </li>
                             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                            <Link to="/ActivityForm">ActivityForm</Link>
+                            <Link to="/Registration">Registration</Link>
                             </li>
                         </ul>
                         <hr className="my-2 text-gray-600" />

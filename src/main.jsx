@@ -7,7 +7,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ActivityFormPage from "./pages/ActivityForm/ActivityFormPage.jsx";
-
+import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/ActivityForm",
     element: <ActivityFormPage />,
+  },
+  {
+    path: "/Registration",
+    element: <RegistrationPage />,
   },
 ]);
 
