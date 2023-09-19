@@ -1,7 +1,7 @@
 
 
 import ActivityForm from '../src/component/Activity/ActivityForm'
-import IndexActivity from './component/Activity';
+import IndexActivity from './component/Activity/IndexActivity';
 import Navbar from "./component/Navbar";
 import { Index } from './pages/Index/Index';
 
@@ -16,6 +16,7 @@ function App() {
       <div className="min-h-min z-0 relative">
         <Index />
       </div>
+      <IndexActivity />
     </div>
   )
 
