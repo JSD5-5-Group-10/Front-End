@@ -8,7 +8,7 @@ import Navbar from "../component/Navbar";
 
 export const Dashboard = () => {
   return (
-    <div lassName="relative">
+    <div className="relative">
       <div className="z-50 absolute" >
         <Navbar />
       </div>
