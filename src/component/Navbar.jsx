@@ -15,7 +15,7 @@ export default function Navbar() {
 
     return (
         <nav>
-            <div className=''>
+            <div>
             <button onClick={toggleSidebar} className='text-black' >openNav</button>
                 
                 <div className={`sidebar ${isOpen ? 'w-1/3' : 'hidden'}  sidebar fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto text-center bg-gray-900 text-white`}>
@@ -25,11 +25,14 @@ export default function Navbar() {
                     <div>
                         <ul className=" text-indigo-100">
                             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ">
-                                Home
+                            <Link to="/">Home</Link>
                             </li>
                             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">setting</li>
                             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
                             <Link to="/dashboard">Dashboard</Link>
+                            </li>
+                            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                            <Link to="/Registration">Registration</Link>
                             </li>
                         </ul>
                         <hr className="my-2 text-gray-600" />

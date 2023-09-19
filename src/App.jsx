@@ -1,14 +1,20 @@
-import ActivityForm from "../src/component/Activity/ActivityForm";
+import ActivityForm from '../src/component/Activity/ActivityForm'
 import Navbar from "./component/Navbar";
-import ActivityDisplay from "./component/Activity/ActivityDisplay";
+import { Index } from './pages/Index/Index';
+
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <ActivityForm />
-    </>
-  );
-}
 
+  return (
+    <div className="flex justify-betwee min-h-screen  bg-slate-300">
+      <div >
+        <Navbar />
+      </div>
+      <div >
+        <Index />
+      </div>
+    </div>
+  )
+
+}
 export default App;
