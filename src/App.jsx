@@ -1,6 +1,6 @@
 
 import ActivityForm from '../src/component/Activity/ActivityForm'
-import IndexActivity from './component/Activity';
+import IndexActivity from './component/Activity/IndexActivity';
 import Navbar from "./component/Navbar";
 
 
