@@ -4,11 +4,13 @@ import { Outlet, Link } from "react-router-dom";
 export const Index = () => {
     return (
         <>
-            <div className="w-[425px]  min-h-screen bg-slate-300 flex flex-col m-auto">
-                <div class="text-center mr-1 font-bold text-xl ml-40">INDEX</div>
-                <footer class="fixed bottom-0  p-10 flex justify-center">
-                    <div class="inline-flex">
-                        <button class="px-4 py-2 ml-40 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-lg">
+            <div className=" w-[400px] md:w-[768px] lg:w-[1024px]">
+                <div class="text-center font-bold text-xl md:text-sm"> 
+                <h1 className="m-auto pr-40 sm:pr-80 md:pr-60">INDEX</h1>
+                </div>
+                <footer class="fixed bottom-10 ml-16 md:ml-48 lg:ml-80">
+                    <div className="inline-flex m-auto ">
+                        <button class="px-4 py-2  bg-[#c0bcd5] text-white rounded-md hover:bg-[#7D5CF5] shadow-lg m-auto">
                         <Link to="/ActivityForm">Add Activity</Link>
                         </button>
                     </div>

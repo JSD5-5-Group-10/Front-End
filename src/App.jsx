@@ -8,11 +8,11 @@ import { Index } from './pages/Index/Index';
 function App() {
 
   return (
-    <div className="flex justify-betwee min-h-screen  bg-slate-300">
-      <div >
+    <div className="relative">
+      <div className="z-50 absolute">
         <Navbar />
       </div>
-      <div >
+      <div className="min-h-min z-0 relative">
         <Index />
       </div>
     </div>
