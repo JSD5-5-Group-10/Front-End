@@ -1,212 +1,303 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 // import ActivityDisplay from "./ActivityDisplay";
-import IndexActivity from '../Activity/index'
+// import IndexActivity from "./IndexActivity";
 
 const test = [
-    {
-      id: 1,
-      type: "test",
-      name: "test",
-      descrition: "tes",
-      startdate: "2023-09-20",
-      enddate: "2023-09-30",
-      time: 10,
-      weight: 50,
-    },
-  ];
+  {
+    id: 1,
+    type: "test",
+    name: "test",
+    descrition: "tes",
+    startdate: "2023-09-20",
+    time: 10,
+    weight: 50,
+  },
+];
 
 const ActivityForm = () => {
+  const [type, setType] = useState("");
+  const [name, setName] = useState("");
+  const [descrition, setDescrition] = useState("");
+  const [startdate, setStartdate] = useState(new Date());
+  const [time, setTime] = useState(0);
+  const [weight, setWeight] = useState(0);
+  const [kcal, setKcal] = useState(null);
+  const [kilogram, setKilogram] = useState(null);
+  const [newData, setNewData] = useState(test);
+  const cal = `${kcal} kcal`;
+  const kilo = `${kilogram} kg`;
 
-        const [type, setType] = useState("");
-        const [name, setName] = useState("");
-        const [descrition, setDescrition] = useState("");
-        const [startdate, setStartdate] = useState("");
-        const [enddate, setEnddate] = useState("");
-        const [time, setTime] = useState(0);
-        const [weight, setWeight] = useState(0);
-        const [activity, setActivity] = useState(test);
-        
-          const Data = (newData) => {
-            setActivity((prevItem) => {
-              return [newData, ...prevItem];
-            });
-            
-          };
+  const year = new Date().getFullYear();
+  const month = String(new Date().getMonth() + 1).padStart(2, "0");
+  const day = String(new Date().getDate()).padStart(2, "0");
+  const hours = String(new Date().getHours()).padStart(2, "0");
+  const minutes = String(new Date().getMinutes()).padStart(2, "0");
+  const seconds = String(new Date().getSeconds()).padStart(2, "0");
+  const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 
-          console.log(activity)
+  const Data = (newData) => {
+    setNewData((prevItem) => {
+      return [...prevItem, newData];
+    });
+  };
+  console.log(newData);
 
-    const isValidate = () => {
-            let proceed = true;
-            let errMsg = "Please enter the value in : ";
-            if (type === null || type === "") {
-              proceed = false;
-              errMsg += "Please Select Activity Type..";
-            }
-            if (descrition === null || descrition === "" || descrition <= 10 ) {
-              proceed = false;
-              errMsg += "Descrition will be must more than 10 character ";
-            }
-            if (startdate === null || startdate === "") {
-              proceed = false;
-              errMsg += "Start Date ";
-            }
-            if (enddate === null || enddate === "") {
-                proceed = false;
-                errMsg += "End Date ";
-              }
-            if (time === null || time === "" || time <= 0) {
-                proceed = false;
-                errMsg += "time ";
-            }
-            if (weight === null || weight === "" || weight <= 0) {
-                proceed = false;
-                errMsg += "End Date ";
-              }
-            if (!proceed) {
-              toast.warning(errMsg);
-              console.log(errMsg);
-            }
-            return proceed;
-          };
+  useEffect(() => {
+    type === "Run"
+      ? setName("Run")
+      : type === "Yoga"
+      ? setName("Yoga")
+      : type === "Aerobics"
+      ? setName("Aerobics")
+      : type === "KitaMuaythai"
+      ? setName("KitaMuaythai")
+      : type === "Training"
+      ? setName("Weight Training")
+      : "";
+  }, [type]);
 
-const saveData = (e) => {
-       
+  const isValidate = () => {
+    let proceed = true;
+    let errMsg = "Enter your : ";
+    if (type === null || type === "") {
+      proceed = false;
+      errMsg += "Please Select Type ";
+    }
+    if (name === null || name === "") {
+      proceed = false;
+      errMsg += "Activity Name ";
+    }
+    if (descrition === null || descrition === "") {
+      proceed = false;
+      errMsg += "Descrition ";
+    }
+    if (time === null || time === 0) {
+      proceed = false;
+      errMsg += "Time ";
+    }
+    if (weight === null || weight === 0) {
+      proceed = false;
+      errMsg += "Weight ";
+    }
+    if (!proceed) {
+      toast.warning(errMsg);
+      console.log(errMsg);
+    }
+    return proceed;
+  };
+
+  const saveData = (e) => {
     e.preventDefault();
-    if (isValidate()){
-            const formData = {
-                id: uuidv4(),
-                type: type,
-                name: name,
-                descrition: descrition,
-                startdate: startdate,
-                enddate: enddate,
-                time: parseInt(time),
-                weight: parseFloat(weight),
-            }
-    
-            
-                Data(formData);
-                setType();
-                setName("");
-                setDescrition("");
-                setTime(0);
-                setStartdate("");
-                setEnddate("");
-                setWeight(0);
-        }
-}
-    return (
-       
-    <div className="w-[425px] flex flex-col justify-center m-auto">
-        <div className="flex flex-col items-center">
-            <h1 className="text-2xl underline font-bold ">ActivityForm</h1>
-        
-        <form onSubmit={saveData} className="m-1 mt-3">
-            
-            <label className="max-w-[378px] h-[58px] mt-4 flex transparent">
-                <span className="w-[188px] font-bold flex items-center justify-center border-r-2">
-                    ชื่อกิจกรรม
-                </span>
+    if (isValidate()) {
+      const formData = {
+        id: uuidv4(),
+        type: type,
+        name: name,
+        descrition: descrition,
+        startdate: startdate,
+        time: parseInt(time),
+        weight: parseFloat(weight),
+        kcal: parseFloat(kcal),
+        kilogram: parseFloat(kcal),
+      };
+      Data(formData);
+      setType();
+      setName("");
+      setDescrition("");
+      setTime(0);
+      setStartdate("");
+      setWeight(0);
+      setKcal();
+      setKilogram();
+    }
+  };
+
+  // calculate kcal and kilogram
+  const calculateActivity = () => {
+    const METs = {
+      Run: 9.6,
+      Yoga: 2.5,
+      Aerobics: 5,
+      Muaythai: 6,
+      Training: 8,
+    };
+
+    if (type in METs) {
+      const met = METs[type];
+      const kcal = met * 0.0175 * weight * time;
+      const cal = kcal / 7700;
+      setKcal(kcal.toFixed(2));
+      setKilogram(cal.toFixed(2));
+    } else {
+      // toast.success("Welcome to ActivityForm");
+    }
+  };
+
+  useEffect(() => {
+    calculateActivity();
+  }, [type, time, weight]);
+
+  useEffect(() => {
+    setInterval(() => setStartdate(new Date()), 3000);
+  }, []);
+
+  return (
+    <div className="flex h-screen dark:bg-[#0b0f32]">
+      <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+        <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
+          ActivityForm
+        </h1>
+        <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form onSubmit={saveData} className="space-y-6 ">
+            {/* activity type */}
+            <div className="flex h-1/2 leading-10">
+              <label
+                htmlFor="type"
+                className="w-1/2 px-9 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500"
+              >
+                Activity Type
+              </label>
+              <select
+                name="type"
+                onChange={(e) => setType(e.target.value)}
+                className="appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+              >
+                <option className="text-[#131c85]" value="">
+                  Please Select Activity type
+                </option>
+                <option className="text-[#131c85]" value="Run">
+                  Run
+                </option>
+                <option className="text-[#131c85]" value="Yoga">
+                  Yoga
+                </option>
+                <option className="text-[#131c85]" value="Aerobics">
+                  Aerobics
+                </option>
+                <option className="text-[#131c85]" value="KitaMuaythai">
+                  Kita Muaythai
+                </option>
+                <option className="text-[#131c85]" value="Training">
+                  Weight Training
+                </option>
+              </select>
+            </div>
+            {/* activity-name */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Activity Name
+              </span>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="name"
+                name="detial"
+                className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                placeholder="Activity Name"
+              />
             </label>
-            
-        
-        <div className="max-w-[378px] h-[58px] my-2 flex bg-gray-200 ">
-            <label htmlFor="type" className="w-[188px] flex items-center justify-center">Activity Type:</label>
-
-            <select name="type" onChange={(e)=>setType(e.target.value)} className="w-[186px]">
-                <option 
-                value=''>
-                    Please Select Activity type 
-                </option>
-                <option 
-                value="Run"
-                >
-                    Run 
-                </option>
-                <option 
-                value="Yoga"
-                >
-                    Yoga 
-                </option>
-                <option 
-                value="Aerobics" 
-                >
-                    Aerobics 
-                </option>
-                <option 
-                value="KitaMuaythai"
-                >
-                    Kita Muaythai 
-                </option>
-                <option 
-                value="Training"
-                >
-                    Weight Training 
-                </option>
-            </select>
-
-        </div>
-            <label className="max-w-[378px] h-[58px] my-2 flex bg-gray-200">
-                <span className="w-[188px]  flex items-center justify-center  bg-gray-200">คำอธิบายกิจกรรม</span>
-                <input 
+            {/* descrition */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Description
+              </span>
+              <input
                 value={descrition}
                 onChange={(e) => setDescrition(e.target.value)}
-                type="text" 
-                name="detial" 
-                className=" w-[186px]" 
-                placeholder="" />
+                type="text"
+                name="detial"
+                className="w-full px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                placeholder="Descrition"
+                maxLength="50"
+                rows="2"
+              />
             </label>
-             
-            <label className="max-w-[378px] h-[58px] my-2 flex bg-gray-200">
-                <span className="w-[188px] flex items-center justify-center  bg-gray-200">ระยะเวลาทำกิจกรรม</span>
-                <input 
+            {/* duration  */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Duration
+              </span>
+              <input
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                type="number" 
-                name="duration" 
-                className=" w-[186px]" 
-                placeholder="" />
+                type="number"
+                name="duration"
+                className="w-full [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                placeholder="Minute"
+              />
             </label>
-            <label className="max-w-[378px] h-[58px] my-2 flex bg-gray-200">
-                <span className="w-[188px] flex items-center justify-center  bg-gray-200">วันที่เริ่มทำกิจกรรม</span>
-                <input 
-                value={enddate}
-                onChange={(e) => setEnddate(e.target.value)}
-                type="date" 
-                name="date" 
-                className="w-[186px]" 
-                placeholder="" />
-            </label>
-            <label className="max-w-[378px] h-[58px] my-2 flex bg-gray-200">
-                <span className="w-[188px] flex items-center justify-center  bg-gray-200">วันที่เสร็จสิ้นกิจกรรม</span>
-                <input 
-                value={startdate}
-                onChange={(e) => setStartdate(e.target.value)}
-                type="date" 
-                name="date" 
-                className="w-[186px]" 
-                placeholder="" />
-            </label>
-            <label className="max-w-[378px] h-[58px] my-2 flex bg-gray-200">
-                <span className="w-[188px] flex items-center justify-center bg-gray-200">น้ำหนักปัจจุบัน</span>
-                <input 
+            {/* Weight */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Current weight
+              </span>
+              <input
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                type="number" 
-                name="weight" 
-                className=" w-[186px]" 
-                placeholder="" />
+                type="number"
+                name="weight"
+                className="w-full [&::-webkit-inner-spin-button]:appearance-none px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                placeholder="Kilogram"
+              />
             </label>
-            <button type="submit" className="w-[154px] h-[58px] border mt-4 bg-green-800 text-white rounded-lg shadow-md text-2xl">CONFIRM</button>
-        </form>
+            {/* Date */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Date
+              </span>
+              <input
+                value={formattedDateTime}
+                onChange={() => setStartdate(startdate)}
+                type="text"
+                name="date"
+                className="bg-white text-sm w-full px-2 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                disabled
+              />
+            </label>
+            {/* Calories Burned  */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Calories Burn
+              </span>
+              <input
+                value={kcal === null ? "0" : cal}
+                type="text"
+                name="date"
+                className="bg-white w-full px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                disabled
+              />
+            </label>
+            {/* kilogram bure */}
+            <label className="flex rounded-lg leading-10">
+              <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                Kilogram Burn
+              </span>
+              <input
+                value={kcal === null ? "0" : kilo}
+                type="text"
+                name="date"
+                className="bg-white w-full px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                disabled
+              />
+            </label>
+
+            <div className="flex justify-end">
+              <button
+                type="submit"
+                className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                CONFIRM
+              </button>
+            </div>
+          </form>
+        </div>
         <ToastContainer />
-        {/* <ActivityDisplay/> */}
-        {/* <IndexActivity/> */}
-    </div>  
+        {/* <IndexActivity /> */}
+      </div>
     </div>
-    )
-}
+  );
+};
 export default ActivityForm;
