@@ -8,11 +8,11 @@ import Navbar from "../component/Navbar";
 
 export const Dashboard = () => {
   return (
-    <div style={{ position: "relative" }}>
-      <div className="z-50" style={{ position: "absolute", width: "100%" }}>
+    <div lassName="relative">
+      <div className="z-50 absolute" >
         <Navbar />
       </div>
-      <div className="min-h-min" style={{ position: "relative", zIndex: "0" }}>
+      <div className="min-h-min z-0 relative" >
         <h1 className="text-center text-4xl font-bold py-10 text-[#131c85]">
           Dashboard
         </h1>
