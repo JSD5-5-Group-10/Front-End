@@ -1,4 +1,5 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const ActivityDisplay = ({
   type,
@@ -9,6 +10,9 @@ const ActivityDisplay = ({
   time,
   weight,
 }) => {
+  console.log(type);
+  console.log(name);
+  console.log(descrition);
   const [dateRange, setDateRange] = useState([]);
   const [selectedDates, setSelectedDates] = useState([]);
   const [numberOfDays, setNumberOfDays] = useState(0);
@@ -53,42 +57,6 @@ const ActivityDisplay = ({
   const [totalkcal, setTotalkcal] = useState();
   const [kcal, setKcal] = useState();
 
-  // const calculateActivity = () => {
-  //   if (type === "Run") {
-  //     const met = 9.6;
-  //     const kcal = met * 0.0175 * weight * time;
-  //     const totalKcal = kcal * numberOfDays;
-  //     setTotalkcal(totalKcal.toFixed(2));
-  //     setKcal(kcal.toFixed(2));
-  //   } else if (type === "Yoga") {
-  //     const met = 2.5;
-  //     const kcal = met * 0.0175 * weight * time;
-  //     const totalKcal = kcal * numberOfDays;
-  //     setTotalkcal(totalKcal.toFixed(2));
-  //     setKcal(kcal.toFixed(2));
-  //   } else if (type === "Aerobics") {
-  //     const met = 5;
-  //     const kcal = met * 0.0175 * weight * time;
-  //     const totalKcal = kcal * numberOfDays;
-  //     setTotalkcal(totalKcal.toFixed(2));
-  //     setKcal(kcal.toFixed(2));
-  //   } else if (type === "Muaythai") {
-  //     const met = 6;
-  //     const kcal = met * 0.0175 * weight * time;
-  //     const totalKcal = kcal * numberOfDays;
-  //     setTotalkcal(totalKcal.toFixed(2));
-  //     setKcal(kcal.toFixed(2));
-  //   } else if (type === "Training") {
-  //     const met = 8;
-  //     const kcal = met * 0.0175 * weight * time;
-  //     const totalKcal = kcal * numberOfDays;
-  //     setTotalkcal(totalKcal.toFixed(2));
-  //     setKcal(kcal.toFixed(2));
-  //   } else {
-  //     alert("Choose Type for Activity");
-  //   }
-  // };
-
   const calculateActivity = () => {
     const METs = {
       Run: 9.6,
@@ -97,7 +65,7 @@ const ActivityDisplay = ({
       Muaythai: 6,
       Training: 8,
     };
-  
+
     if (type in METs) {
       const met = METs[type];
       const kcal = met * 0.0175 * weight * time;
@@ -105,7 +73,7 @@ const ActivityDisplay = ({
       setTotalkcal(totalKcal.toFixed(2));
       setKcal(kcal.toFixed(2));
     } else {
-      alert("Choose Type for Activity");
+      toast.error("Choose Type for Activity");
     }
   };
 
@@ -114,9 +82,8 @@ const ActivityDisplay = ({
   }, [type, numberOfDays]);
 
   return (
-
-
     <div className="m-2 bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900 mt-2">
+      <ToastContainer />
       {numberOfDays > 0 && (
         <div>
           <p className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -181,7 +148,7 @@ const ActivityDisplay = ({
                     {descrition}
                   </td>
                   <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                    {time}  
+                    {time}
                   </td>
                   <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                     {kcal}
