@@ -1,21 +1,32 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import Navbar from "../../component/Navbar";
+import IndexActivity from "../../component/Activity/IndexActivity";
+import { BiMessageSquareAdd } from "react-icons/bi";
 
 export const Index = () => {
     return (
         <>
-            <div className=" w-[400px] md:w-[768px] lg:w-[1024px]">
-                <div class="text-center font-bold text-xl md:text-sm"> 
-                <h1 className="m-auto pr-40 sm:pr-80 md:pr-60">INDEX</h1>
-                </div>
-                <footer class="fixed bottom-10 ml-16 md:ml-48 lg:ml-80">
-                    <div className="inline-flex m-auto ">
-                        <button class="px-4 py-2  bg-[#c0bcd5] text-white rounded-md hover:bg-[#7D5CF5] shadow-lg m-auto">
-                        <Link to="/ActivityForm">Add Activity</Link>
-                        </button>
-                    </div>
-                </footer>
+            <div className="z-50 absolute">
+                <Navbar />
             </div>
+            <div className="flex justify-center items-center pt-10 pl-40">
+                <Link to="/ActivityForm" className="flex items-center">
+                    <h1 className="text-3xl font-medium">Add Activity</h1>
+                    <span className="pl-2">
+                        <BiMessageSquareAdd size={40} />
+                    </span>
+                </Link>
+            </div>
+
+            <div className=" w-6/6  flex justify-center items-center ml-60 mt-10 mr-10 ">
+                <div className="w-full h-full  bg-[#F6F7FB] border-4 rounded-lg object-scale-down grid grid-cols-1 ">
+                    <div className="flex justify-center items-center ">
+                        <IndexActivity />
+                    </div>
+                </div>
+            </div>
+
         </>
     );
 };
