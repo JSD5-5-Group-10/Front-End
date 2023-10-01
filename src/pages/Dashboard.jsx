@@ -1,5 +1,5 @@
 import React from "react";
-// import { Dashboard1 } from "../component/dashboard/Dashboard1";
+import { Dashboard1 } from "../component/dashboard/Dashboard1";
 import BasicStacking from "../component/dashboard/BasicStacking";
 import StraightAnglePieChart from "../component/dashboard/StraightAnglePieChart";
 import PieChartWithCenterLabel from "../component/dashboard/PieChartWithCenterLabel";
@@ -8,11 +8,11 @@ import Navbar from "../component/Navbar";
 
 export const Dashboard = () => {
   return (
-    <div style={{ position: "relative" }}>
-      <div className="z-50" style={{ position: "absolute", width: "100%" }}>
+    <div className="relative">
+      <div className="z-50 absolute" >
         <Navbar />
       </div>
-      <div className="min-h-min" style={{ position: "relative", zIndex: "0" }}>
+      <div className="min-h-min z-0 relative" >
         <h1 className="text-center text-4xl font-bold py-10 text-[#131c85]">
           Dashboard
         </h1>
@@ -21,7 +21,7 @@ export const Dashboard = () => {
           <StraightAnglePieChart />
           <Chartsbar />
           <BasicStacking />
-          {/* <Dashboard1 /> */}
+          <Dashboard1 />
         </div>
       </div>
     </div>
