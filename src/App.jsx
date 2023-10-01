@@ -10,4 +10,5 @@ function App() {
       <Index />
   );
 }
+
 export default App;
