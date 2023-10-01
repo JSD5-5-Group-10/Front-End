@@ -1,15 +1,35 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import ActivityForm from '../src/component/Activity/ActivityForm'
+import Navbar from "./component/Navbar";
+
 
 function App() {
-  const [count, setCount] = useState(0);
+  const test = [
+    {
+      id: 1,
+      type: "test",
+      name: "test",
+      descrition: "tes",
+      startdate: "2023-09-20",
+      enddate: "2023-09-30",
+      time: 10,
+      weight: 50,
+    },
+  ];
+  const [activity, setActivity] = useState(test);
+
+  const Data = (newData) => {
+    setActivity((prevItem) => {
+      return [newData, ...prevItem];
+    });
+    
+  };
+  console.log(activity)
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <p>test</p>
+      <Navbar/>
+      <ActivityForm Data={Data} />
     </>
   );
 }
