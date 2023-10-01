@@ -44,6 +44,18 @@ const test = [
     icon: <GrYoga size={100} />,
     img: Imgyoga,
   },
+  {
+    id: 4,
+    type: "Yoga",
+    name: "อยากผอม",
+    descrition: "ออกกำลังกายกันเถอะ",
+    startdate: "2023-09-01",
+    enddate: "2023-09-03",
+    time: 60,
+    weight: 60,
+    icon: <GrYoga size={100} />,
+    img: Imgyoga,
+  },
 ];
   
 const IndexActivity = ({value}) => {
@@ -51,7 +63,7 @@ const IndexActivity = ({value}) => {
 console.log(value);
   return (
     <div className="flex flex-col items-center h-full">
-      <div className="lg:grid lg:grid-cols-2 xl:grid-cols-3">
+      <div className="lg:grid lg:grid-cols-2 xl:grid-cols-2">
         {data.map((item, index) => (
           <div
             key={index}
