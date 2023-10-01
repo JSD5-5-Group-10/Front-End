@@ -3,7 +3,7 @@ import Navbar from "../../component/Navbar";
 import AllExercise from "../../component/ExerciseContent/AllExercise";
 export const AllExercisePage = () => {
   return (
-    <div className="flex">
+    <div className="md:flex">
       <div className="z-50">
         <Navbar />
       </div>

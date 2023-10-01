@@ -1,30 +1,38 @@
 import React from "react";
+import { Chartsbar } from "../dashboard/Chartsbar.jsx";
+import PieChartWithCenterLabel from "../dashboard/PieChartWithCenterLabel.jsx";
 
 const Profile = () => {
-  const imgProfile = "https://s.isanook.com/mv/0/ud/24/123377/865231.jpg"
-  const imgCover = "https://img.kapook.com/u/2018/Tanapol/travel/november/doypahompok/t1.jpg"
-  const information = "Hello world"
-  const age = "Age"
-  const location = "Somewhere"
-  const username = "ธอร์ลอยไข่หวาน"
+  const imgProfile = "https://s.isanook.com/mv/0/ud/24/123377/865231.jpg";
+  const imgCover =
+    "https://img.kapook.com/u/2018/Tanapol/travel/november/doypahompok/t1.jpg";
+  const information = "Hello world";
+  const age = "Age";
+  const location = "Somewhere";
+  const username = "ธอร์ลอยไข่หวาน";
   return (
     <div className="flex w-full">
-
       <div>
         <header>
-
           <div className="relative ">
             <img src={imgCover} alt="รูปปก" className="h-[150px] w-screen" />
-            <button className="bg-[#ffffff] text-[#A303A0] rounded-full border border-gray-300 hover:bg-violet-600 p-[5px] top-[6rem] right-[1rem] absolute">แก้ไขโปรไฟล์</button>
-            <div >
-              <img className="rounded-full w-32 h-32 object-cover top-[3rem]  left-[1rem] absolute " src={imgProfile} alt="User" />
+            <button className="bg-[#ffffff] text-[#A303A0] rounded-full border border-gray-300 hover:bg-violet-600 p-[5px] top-[6rem] right-[1rem] absolute">
+              แก้ไขโปรไฟล์
+            </button>
+            <div>
+              <img
+                className="rounded-full w-32 h-32 object-cover top-[3rem]  left-[1rem] absolute "
+                src={imgProfile}
+                alt="User"
+              />
             </div>
           </div>
 
           <div className="flex bg-white ml-[10rem] ">
-            <button className="bg-blue-500 text-white rounded-full border border-gray-300 hover:bg-violet-600 p-[5px]">แก้ไขโปรไฟล์</button>
+            <button className="bg-blue-500 text-white rounded-full border border-gray-300 hover:bg-violet-600 p-[5px]">
+              แก้ไขโปรไฟล์
+            </button>
             <h1 className="name pl-[1rem] font-bold">{username}</h1>
-
           </div>
         </header>
 
@@ -43,6 +51,14 @@ const Profile = () => {
             </div>
           </div>
         </section>
+        <div className="md:flex gap-4 my-5  justify-around ">
+          <div className="my-2">
+            <Chartsbar />
+          </div>
+          <div className="my-2">
+            <PieChartWithCenterLabel />
+          </div>
+        </div>
       </div>
     </div>
   );
