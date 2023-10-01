@@ -2,9 +2,9 @@ import React from "react";
 import Navbar from "../../component/Navbar";
 export const Login = () => {
   return (
-    <>
+    <div className="md:flex justify-center">
       <Navbar />
-      <div className="flex h-screen">
+      <div className="flex h-screen w-full ">
         <div className=" w-2/3 m-auto hidden lg:inline">
           <img
             className="rounded-xl shadow-lg border-2 h-screen w-[100%]"
@@ -90,6 +90,6 @@ export const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

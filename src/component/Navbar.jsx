@@ -50,7 +50,7 @@ export default function Navbar() {
     const activityNavList = () => {
         return (
             <div>
-                <div className="">
+                <div>
                     <button onClick={toggleDropdown}
                         className=" text-[15px] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#E6E1FF] text-black">
                         exercise content
@@ -92,13 +92,15 @@ export default function Navbar() {
 
 
     return (
-    <nav>
+        <nav>
         <div>
             <button onClick={toggleSidebar} className={`${isDesktop ? 'md:hidden' : 'block'} text-black`}>
                 <AiOutlineAlignLeft size={40} />
             </button>
 
-            <div className={`sidebar ${isOpen ? 'md:w-1/5 sm:1/3' :'hidden'}  ${isDesktop ? 'md:block md:w-1/5' : 'hidden'} sidebar fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto  bg-white text-black shadow-lg `}>
+            <div className={`sidebar ${isOpen ? 'md:w-1/5 sm:1/3' :'hidden'}  
+            ${isDesktop ? 'md:block md:w-[200px]' : 'hidden'} 
+            sidebar md:sticky min-h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto  bg-white text-black shadow-lg `}>
                 <button onClick={toggleSidebar} className={`${isDesktop ? 'md:hidden' : 'block'} text-black`} >
                     <AiOutlineAlignLeft size={40} />
                 </button>
