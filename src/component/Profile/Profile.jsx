@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProfilePage = () => {
+const Profile = () => {
   const imgProfile = "https://s.isanook.com/mv/0/ud/24/123377/865231.jpg"
   const imgCover = "https://img.kapook.com/u/2018/Tanapol/travel/november/doypahompok/t1.jpg"
   const information = "Hello world"
@@ -48,4 +48,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default Profile;
