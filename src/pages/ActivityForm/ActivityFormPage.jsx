@@ -2,7 +2,6 @@ import { useState } from "react";
 import Navbar from "../../component/Navbar";
 import ActivityForm from "../../component/Activity/ActivityForm";
 
-
 function ActivityFormPage() {
   const test = [
     {
@@ -22,18 +21,18 @@ function ActivityFormPage() {
     setActivity((prevItem) => {
       return [newData, ...prevItem];
     });
-    
   };
-  console.log(activity)
+  console.log(activity);
 
   return (
-    <>
-      <div className=" z-50 absolute">
-      <Navbar/>
+    <div className="md:flex">
+      <div className="">
+        <Navbar />
       </div>
-      <ActivityForm Data={Data} />
-      
-    </>
+      <div className="flex justify-center mx-auto">
+        <ActivityForm Data={Data} />
+      </div>
+    </div>
   );
 }
 

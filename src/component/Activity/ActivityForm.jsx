@@ -15,6 +15,18 @@ const test = [
     time: 10,
     weight: 50,
   },
+  {
+    id: 2,
+    type: "Run",
+    name: "อยากผอม",
+    descrition: "ออกกำลังกายกันเถอะ",
+    startdate: "2023-09-01",
+    enddate: "2023-09-03",
+    time: 60,
+    weight: 60,
+    // icon: <BiRun size={100} />,
+    // img: Running,
+  },
 ];
 
 const ActivityForm = () => {
@@ -296,7 +308,7 @@ const ActivityForm = () => {
         </div>
         <ToastContainer />
 
-        {/* <IndexActivity newData={newData} /> */}
+        <IndexActivity newData={newData} />
       </div>
     </div>
   );
