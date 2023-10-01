@@ -29,7 +29,10 @@ export default function Navbar() {
                         <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black ">
                             <Link to="/">Home</Link>
                         </li>
-                        <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">setting</li>
+                        <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black"> 
+                        
+                        <Link to="/profilePage">Profile</Link>
+                        </li>
                         <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
                             <Link to="/dashboard">Dashboard</Link>
                         </li>
@@ -57,12 +60,28 @@ export default function Navbar() {
                 <div className={`${isHidden ? 'hidden' : ''
                     } p-2.5 mt-2 flex items-end px-4 duration-300 w-4/5 `}>
                     <ul>
-                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">all content</li>
-                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">Yoga</li>
-                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">running</li>
-                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black ">Thai Boxing</li>
-                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">weight training</li>
-                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">Aerobics</li>
+                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+                        <Link to="/allExercise">All content</Link></li>
+
+                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+    
+                            <Link to="/yogaPage">Yoga</Link>
+                            </li>
+                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+                            
+                            <Link to="/runningPage">running</Link>
+                            </li>
+                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black ">
+                            <Link to="/thaiBoxingPage">Thai Boxing</Link>
+                            </li>
+                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+                            
+                            <Link to="/weightPage">weight training</Link>
+                            </li>
+                        <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+                            
+                            <Link to="/aerobicsPage">Aerobics</Link>
+                            </li>
 
                     </ul>
                 </div>
