@@ -77,7 +77,7 @@ const IndexActivity = ({ value }) => {
               <div className=" mb-1">Activity Type : {item.type}</div>
               <div className="mb-1">Activity Name : {item.name}</div>
               <div className=" mb-1"> Date : {item.startdate} mins.</div>
-              <div className="hidden hover:inline-block lg:inline">
+              <div className="hidden hover:inline-block lg:hover:inline ">
                 Description : {item.descrition}
               </div>
               <div className="w-full">
