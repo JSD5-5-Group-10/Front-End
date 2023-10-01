@@ -26,7 +26,10 @@ function ActivityFormPage() {
 
   return (
     <div className="md:flex">
-      <div className="">
+      <div className="absolute z-50 md:hidden">
+        <Navbar />
+      </div>
+      <div className="hidden md:inline">
         <Navbar />
       </div>
       <div className="flex justify-center mx-auto">

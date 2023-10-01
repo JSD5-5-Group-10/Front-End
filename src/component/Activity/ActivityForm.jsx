@@ -157,7 +157,7 @@ const ActivityForm = () => {
   }, []);
 
   return (
-    <div className="flex h-screen dark:bg-[#0b0f32]">
+    <div className="flex min-h-screen dark:bg-[#0b0f32]">
       <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
           ActivityForm

@@ -15,6 +15,7 @@ import { AerobicsPage } from "./pages/ExercisePage.jsx/AerobicsPage.jsx";
 import { ThaiBoxingPage } from "./pages/ExercisePage.jsx/ThaiBoxingPage.jsx";
 import { WeightPage } from "./pages/ExercisePage.jsx/WeightPage.jsx";
 import { YogaPage } from "./pages/ExercisePage.jsx/yogaPage.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
