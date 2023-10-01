@@ -6,6 +6,7 @@ import Imgyoga from "./assets/yoga.jpg";
 import Running from "./assets/running.jpg";
 import Arabic from "./assets/Arabic.jpg";
 
+
 const test = [
   {
     id: 1,
@@ -44,10 +45,10 @@ const test = [
     img: Imgyoga,
   },
 ];
-
-const IndexActivity = () => {
+  
+const IndexActivity = ({value}) => {
   const [data, setData] = useState(test);
-
+console.log(value);
   return (
     <div className="flex flex-col items-center h-full">
       <div className="lg:grid lg:grid-cols-2 xl:grid-cols-3">
