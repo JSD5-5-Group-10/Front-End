@@ -45,13 +45,14 @@ const test = [
   },
 ];
 
-const IndexActivity = () => {
-  const [data, setData] = useState(test);
+const IndexActivity = ({newData}) => {
+  const [data, setData] = useState();
+ 
 
   return (
     <div className="flex flex-col items-center h-full">
       <div className="lg:grid lg:grid-cols-2 xl:grid-cols-3">
-        {data.map((item, index) => (
+        {test.map((item, index) => (
           <div
             key={index}
             className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
@@ -65,7 +66,7 @@ const IndexActivity = () => {
               
               <div className=" mb-1">Activity Type : {item.type}</div>
               <div className="mb-1">Activity Name : {item.name}</div>
-              <div className=" mb-1"> Date : {item.startdate} mins.</div>
+              <div className=" mb-1"> Date : {item.weight} mins.</div>
               <div className="hidden lg:inline">Description : {item.descrition}</div>
               <div className="w-full">
                 <h2 className="uppercase absolute bottom-1 right-3 underline">Total Cal: XXX</h2>

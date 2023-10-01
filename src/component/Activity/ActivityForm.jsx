@@ -3,13 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ActivityDisplay from "./ActivityDisplay";
-import IndexActivity from './IndexActivity'
+import IndexActivity from "./IndexActivity";
 
 const test = [
   {
     id: 1,
     type: "test",
-    name: "test",
+    name: "test1",
     descrition: "tes",
     startdate: "2023-09-20",
     time: 10,
@@ -101,7 +101,7 @@ const ActivityForm = () => {
         time: parseInt(time),
         weight: parseFloat(weight),
         kcal: parseFloat(kcal),
-        kilogram: parseFloat(kcal),
+        kilogram: parseFloat(kilogram),
       };
       Data(formData);
       setType();
@@ -295,7 +295,8 @@ const ActivityForm = () => {
           </form>
         </div>
         <ToastContainer />
-        {/* <IndexActivity /> */}
+
+        {/* <IndexActivity newData={newData} /> */}
       </div>
     </div>
   );
