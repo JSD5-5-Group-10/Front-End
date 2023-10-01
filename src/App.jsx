@@ -7,15 +7,8 @@ import { Index } from "./pages/Index/Index";
 
 function App() {
   return (
-    <div className="relative">
-      <div className="z-50 absolute">
-        <Navbar />
-      </div>
-      <div className="min-h-min z-0 relative">
-        <Index />
-      </div>
-      <IndexActivity />
-    </div>
+      <Index />
   );
 }
+
 export default App;
