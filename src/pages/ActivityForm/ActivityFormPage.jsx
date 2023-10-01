@@ -28,8 +28,9 @@ function ActivityFormPage() {
 
   return (
     <>
-        
+      <div className=" z-50 absolute">
       <Navbar/>
+      </div>
       <ActivityForm Data={Data} />
       
     </>
