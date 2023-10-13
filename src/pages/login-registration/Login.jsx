@@ -1,6 +1,41 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "../../component/Navbar";
+import axios from "axios";
+import { authActions } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await axios.post(
+        "https://back-end-tp-test.onrender.com/api/user/login",
+        {
+          email,
+          password,
+        }
+      );
+      if (!user) {
+        return console.log("error");
+      }
+      console.log(user.data.token);
+      localStorage.setItem("token", user.data.token);
+      dispatch(authActions.login());
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(email);
+  console.log(password);
   return (
     <div className="md:flex justify-center">
       <Navbar />
@@ -23,7 +58,12 @@ export const Login = () => {
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
-            <form className="space-y-6" action="#" method="POST">
+            <form
+              onSubmit={handleLogin}
+              className="space-y-6"
+              action="#"
+              method="POST"
+            >
               <div>
                 <label
                   htmlFor="email"
@@ -33,6 +73,8 @@ export const Login = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     autoComplete="email"
                     required
@@ -60,6 +102,8 @@ export const Login = () => {
                 </div>
                 <div className="mt-2">
                   <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     type="password"
                     autoComplete="current-password"
                     required
