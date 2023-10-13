@@ -67,8 +67,8 @@ const IndexActivity = () => {
       const userActivity = axios.get(
         "https://back-end-tp-test.onrender.com/api/activity",
         {
-          params: {
-            id: token,
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -80,9 +80,9 @@ const IndexActivity = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [token]);
 
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <div className=" lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
@@ -95,7 +95,7 @@ const IndexActivity = () => {
             <div className="p-2 mr-3 flex items-center absolute ">
               {item.icon}
             </div>
-            
+
             <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
               <div className=" mb-1">Activity Type : {item.type}</div>
               <div className="mb-1">Activity Name : {item.name}</div>
