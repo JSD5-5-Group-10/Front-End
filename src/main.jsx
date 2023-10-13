@@ -15,7 +15,8 @@ import { AerobicsPage } from "./pages/ExercisePage.jsx/AerobicsPage.jsx";
 import { ThaiBoxingPage } from "./pages/ExercisePage.jsx/ThaiBoxingPage.jsx";
 import { WeightPage } from "./pages/ExercisePage.jsx/WeightPage.jsx";
 import { YogaPage } from "./pages/ExercisePage.jsx/yogaPage.jsx";
-
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
   {
     path: "/Registration",
     element: <RegistrationPage />,
-  },  
+  },
   {
     path: "/profilePage",
     element: <ProfilePage />,
@@ -52,22 +53,21 @@ const router = createBrowserRouter([
   {
     path: "/aerobicsPage",
     element: <AerobicsPage />,
-  },  {
+  },
+  {
     path: "/thaiBoxingPage",
     element: <ThaiBoxingPage />,
   },
-  {path: "/weightPage",
-  element: <WeightPage />,
-  },
-  {path: "/yogaPage",
-  element: <YogaPage />,
-  },
+  { path: "/weightPage", element: <WeightPage /> },
+  { path: "/yogaPage", element: <YogaPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <StyledEngineProvider injectFirst>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </StyledEngineProvider>
+  <Provider store={store}>
+    <StyledEngineProvider injectFirst>
+      <React.StrictMode>
+        <RouterProvider router={router} />
+      </React.StrictMode>
+    </StyledEngineProvider>
+  </Provider>
 );
