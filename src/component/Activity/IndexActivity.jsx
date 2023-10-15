@@ -6,6 +6,7 @@ import Imgyoga from "./assets/yoga.jpg";
 import Running from "./assets/running.jpg";
 import Arabic from "./assets/Arabic.jpg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // const test = [
 //   {
@@ -59,34 +60,46 @@ import axios from "axios";
 // ];
 
 const IndexActivity = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    try {
-      const userActivity = axios.get(
-        "https://back-end-tp-test.onrender.com/api/activity",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+    const fetchData = async () => {
+      try {
+        const userActivity = await axios.get(
+          "https://back-end-tp-test.onrender.com/api/activity",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!userActivity) {
+          return console.log("error");
         }
-      );
-      if (!userActivity) {
-        return console.log("error");
+        console.log(userActivity.data.data);
+        setData(userActivity.data?.data[0].activity);
+      } catch (error) {
+        console.log(error);
       }
-      console.log(userActivity);
-      setData(userActivity);
-    } catch (error) {
-      console.log(error);
-    }
+      if (!token) {
+      
+        return navigate("/login");
+      }
+    };
+    fetchData();
   }, [token]);
 
-  // console.log(data);
+
+
+  console.log(token)
+
+  console.log(data);
   return (
     <div>
       <div className=" lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
-        {/* {data.map((item, index) => (
+        {data.map((item, index) => (
           <div
             key={index}
             className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
@@ -97,7 +110,7 @@ const IndexActivity = () => {
             </div>
 
             <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
-              <div className=" mb-1">Activity Type : {item.type}</div>
+              <div className=" mb-1">Activity Type : {item.act_type}</div>
               <div className="mb-1">Activity Name : {item.name}</div>
               <div className=" mb-1"> Date : {item.startdate} mins.</div>
               <div className="hidden hover:inline-block lg:hover:inline ">
@@ -115,7 +128,7 @@ const IndexActivity = () => {
               style={{ backgroundImage: `url(${item.img})` }}
             ></div>
           </div>
-        ))} */}
+        ) )}
       </div>
     </div>
   );
