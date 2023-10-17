@@ -17,6 +17,7 @@ import { WeightPage } from "./pages/ExercisePage.jsx/WeightPage.jsx";
 import { YogaPage } from "./pages/ExercisePage.jsx/yogaPage.jsx";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+
 const router = createBrowserRouter([
   {
     path: "/",

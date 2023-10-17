@@ -6,6 +6,7 @@ import Imgyoga from "./assets/yoga.jpg";
 import Running from "./assets/running.jpg";
 import Arabic from "./assets/Arabic.jpg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // const test = [
 //   {
@@ -61,6 +62,7 @@ import axios from "axios";
 const IndexActivity = () => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,14 +78,19 @@ const IndexActivity = () => {
         if (!userActivity) {
           return console.log("error");
         }
-        // console.log(userActivity);
+        console.log(userActivity.data.data);
         setData(userActivity.data?.data[0].activity);
       } catch (error) {
         console.log(error);
       }
+      if (!token) {
+        return navigate("/login");
+      }
     };
     fetchData();
   }, [token]);
+
+  console.log(token);
 
   console.log(data);
   return (
@@ -101,7 +108,7 @@ const IndexActivity = () => {
 
             <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
               <div className=" mb-1">Activity Type : {item.act_type}</div>
-              <div className="mb-1">Activity Name : {item.act_name}</div>
+              <div className="mb-1">Activity Name : {item.name}</div>
               <div className=" mb-1"> Date : {item.startdate} mins.</div>
               <div className="hidden hover:inline-block lg:hover:inline ">
                 Description : {item.descrition}
