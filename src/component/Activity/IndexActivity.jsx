@@ -84,16 +84,13 @@ const IndexActivity = () => {
         console.log(error);
       }
       if (!token) {
-      
         return navigate("/login");
       }
     };
     fetchData();
   }, [token]);
 
-
-
-  console.log(token)
+  console.log(token);
 
   console.log(data);
   return (
@@ -128,7 +125,7 @@ const IndexActivity = () => {
               style={{ backgroundImage: `url(${item.img})` }}
             ></div>
           </div>
-        ) )}
+        ))}
       </div>
     </div>
   );

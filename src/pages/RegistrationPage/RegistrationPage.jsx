@@ -4,9 +4,9 @@ import { Registration } from "../login-registration/Registration";
 export const RegistrationPage = () => {
   return (
     <div className="md:flex">
-      <div>
+      {/* <div>
         <Navbar />
-      </div>
+      </div> */}
 
       <div className="mx-auto">
         <Registration />

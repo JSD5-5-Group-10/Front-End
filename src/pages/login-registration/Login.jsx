@@ -34,8 +34,8 @@ export const Login = () => {
     }
   };
 
-  console.log(email);
-  console.log(password);
+  // console.log(email);
+  // console.log(password);
   return (
     <div className="md:flex justify-center">
       {/* <Navbar /> */}
