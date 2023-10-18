@@ -13,10 +13,10 @@ const seriesC = {
   data: [3, 2, 4, 5, 1],
   label: "Kilogarm",
 };
+
 export default function BasicStacking() {
   return (
     <div className="w-[450px] m-auto py-3 item-center rounded shadow-lg border-2 ">
-   
       <h1 className="text-center mr-1 font-bold text-xl">BasicStacking</h1>
       <div className="">
         <BarChart
@@ -29,7 +29,6 @@ export default function BasicStacking() {
           ]}
         />
       </div>
-   
     </div>
   );
 }

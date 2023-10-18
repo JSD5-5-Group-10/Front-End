@@ -41,7 +41,7 @@ export const Registration = () => {
       if (password.length >= 8) {
         try {
           const User = await axios.post(
-            "https://back-end-tp-test.onrender.com/api/user/register",
+            "https://backend-group10.onrender.com/api/user/register",
             {
               email,
               name,
