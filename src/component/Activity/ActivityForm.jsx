@@ -4,30 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// const test = [
-//   {
-//     id: 1,
-//     type: "test",
-//     name: "test1",
-//     descrition: "tes",
-//     startdate: "2023-09-20",
-//     time: 10,
-//     weight: 50,
-//   },
-//   {
-//     id: 2,
-//     type: "Run",
-//     name: "อยากผอม",
-//     descrition: "ออกกำลังกายกันเถอะ",
-//     startdate: "2023-09-01",
-//     enddate: "2023-09-03",
-//     time: 60,
-//     weight: 60,
-//     // icon: <BiRun size={100} />,
-//     // img: Running,
-//   },
-// ];
-
 const ActivityForm = () => {
   const [type, setType] = useState("");
   const [name, setName] = useState("");
@@ -36,7 +12,6 @@ const ActivityForm = () => {
   const [weight, setWeight] = useState(0);
   const [kcal, setKcal] = useState(null);
   const [kilogram, setKilogram] = useState(null);
-  // const [newData, setNewData] = useState(test);
   const cal = `${kcal} kcal`;
   const kilo = `${kilogram} kg`;
   const token = localStorage.getItem("token");
@@ -45,17 +20,7 @@ const ActivityForm = () => {
   const year = new Date().getFullYear();
   const month = String(new Date().getMonth() + 1).padStart(2, "0");
   const day = String(new Date().getDate()).padStart(2, "0");
-  // const hours = String(new Date().getHours()).padStart(2, "0");
-  // const minutes = String(new Date().getMinutes()).padStart(2, "0");
-  // const seconds = String(new Date().getSeconds()).padStart(2, "0");
   const formattedDateTime = `${day}-${month}-${year}`;
-
-  // const Data = (newData) => {
-  //   setNewData((prevItem) => {
-  //     return [...prevItem, newData];
-  //   });
-  // };
-  // console.log(newData);
 
   useEffect(() => {
     type === "Run"
@@ -101,12 +66,13 @@ const ActivityForm = () => {
     return proceed;
   };
 
+  // post add activity
   const saveData = async (e) => {
     e.preventDefault();
     if (isValidate()) {
       try {
         const response = await axios.post(
-          `https://back-end-tp-test.onrender.com/api/activity/add`,
+          `https://backend-group10.onrender.com/api/activity/add`,
           {
             act_type: type,
             act_name: name,
@@ -139,31 +105,6 @@ const ActivityForm = () => {
       return navigate("/login");
     }
   }, [token]);
-
-  // const saveData = (e) => {
-  //   e.preventDefault();
-  //   if (isValidate()) {
-  //     const formData = {
-  //       type: type,
-  //       name: name,
-  //       descrition: descrition,
-  //       startdate: startdate,
-  //       time: parseInt(time),
-  //       weight: parseFloat(weight),
-  //       kcal: parseFloat(kcal),
-  //       kilogram: parseFloat(kilogram),
-  //     };
-  //     Data(formData);
-  //     setType();
-  //     setName("");
-  //     setDescrition("");
-  //     setTime(0);
-  //     setStartdate("");
-  //     setWeight(0);
-  //     setKcal();
-  //     setKilogram();
-  //   }
-  // };
 
   // calculate kcal and kilogram
   const calculateActivity = () => {

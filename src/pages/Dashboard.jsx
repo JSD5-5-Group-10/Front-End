@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasicStacking from "../component/dashboard/BasicStacking";
 import StraightAnglePieChart from "../component/dashboard/StraightAnglePieChart";
 import PieChartWithCenterLabel from "../component/dashboard/PieChartWithCenterLabel";
