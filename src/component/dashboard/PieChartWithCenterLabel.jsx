@@ -12,7 +12,7 @@ export default function PieChartWithCenterLabel() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://back-end-tp-test.onrender.com/api/activity/chart",
+          "https://backend-group10.onrender.com/api/activity/chart",
           {
             headers: {
               Authorization: `Bearer ${token}`,

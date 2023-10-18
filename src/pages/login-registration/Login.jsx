@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../../component/Navbar";
+// import Navbar from "../../component/Navbar";
 import axios from "axios";
 import { authActions } from "../../redux/store";
 import { useDispatch } from "react-redux";
@@ -92,12 +92,12 @@ export const Login = () => {
                     Password
                   </label>
                   <div className="text-sm">
-                    <a
-                      href="#"
+                    <Link
+                      to='/Forgotpassword'
                       className="font-semibold text-indigo-600 hover:text-indigo-500"
                     >
                       Forgot password?
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="mt-2">

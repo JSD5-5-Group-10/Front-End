@@ -17,6 +17,7 @@ import { WeightPage } from "./pages/ExercisePage.jsx/WeightPage.jsx";
 import { YogaPage } from "./pages/ExercisePage.jsx/yogaPage.jsx";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import { ForgotPassword } from "./pages/login-registration/ForgotPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
   },
   { path: "/weightPage", element: <WeightPage /> },
   { path: "/yogaPage", element: <YogaPage /> },
+  { path: "/Forgotpassword", element: <ForgotPassword /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
