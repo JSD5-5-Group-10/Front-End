@@ -1,6 +1,71 @@
-import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 export const Registration = () => {
+  const [email, setEmail] = useState();
+  const [name, setName] = useState();
+  const [password, setPassword] = useState("");
+  const [pwConfirm, setPwConfirm] = useState("");
+
+  const navigate = useNavigate();
+  //IMAGE
+  const [select, setSelect] = useState();
+  const [img, setImg] = useState(
+    "https://res.cloudinary.com/dvktdqeof/image/upload/v1697364303/omjmvbcedhsvuvz7vchc.png"
+  );
+
+  //Cloud Upload
+  const uploadImg = async () => {
+    const formData = new FormData();
+    formData.append("file", select);
+    formData.append("upload_preset", "afd9sh09"); //Key From Cloudinary
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/dvktdqeof/image/upload", // key From Clound Name
+      formData
+    );
+    // console.log(res);
+    setImg(res.data);
+    alert("Upload Successfully.");
+  };
+
+  const profile_img = img.url;
+  // console.log(email);
+  // console.log(name);
+  // console.log(password);
+  // console.log(profile_img);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (password === pwConfirm) {
+      if (password.length >= 8) {
+        try {
+          const User = await axios.post(
+            "https://back-end-tp-test.onrender.com/api/user/register",
+            {
+              email,
+              name,
+              password,
+              profile_img,
+            }
+          );
+          if (User) {
+            alert("Your Account Register Successfully!");
+            navigate("/login");
+            // console.log(User);
+          }
+        } catch (error) {
+          // console.log(error);
+          return alert("เมลซ้ำนะครับผม.. ใช้เมลอื่นได้หมายจ๊ะ?");
+        }
+      } else {
+        return alert("your password less than 8 words.");
+      }
+    } else {
+      return alert("Password and Confirm Password do not match.");
+    }
+  };
+
   return (
     <>
       <div className="flex h-screen ">
@@ -19,7 +84,7 @@ export const Registration = () => {
           </div>
 
           <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
-            <form className="space-y-4" action="#" method="POST">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="email"
@@ -29,9 +94,10 @@ export const Registration = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     autoComplete="email"
-                    required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
                   />
                 </div>
@@ -45,9 +111,10 @@ export const Registration = () => {
                 </label>
                 <div className="mt-2">
                   <input
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
-                    autoComplete="fullname"
                     required
+                    autoComplete="fullname"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -57,16 +124,22 @@ export const Registration = () => {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="flex text-sm font-medium leading-6 text-gray-900"
                   >
-                    Password
+                    Password{" "}
+                    {password.length < 8 && (
+                      <p className="text-red-600">
+                        : ต้องมากกว่า 8 ตัวอักขละนารูโต๊ะะ!
+                      </p>
+                    )}
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
+                    onChange={(e) => setPassword(e.target.value)}
                     type="password"
-                    autoComplete="current-password"
                     required
+                    autoComplete="current-password"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -75,16 +148,20 @@ export const Registration = () => {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="repassword"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="flex text-sm font-medium leading-6 text-gray-900"
                   >
-                    Confirm Password
+                    Confirm Password{" "}
+                    {password != pwConfirm && (
+                      <p className="text-red-600">: ใส่รหัสไม่ตรงกัน </p>
+                    )}
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
+                    onChange={(e) => setPwConfirm(e.target.value)}
                     type="password"
-                    autoComplete="current-password"
                     required
+                    autoComplete="current-password"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -92,27 +169,19 @@ export const Registration = () => {
 
               <div>
                 <div className="flex items-center justify-between">
-                  <label
-                    className="block mb-2 text-sm font-medium text-gray-900 "
-                    htmlFor="file_input"
-                  >
-                    Upload file
-                  </label>
-                </div>
-                <div className="mt-2">
                   <input
                     type="file"
-                    autoComplete="image"
-                    required
-                    className="file:bg-[#8278d9] file:rounded file:text-white file:border-0 file:font-semibold hover:file:bg-indigo-500 file:h-sceen file:py-1.5
-                    block w-full rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    onChange={(e) => {
+                      setSelect(e.target.files[0]);
+                    }}
                   />
-                  <p
-                    className="mt-1 text-sm text-gray-500 "
-                    id="file_input_help"
+                  <button
+                    type="button"
+                    className="flex w-1/3 justify-center rounded-md bg-[#8278d9] px-1 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    onClick={() => uploadImg()}
                   >
-                    SVG, PNG, JPG or GIF (MAX. 800x400px).
-                  </p>
+                    Upload
+                  </button>
                 </div>
               </div>
 
@@ -126,14 +195,16 @@ export const Registration = () => {
               </div>
             </form>
 
+            {/* <Image cloudName="dvktdqeof" publicId="" /> */}
+
             <p className="mt-10 text-center text-sm text-gray-500">
               Already a member?{" "}
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="font-semibold leading-6 text-[#8278d9] hover:text-indigo-100"
               >
                 Login Now
-              </a>
+              </Link>
             </p>
           </div>
         </div>
