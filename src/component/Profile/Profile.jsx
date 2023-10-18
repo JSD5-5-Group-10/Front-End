@@ -1,44 +1,127 @@
 import { useEffect, useState } from "react";
-import BasicStacking from "../dashboard/BasicStacking";
+import { Chartsbar } from "../dashboard/Chartsbar";
 import PieChartWithCenterLabel from "../dashboard/PieChartWithCenterLabel";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-// import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
-// import { Cloudinary } from "@cloudinary/url-gen";
-// import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Profile = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
-  const [name, setName] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [pwconfirm, setPwconfirm] = useState("");
   const [age, setAge] = useState(); // input date
-  const [profile_img, setProfile_img] = useState();
-  const [cover_img, setCover_img] = useState();
-  const [description, setDescription] = useState();
-  const [is_active, setIs_active] = useState(); // del user
+  const [profile_img, setProfile_img] = useState("");
+  const [cover_img, setCover_img] = useState("");
+  const [description, setDescription] = useState("");
   const [edit, setEdit] = useState(true);
+  const [birthday, setBirthday] = useState();
 
-  const [select, serSelect] = useState();
-  const [e, setE] = useState(); // pic
+  const [uplaodProfileimg, setUplaodProfileimg] = useState(); //  upload pic profile
+  const [uploadCover, setUploadCover] = useState(); // upload pic cover
+  const [reload, setReload] = useState(!true);
 
-// cloudinary
-  const uploadImage = async () => {
-    const formData = new FormData();
-    formData.append("file", select); //tpjsd5
-    formData.append("upload_preset", "tpjsd5");
-    const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
-      formData
-    );
-    console.log(response.data);
-    setE(response.data);
+  // calculate age
+  useEffect(() => {
+    const calculateAge = () => {
+      const dateOfBirth = new Date(birthday);
+      const currentDate = new Date();
+      let ages = currentDate.getFullYear() - dateOfBirth.getFullYear();
+
+      if (
+        currentDate.getMonth() < dateOfBirth.getMonth() ||
+        (currentDate.getMonth() === dateOfBirth.getMonth() &&
+          currentDate.getDate() < dateOfBirth.getDate())
+      )
+        ages--;
+      if (ages < 0) {
+        setBirthday("");
+        return toast.error("Age must not be negative.");
+      }
+      setAge(ages);
+    };
+    calculateAge();
+  }, [birthday]);
+
+  // post cloudinary cover image
+  useEffect(() => {
+    const uploadImage = async () => {
+      if (uploadCover === undefined) {
+        return null;
+      }
+      const formData = new FormData();
+      formData.append("file", uploadCover); //tpjsd5
+      formData.append("upload_preset", "tpjsd5");
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
+        formData
+      );
+      console.log(response.data);
+      setCover_img(response.data.url);
+    };
+    uploadImage();
+  }, [uploadCover]);
+
+  console.log(cover_img);
+
+  // post cloudinary profile image
+  const uploadImages = async () => {
+    try {
+      console.log(uplaodProfileimg);
+      if (uplaodProfileimg === undefined) {
+        return null;
+      }
+      const formData = new FormData();
+      formData.append("file", uplaodProfileimg);
+      formData.append("upload_preset", "tpjsd5");
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
+        formData
+      );
+      console.log(response.data);
+      setProfile_img(response.data.url);
+    } catch (error) {
+      console.error("An error occurred while uploading the image:", error);
+      // You can add error handling code here, such as displaying an error message.
+    }
   };
+  console.log(profile_img);
 
-  console.log(e.url);
+  // put update cover image
+  useEffect(() => {
+    const updateCoverImage = async () => {
+      if (cover_img === undefined || cover_img === "") {
+        return null;
+      }
+      const updateField = {};
+      if (cover_img !== "") updateField.cover_img = cover_img;
+      console.log(updateField);
+      try {
+        const response = await axios.put(
+          `https://back-end-tp-test.onrender.com/api/user/update`,
+          updateField,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("PUT", response.status);
+        console.log(response);
+        setReload(!true);
+        if (response.status === 200) {
+          toast.success("Update successfully.");
+        }
+        // navigate("/");
+      } catch (err) {
+        toast.error("Failed: " + err.message);
+      }
+    };
+    updateCoverImage();
+  }, [cover_img]);
 
   // get data user
   useEffect(() => {
@@ -57,6 +140,7 @@ const Profile = () => {
         }
         // console.log(response.data.data);
         setData(response.data?.data[0]);
+        setReload(true);
       } catch (error) {
         console.log(error);
       }
@@ -64,84 +148,113 @@ const Profile = () => {
         return navigate("/login");
       }
     };
-    fetchData();
-  }, [token]);
+    if (!reload) {
+      fetchData();
+    }
+  }, [token, reload]);
 
+  // put update user
   const saveData = async (e) => {
     e.preventDefault();
-    // const updateField = {};
-    // if (name) updateField.name = name;
-    // if (password) updateField.password = password;
-    // if (age) updateField.age = age;
-    if (profile_img) updateField.cover_img = e.url;
-    // if (cover_img) updateField.cover_img = cover_img;
-    // if (description) updateField.cover_img = description;
-
+    if (password !== pwconfirm) {
+      return toast.error("Passwords do NOT match.");
+    }
+    const updateField = {};
+    if (name !== "") updateField.name = name;
+    if (password !== "") updateField.password = password;
+    if (!isNaN(age) && age !== "") updateField.age = parseInt(age);
+    if (profile_img !== "") updateField.profile_img = profile_img;
+    if (description !== "") updateField.description = description;
+    console.log(updateField);
     try {
-      const response = await axios.post(
-        `https://back-end-tp-test.onrender.com/api/activity/add`,
-        {
-          // act_type: type,
-          // act_name: name,
-          // act_desc: descrition,
-          // duration: parseInt(time),
-          // cur_weight: parseFloat(weight),
-          // cal_burn: parseFloat(kcal),
-          // kg_burn: parseFloat(kilogram),
-        },
+      const response = await axios.put(
+        `https://back-end-tp-test.onrender.com/api/user/update`,
+        updateField,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("POST", response.status);
+      console.log("put", response.status);
       console.log(response);
       if (response.status === 200) {
         toast.success("Update successfully.");
+        setName("");
+        setAge("");
+        setDescription("");
+        setPassword("");
+        setPwconfirm("");
+        setBirthday("");
+        setEdit(true);
+        setReload(!true);
       }
-      // navigate("/");
+      navigate("/profilePage");
+    } catch (err) {
+      toast.error("Failed: " + err.message);
+    }
+  };
+
+  // delete user
+  const deleteDate = async () => {
+    const input = prompt("To delete a user, enter 'DELETE' information.");
+    if (input !== "DELETE") {
+      return alert("Entered wrong information");
+    }
+    try {
+      const response = await axios.delete(
+        `https://back-end-tp-test.onrender.com/api/user/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          data: {
+            is_active: false,
+          },
+        }
+      );
+      console.log(response);
+      console.log("DELETE", response.status);
+      if (response.status === 200) {
+        toast.success("Delete successfully.");
+        navigate("/login");
+        localStorage.clear();
+      }
     } catch (err) {
       toast.error("Failed: " + err.message);
     }
   };
 
   return (
-    <div className=" w-full">
-      
-      {/* upload image */}
-      <div>
-        <input
-          type="file"
-          onChange={(e) => {
-            serSelect(e.target.files[0]);
-          }}
-        />
-        <button
-          onClick={() => {
-            uploadImage();
-          }}
-        >
-          Upload
-        </button>
-        <img src={e.url} alt="" />
-      </div>
-
+    <div className="w-full">
       <header>
-        <div className="relative ">
+        <div className="relative">
           <img
-            src={data.image?.cover_img}
-            alt="รูปปก"
+            src={
+              data.image?.cover_img ||
+              "https://png.pngtree.com/thumb_back/fh260/back_our/20190619/ourmid/pngtree-hand-painted-ink-silhouette-youth-fitness-propaganda-poster-background-material-image_136531.jpg"
+            }
+            alt="coverImage"
             className="h-[200px] w-screen"
           />
-          <button className="bg-[#827BD9] text-white rounded-lg border-gray-300 hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute">
+
+          <label
+            onChange={(e) => setUploadCover(e.target.files[0])}
+            className="bg-[#827BD9] text-white rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute"
+          >
+            <input type="file" className="w-0" />
             Edit Cover Photo
-          </button>
+          </label>
+
           <div>
             <img
               className="rounded-full w-32 h-32 object-cover top-[6rem] left-[1rem] absolute "
-              src={data.image?.profile_img}
-              alt="User"
+              src={
+                profile_img ||
+                data.image?.profile_img ||
+                "https://i.pinimg.com/originals/d9/e1/67/d9e167534a68c3004275b493a60fa214.png"
+              }
+              alt="profileImage"
             />
           </div>
         </div>
@@ -153,7 +266,7 @@ const Profile = () => {
           >
             Edit Profile
           </button>
-          <h1 className="font-bold mx-5 text-2xl uppercase">{data.name}</h1>
+          <h1 className="font-bold mx-5 text-3xl uppercase">{data.name}</h1>
         </div>
       </header>
 
@@ -179,51 +292,32 @@ const Profile = () => {
               </label>
               <label className="flex rounded-lg leading-10">
                 <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                  Password
-                </span>
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="text"
-                  name="password"
-                  className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                />
-              </label>
-              <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Birthday
                 </span>
                 <input
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
+                  value={birthday}
+                  onChange={(e) => setBirthday(e.target.value)}
                   type="date"
                   name="age"
                   className="w-full px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[255px] flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Profile picture
                 </span>
                 <input
-                  value={profile_img}
-                  onChange={(e) => setProfile_img(e.target.value)}
+                  onChange={(e) => setUplaodProfileimg(e.target.files[0])}
                   type="file"
                   name="profile_img"
-                  className="w-full placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="w-full placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
-              </label>
-              <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                  Cover picture
-                </span>
-                <input
-                  value={cover_img}
-                  onChange={(e) => setCover_img(e.target.value)}
-                  type="file"
-                  name="cover_img"
-                  className="w-full rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                />
+                <button
+                  className="flex items-center px-3 justify-center bg-[#8278d9] text-white font-semibold rounded-r-lg hover:bg-indigo-500"
+                  onClick={uploadImages}
+                >
+                  Upload
+                </button>
               </label>
               <label className="flex rounded-lg leading-10">
                 <span className="px-2 w-[200px] flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
@@ -237,10 +331,31 @@ const Profile = () => {
                   className="w-full bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
-              <div className="flex justify-between">
-                <button className=" flex justify-center rounded-full  bg-red-500 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  Delete User
-                </button>
+              <label className="flex rounded-lg leading-10">
+                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                  Password
+                </span>
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  name="password"
+                  className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                />
+              </label>
+              <label className="flex rounded-lg leading-10">
+                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                  Repassword
+                </span>
+                <input
+                  value={pwconfirm}
+                  onChange={(e) => setPwconfirm(e.target.value)}
+                  type="password"
+                  name="password"
+                  className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                />
+              </label>
+              <div className="flex justify-end">
                 <button
                   type="submit"
                   className=" flex w-1/2 justify-center rounded-full  bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -250,6 +365,12 @@ const Profile = () => {
               </div>
             </div>
           </form>
+          <button
+            onClick={deleteDate}
+            className=" absolute top-[690px] flex justify-center rounded-full bg-red-500 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-600  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Delete User
+          </button>
         </div>
       ) : null}
 
@@ -269,12 +390,13 @@ const Profile = () => {
       {/* Chart */}
       <div className="md:flex gap-4 my-5  justify-around ">
         <div className="my-2">
-          <BasicStacking />
+          <Chartsbar />
         </div>
         <div className="my-2">
           <PieChartWithCenterLabel />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
