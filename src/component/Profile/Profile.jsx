@@ -65,8 +65,6 @@ const Profile = () => {
     uploadImage();
   }, [uploadCover]);
 
-  console.log(cover_img);
-
   // post cloudinary profile image
   const uploadImages = async () => {
     try {
@@ -88,7 +86,6 @@ const Profile = () => {
       // You can add error handling code here, such as displaying an error message.
     }
   };
-  console.log(profile_img);
 
   // put update cover image
   useEffect(() => {
@@ -101,7 +98,7 @@ const Profile = () => {
       console.log(updateField);
       try {
         const response = await axios.put(
-          `https://back-end-tp-test.onrender.com/api/user/update`,
+          `https://backend-group10.onrender.com/api/user/update`,
           updateField,
           {
             headers: {
@@ -128,7 +125,7 @@ const Profile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://back-end-tp-test.onrender.com/api/user",
+          "https://backend-group10.onrender.com/api/user",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -168,7 +165,7 @@ const Profile = () => {
     console.log(updateField);
     try {
       const response = await axios.put(
-        `https://back-end-tp-test.onrender.com/api/user/update`,
+        `https://backend-group10.onrender.com/api/user/update`,
         updateField,
         {
           headers: {
@@ -203,7 +200,7 @@ const Profile = () => {
     }
     try {
       const response = await axios.delete(
-        `https://back-end-tp-test.onrender.com/api/user/delete`,
+        `https://backend-group10.onrender.com/api/user/delete`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
