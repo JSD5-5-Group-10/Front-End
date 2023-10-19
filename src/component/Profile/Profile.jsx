@@ -20,7 +20,7 @@ const Profile = () => {
   const [edit, setEdit] = useState(true);
   const [birthday, setBirthday] = useState();
 
-  const [uplaodProfileimg, setUplaodProfileimg] = useState(); //  upload pic profile
+  const [uplaodProfileimg, setUplaodProfileimg] = useState(null); //  upload pic profile
   const [uploadCover, setUploadCover] = useState(); // upload pic cover
   const [reload, setReload] = useState(!true);
 
@@ -66,10 +66,11 @@ const Profile = () => {
   }, [uploadCover]);
 
   // post cloudinary profile image
-  const uploadImages = async () => {
+  const uploadImages = async (e) => {
+    e.preventDefault();
     try {
       console.log(uplaodProfileimg);
-      if (uplaodProfileimg === undefined) {
+      if (uplaodProfileimg === null) {
         return null;
       }
       const formData = new FormData();
@@ -80,9 +81,10 @@ const Profile = () => {
         formData
       );
       console.log(response.data);
+      setUplaodProfileimg(null);
       setProfile_img(response.data.url);
     } catch (error) {
-      console.error("An error occurred while uploading the image:", error);
+      toast.error("An error occurred while uploading the image:", error);
       // You can add error handling code here, such as displaying an error message.
     }
   };
@@ -112,7 +114,6 @@ const Profile = () => {
         if (response.status === 200) {
           toast.success("Update successfully.");
         }
-        // navigate("/");
       } catch (err) {
         toast.error("Failed: " + err.message);
       }
@@ -185,6 +186,9 @@ const Profile = () => {
         setBirthday("");
         setEdit(true);
         setReload(!true);
+      }
+      if (response.status === 400) {
+        toast.error("Bad Request");
       }
       navigate("/profilePage");
     } catch (err) {
@@ -273,7 +277,7 @@ const Profile = () => {
           <h1 className="text-2xl py-3 text-center font-bold">
             Update Profile
           </h1>
-          <form onSubmit={saveData} className="flex justify-center my-3">
+          <form className="flex justify-center my-3 ">
             <div className="space-y-6">
               <label className="flex rounded-lg leading-10 ">
                 <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
@@ -300,7 +304,7 @@ const Profile = () => {
                 />
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="w-[255px] flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[260px] flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Profile picture
                 </span>
                 <input
@@ -354,6 +358,7 @@ const Profile = () => {
               </label>
               <div className="flex justify-end">
                 <button
+                  onClick={saveData}
                   type="submit"
                   className=" flex w-1/2 justify-center rounded-full  bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
