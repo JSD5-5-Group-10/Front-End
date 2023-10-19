@@ -1,23 +1,19 @@
-import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export const ForgotPassword = () => {
-  const [email, setEmail] = useState();
+export const ResetPassword = () => {
+  const [password, setPassword] = useState();
   const navigate = useNavigate();
+  const { id, token } = useParams();
 
-  // axios.defaults.withCredentials = true;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = await axios.post(
-        "http://localhost:3000/api/user/forgot-password",
-        {
-          email,
-        }
-      );
-      if (!user) {
+      const newPassword = await axios.post("#", {
+        password,
+      });
+      if (!newPassword) {
         return console.log("error");
       }
       navigate("/login");
@@ -29,23 +25,23 @@ export const ForgotPassword = () => {
   return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-25">
-        <h4>Forgot Password</h4>
+        <h4>Reset Password</h4>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email">
-              <strong>Email</strong>
+              <strong>New Password</strong>
             </label>
             <input
-              type="email"
-              placeholder="Enter Email"
+              type="password"
+              placeholder="Enter Password"
               autoComplete="off"
-              name="email"
+              name="password"
               className="form-control rounded-0"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="">
-            Send
+          <button type="submit" className="btn btn-success w-100 rounded-0">
+            Update
           </button>
         </form>
       </div>
