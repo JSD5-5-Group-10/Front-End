@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../../component/Navbar";
+// import Navbar from "../../component/Navbar";
 import axios from "axios";
 import { authActions } from "../../redux/store";
 import { useDispatch } from "react-redux";

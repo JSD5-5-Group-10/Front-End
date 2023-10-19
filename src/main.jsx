@@ -64,7 +64,7 @@ const router = createBrowserRouter([
   { path: "/weightPage", element: <WeightPage /> },
   { path: "/yogaPage", element: <YogaPage /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
-  { path: "/reset_password/:id/:token", element: <ResetPassword /> },
+  { path: "/reset_password/:userId/:token", element: <ResetPassword /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
