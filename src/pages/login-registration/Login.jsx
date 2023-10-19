@@ -15,10 +15,13 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const user = await axios.post("http://localhost:3000/api/user/login", {
-        email,
-        password,
-      });
+      const user = await axios.post(
+        "https://backend-group10.onrender.com/api/user/login",
+        {
+          email,
+          password,
+        }
+      );
       if (!user) {
         return console.log("error");
       }

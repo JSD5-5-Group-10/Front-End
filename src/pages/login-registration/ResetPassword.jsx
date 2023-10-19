@@ -11,7 +11,7 @@ export const ResetPassword = () => {
     e.preventDefault();
     try {
       const newPassword = await axios.post(
-        "http://localhost:3000/api/user/forgot-password",
+        "https://backend-group10.onrender.com/api/user/forgot-password",
         {
           password,
         }
