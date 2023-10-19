@@ -10,9 +10,12 @@ export const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newPassword = await axios.post("#", {
-        password,
-      });
+      const newPassword = await axios.post(
+        "http://localhost:3000/api/user/forgot-password",
+        {
+          password,
+        }
+      );
       if (!newPassword) {
         return console.log("error");
       }
@@ -26,7 +29,7 @@ export const ResetPassword = () => {
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-25">
         <h4>Reset Password</h4>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-3">
             <label htmlFor="email">
               <strong>New Password</strong>
