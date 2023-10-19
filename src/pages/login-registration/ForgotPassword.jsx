@@ -12,7 +12,7 @@ export const ForgotPassword = () => {
     e.preventDefault();
     try {
       const user = await axios.post(
-        "http://localhost:3000/api/user/forgot-password",
+        "https://backend-group10.onrender.com/api/user/forgot-password",
         {
           email,
         }
