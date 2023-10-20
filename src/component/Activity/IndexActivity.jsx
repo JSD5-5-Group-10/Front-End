@@ -40,7 +40,6 @@ const IndexActivity = () => {
   }, [token]);
 
   console.log(token);
-
   console.log(data);
   return (
     <div>
