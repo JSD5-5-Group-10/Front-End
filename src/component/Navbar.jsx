@@ -3,6 +3,7 @@ import { Outlet, Link, useNavigate } from "react-router-dom";
 import { AiOutlineAlignLeft } from "react-icons/ai";
 import { authActions } from "../redux/store";
 import { useDispatch } from "react-redux";
+import { googleLogout } from "@react-oauth/google";
 
 export default function Navbar() {
   const [isHidden, setIsHidden] = useState(true);
@@ -26,6 +27,7 @@ export default function Navbar() {
     try {
       dispatch(authActions.logout());
       navigate("/login");
+      googleLogout()
       localStorage.clear();
     } catch (error) {
       console.log(error);
