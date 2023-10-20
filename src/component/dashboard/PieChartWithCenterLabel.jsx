@@ -98,7 +98,7 @@ export default function PieChartWithCenterLabel() {
         />
       </div>
       <PieChart series={[{ data, innerRadius: 90 }]} {...size}>
-        <PieCenterLabel>Calories : {sumCalories.toFixed(2)}</PieCenterLabel>
+        <PieCenterLabel>Calories : {sumCalories}</PieCenterLabel>
       </PieChart>
     </div>
   );

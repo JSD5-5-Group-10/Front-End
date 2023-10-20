@@ -1,5 +1,5 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-// import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const authSlice = createSlice({
   // นี่คือ State

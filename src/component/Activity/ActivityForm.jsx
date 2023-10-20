@@ -12,6 +12,7 @@ const ActivityForm = () => {
   const [weight, setWeight] = useState(0);
   const [kcal, setKcal] = useState(null);
   const [kilogram, setKilogram] = useState(null);
+  // const [newData, setNewData] = useState(test);
   const cal = `${kcal} kcal`;
   const kilo = `${kilogram} kg`;
   const token = localStorage.getItem("token");
@@ -20,7 +21,17 @@ const ActivityForm = () => {
   const year = new Date().getFullYear();
   const month = String(new Date().getMonth() + 1).padStart(2, "0");
   const day = String(new Date().getDate()).padStart(2, "0");
+  // const hours = String(new Date().getHours()).padStart(2, "0");
+  // const minutes = String(new Date().getMinutes()).padStart(2, "0");
+  // const seconds = String(new Date().getSeconds()).padStart(2, "0");
   const formattedDateTime = `${day}-${month}-${year}`;
+
+  // const Data = (newData) => {
+  //   setNewData((prevItem) => {
+  //     return [...prevItem, newData];
+  //   });
+  // };
+  // console.log(newData);
 
   useEffect(() => {
     type === "Run"
@@ -72,7 +83,7 @@ const ActivityForm = () => {
     if (isValidate()) {
       try {
         const response = await axios.post(
-          `https://backend-group10.onrender.com/api/activity/add`,
+          `https://back-end-tp-test.onrender.com/api/activity/add`,
           {
             act_type: type,
             act_name: name,
@@ -106,13 +117,38 @@ const ActivityForm = () => {
     }
   }, [token]);
 
+  // const saveData = (e) => {
+  //   e.preventDefault();
+  //   if (isValidate()) {
+  //     const formData = {
+  //       type: type,
+  //       name: name,
+  //       descrition: descrition,
+  //       startdate: startdate,
+  //       time: parseInt(time),
+  //       weight: parseFloat(weight),
+  //       kcal: parseFloat(kcal),
+  //       kilogram: parseFloat(kilogram),
+  //     };
+  //     Data(formData);
+  //     setType();
+  //     setName("");
+  //     setDescrition("");
+  //     setTime(0);
+  //     setStartdate("");
+  //     setWeight(0);
+  //     setKcal();
+  //     setKilogram();
+  //   }
+  // };
+
   // calculate kcal and kilogram
   const calculateActivity = () => {
     const METs = {
       Run: 9.6,
       Yoga: 2.5,
       Aerobics: 5,
-      KitaMuaythai: 6,
+      Muaythai: 6,
       Training: 8,
     };
 
