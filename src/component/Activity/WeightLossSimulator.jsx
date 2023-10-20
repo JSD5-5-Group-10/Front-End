@@ -79,14 +79,14 @@ export const WeightLossSimulator = () => {
             Weight Loss Simulator
           </h1>
           <div
-            className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+            className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row break-all  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
             lg:h-[400px] lg:hover:scale-105  "
           >
             <div className="p-2 mr-3 flex items-center absolute ">
               {/* {item.icon} */}
             </div>
 
-            <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
+            <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col flex-wrap items-center justify-center ">
               <div className=" mb-1">ถ้าเป็นกิจกรรม : {type || "Type"}</div>
               {/* <div className="mb-1">Activity Name : {name || "JSD5"}</div> */}
               {/* <div className=" mb-1">  : </div> */}

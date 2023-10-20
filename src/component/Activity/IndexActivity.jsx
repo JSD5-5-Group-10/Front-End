@@ -27,7 +27,7 @@ const IndexActivity = () => {
         if (!userActivity) {
           return console.log("error");
         }
-        console.log(userActivity.data.data);
+        // console.log(userActivity.data.data.activity);
         setData(userActivity.data?.data[0].activity);
       } catch (error) {
         console.log(error);
@@ -39,8 +39,8 @@ const IndexActivity = () => {
     fetchData();
   }, [token]);
 
-  console.log(token);
-  console.log(data);
+  // console.log(token);
+
   return (
     <div>
       <div className=" lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
@@ -55,6 +55,7 @@ const IndexActivity = () => {
             </div>
 
             <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
+              <div className=" mb-1">Activity Type : {item.act_id}</div>
               <div className=" mb-1">Activity Type : {item.act_type}</div>
               <div className="mb-1">Activity Name : {item.name}</div>
               <div className=" mb-1"> Date : {item.startdate} mins.</div>
