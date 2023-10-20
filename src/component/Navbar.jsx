@@ -35,7 +35,7 @@ export default function Navbar() {
   const navListMainPage = () => {
     return (
       <div className="z-50">
-        <h1 className=" text-indigo-100  text-center">MENU</h1>
+        <h1 className="h text-indigo-100  text-center">MENU</h1>
         <hr className="my-2 text-gray-600" />
         <div>
           <ul className=" text-indigo-100">
@@ -46,7 +46,10 @@ export default function Navbar() {
               <Link to="/profilePage">Profile</Link>
             </li>
             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/calculate">CAL Calculator</Link>
+            </li>
+            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
+              <Link to="/weightloss">Weight Loss Simulator</Link>
             </li>
             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
               <Link to="/Registration">Registration</Link>
