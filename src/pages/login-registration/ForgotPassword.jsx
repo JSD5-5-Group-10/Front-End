@@ -1,30 +1,50 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
 
 export const ForgotPassword = () => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const [toggle, setToggle] = useState(!true);
 
   // axios.defaults.withCredentials = true;
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const user = await axios.post(
-        "https://backend-group10.onrender.com/api/user/forgot-password",
-        {
-          email,
+
+  useEffect(() => {
+    const handleSubmit = async () => {
+      // e.preventDefault();
+      if (email !== "") {
+        try {
+          const user = await axios.post(
+            "https://backend-group10.onrender.com/api/user/forgot-password",
+            {
+              email,
+            }
+          );
+          setEmail("");
+          if (user.status === 200) {
+            toast.success("please check your email.");
+            setTimeout(() => {
+              navigate("/login");
+            }, 5000);
+          }
+
+          if (!user) {
+            return console.log("error");
+          }
+        } catch (error) {
+          console.log(error);
         }
-      );
-      if (!user) {
-        return console.log("error");
       }
-      alert("please check your email.");
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+    handleSubmit();
+  }, [toggle]);
+
+  setTimeout(() => {
+    setToggle(false);
+  }, 1000 * 30);
 
   return (
     <div className="flex justify-center ">
@@ -38,22 +58,27 @@ export const ForgotPassword = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <form className="flex flex-col">
             <input
               type="email"
               placeholder="Enter Email Account"
               autoComplete="off"
               name="email"
+              value={email}
               className="form-control border my-10 mt-20 rounded-md w-full p-4"
               onChange={(e) => setEmail(e.target.value)}
             />
-
-            <button
-              type="submit"
-              className="bg-[#8278d9] px-3 py-1.5 text-sm font-semibold rounded-lg mt-10 leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Send
-            </button>
+            {!toggle ? (
+              <button
+                onClick={() => setToggle(true)}
+                type="submit"
+                className="bg-[#8278d9] px-3 py-1.5 text-sm font-semibold rounded-lg mt-10 leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Send
+              </button>
+            ) : (
+              <p className="">อย่ากดซ้ำนะจ๊ะ รอ 30 วิ</p>
+            )}
           </form>
           <div className="mt-40 flex justify-center">
             <h1>
@@ -69,6 +94,7 @@ export const ForgotPassword = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
