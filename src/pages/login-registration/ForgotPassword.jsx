@@ -32,10 +32,12 @@ export const ForgotPassword = () => {
           }
 
           if (!user) {
-            return console.log("error");
+            toast.warning("not found your Email");
+            console.log("error");
           }
         } catch (error) {
-          console.log(error);
+          toast.warning("not found your Email");
+          // console.log(error);
         }
       }
     };

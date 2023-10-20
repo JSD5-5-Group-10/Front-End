@@ -3,11 +3,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import aerobics from "../../../public/aerobics.svg";
-import run from "../../../public/run.svg";
-import thaiboxing from "../../../public/thaiboxing.svg";
-import weight from "../../../public/weight.svg";
-import yoga from "../../../public/yoga.svg";
+// import aerobics from "../../../public/aerobics.svg";
+// import run from "../../../public/run.svg";
+// import thaiboxing from "../../../public/thaiboxing.svg";
+// import weight from "../../../public/weight.svg";
+// import yoga from "../../../public/yoga.svg";
 
 const ActivityForm = () => {
   const [type, setType] = useState("");
