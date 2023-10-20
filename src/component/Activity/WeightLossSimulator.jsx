@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
-export const ActivityDisplay = () => {
+export const WeightLossSimulator = () => {
   // เรียกใช้ calculateDays เมื่อ startDate หรือ endDate เปลี่ยนแปลง
   // useEffect(() => {
   //   calculateDays();
@@ -33,14 +33,15 @@ export const ActivityDisplay = () => {
   // };
   const [type, setType] = useState("");
 
-  const [time, setTime] = useState(0);
+  const [lossWeight, setLossWeight] = useState(0);
   const [weight, setWeight] = useState(0);
 
   const [numberOfDays, setNumberOfDays] = useState(0);
   // สูตรหา Kcal
-  const [totalkcal, setTotalkcal] = useState();
-  const [kcal, setKcal] = useState();
-  const [allburnkg, setAllburnkg] = useState();
+  // const [totalkcal, setTotalkcal] = useState();
+  // const [kcal, setKcal] = useState();
+
+  const [time, setTime] = useState(0);
 
   const calculateActivity = (e) => {
     e.preventDefault();
@@ -54,12 +55,11 @@ export const ActivityDisplay = () => {
 
     if (type in METs) {
       const met = METs[type];
-      const kcal = met * 0.0175 * weight * time;
-      const totalKcal = kcal * numberOfDays;
-      const allBurnKg = totalKcal / 7700;
-      setAllburnkg(allBurnKg.toFixed(2));
-      setTotalkcal(totalKcal.toFixed(2));
-      setKcal(kcal.toFixed(2));
+      const kgtocal = lossWeight * 7700; // แคลที่ต้องลดให้ได้ทั้งหมดตามเป้าหมาย
+      const kgcalOneDay = kgtocal / numberOfDays; // แคลของแต่ละวันที่ต้องทำให้ได้
+      const timeByOneDay = kgcalOneDay / (met * 0.0175 * weight);
+      // const kcal = met * 0.0175 * weight * time;
+      setTime(timeByOneDay.toFixed(2));
     } else {
       toast.error("Choose Type for Activity");
     }
@@ -69,14 +69,14 @@ export const ActivityDisplay = () => {
   //   calculateActivity();
   // }, [type, numberOfDays]);
 
-  console.log(totalkcal);
+  // console.log(totalkcal);
   return (
     <>
       <div className="flex flex-col my-20">
         {/* display activitycard before submit */}
         <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
           <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
-            Calculate Calories
+            Weight Loss Simulator
           </h1>
           <div
             className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
@@ -87,15 +87,16 @@ export const ActivityDisplay = () => {
             </div>
 
             <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
-              <div className=" mb-1">Activity Type : {type || "Type"}</div>
-              <div className="mb-1">Activity Name : {name || "JSD5"}</div>
-              <div className=" mb-1"> Date : </div>
+              <div className=" mb-1">ถ้าเป็นกิจกรรม : {type || "Type"}</div>
+              {/* <div className="mb-1">Activity Name : {name || "JSD5"}</div> */}
+              {/* <div className=" mb-1">  : </div> */}
               <div className="mb-1">
-                numberOfDays : {numberOfDays || "numberOfDays"}
+                ระยะเวลาที่จะใช้ : {numberOfDays || "0"} วัน
               </div>
+              <div className="mb-1">ต้องการลด : {lossWeight || "0"} Kg</div>
               <div className="w-full">
-                <h2 className="uppercase absolute bottom-1 right-3 underline">
-                  Total Burn: {kcal || 0} kcal / {"kilogram" || 0} kg
+                <h2 className="uppercase absolute bottom-1 right-3 ">
+                  คุณต้องออกกำลัง {time || 0} นาที ต่อ 1 วัน!!
                 </h2>
               </div>
             </div>
@@ -167,7 +168,7 @@ export const ActivityDisplay = () => {
                 {/* descrition */}
                 <label className="flex rounded-lg leading-10">
                   <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Days
+                    ภายในกี่วัน
                   </span>
                   <input
                     value={numberOfDays}
@@ -183,11 +184,11 @@ export const ActivityDisplay = () => {
                 {/* duration  */}
                 <label className="flex rounded-lg leading-10">
                   <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Duration (Min)
+                    น้ำหนักที่ต้องการลด (KG)
                   </span>
                   <input
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
+                    value={lossWeight}
+                    onChange={(e) => setLossWeight(e.target.value)}
                     type="number"
                     name="duration"
                     className="[&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -197,7 +198,7 @@ export const ActivityDisplay = () => {
                 {/* Weight */}
                 <label className="flex rounded-lg leading-10">
                   <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Current weight
+                    น้ำหนักปัจจุบัน
                   </span>
                   <input
                     value={weight}

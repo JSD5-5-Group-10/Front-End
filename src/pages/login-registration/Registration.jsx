@@ -1,4 +1,5 @@
 import axios from "axios";
+import bglogo from "./assets/bglogin.svg";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -68,13 +69,11 @@ export const Registration = () => {
 
   return (
     <>
-      <div className="flex h-screen ">
-        <div className=" w-2/3 m-auto hidden lg:inline">
-          <img
-            className="rounded-xl shadow-lg border-2"
-            src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-            alt=""
-          />
+      <div className="flex  h-screen ">
+        <div className=" w-2/3  m-auto hidden ab lg:inline">
+          <div className="flex h-[600px] ">
+            <img className="bg-cover" src={bglogo} alt="bg-logo" />
+          </div>
         </div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -83,7 +82,7 @@ export const Registration = () => {
             </h2>
           </div>
 
-          <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
+          <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
