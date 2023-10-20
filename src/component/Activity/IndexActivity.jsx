@@ -6,15 +6,16 @@ import Imgyoga from "./assets/yoga.jpg";
 import Running from "./assets/running.jpg";
 import Arabic from "./assets/Arabic.jpg";
 import axios from "axios";
+import PopupActivity from "./PopupActivity";
 import { useNavigate } from "react-router-dom";
-import PopupActivity from "./EditActivity";
 
 const IndexActivity = ({ act_type }) => {
   const [data, setData] = useState([]);
+  const [one, setone] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-
+  
   function openModal(actId) {
     // Use actId in your logic, for example:
     console.log(`Editing item with act_id: ${actId}`);
@@ -26,7 +27,7 @@ const IndexActivity = ({ act_type }) => {
     const fetchData = async () => {
       try {
         const userActivity = await axios.get(
-          "https://back-end-tp-test.onrender.com/api/activity",
+          "https://backend-group10.onrender.com/api/activity",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -36,7 +37,7 @@ const IndexActivity = ({ act_type }) => {
         if (!userActivity) {
           return console.log("error");
         }
-        console.log(userActivity.data?.data[0].activity);
+        console.log(userActivity.data.data);
         setData(userActivity.data?.data[0].activity);
       } catch (error) {
         console.log(error);
@@ -60,13 +61,12 @@ const IndexActivity = ({ act_type }) => {
             lg:h-[400px] lg:hover:scale-105  "
           >
 
-            <button className="btn z-50" onClick={() => document.getElementById('my_modal_1').showModal()}>EDIT</button>
-            <PopupActivity item={item.act_id}>
+            <button className="btn z-50" onClick={() => document.getElementById('my_modal_1').showModal(item.act_id)}>EDIT</button>
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box">
                 <div className="card">
-                  <div className=" mb-1">Activity Type : {act_type}</div>
-                <PopupActivity  />
+                <div className=" mb-1">Activity Type : {act_type}</div>
+                <PopupActivity item={item.act_id} />
 
                 </div>
                 <div className="modal-action">
@@ -79,39 +79,33 @@ const IndexActivity = ({ act_type }) => {
             <div className="p-2 mr-3 flex items-center absolute ">
               {item.icon}
             </div>
-            </PopupActivity>
             <div>
 
             </div>
-              <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
+            <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
               <div>{item.act_id}</div>
-                <div className=" mb-1">Activity Type : {item.act_type}</div>
-                <div className="mb-1">Activity Name : {item.act_name}</div>
-              <div className=" mb-1"> Date : {item.created_at} mins.</div>
-                <div className="hidden hover:inline-block lg:hover:inline ">
+              <div className=" mb-1">Activity Type : {item.act_type}</div>
+              <div className="mb-1">Activity Name : {item.act_name}</div>
+              <div className=" mb-1"> Date : {item.updated_at} mins.</div>
+              <div className="hidden hover:inline-block lg:hover:inline ">
                 Description : {item.act_desc}
-                </div>
-                <div className="w-full">
-                  <h2 className="uppercase absolute bottom-1 right-3 underline">
-                  Total Cal: XXX
-                  </h2>
-                </div>
-
-
               </div>
-
-              <div
-                className=" w-full flex flex-col justify-center items-center bg-white text-black rounded-2xl hover:bg-[#827BD9] hover:text-white bg-[length:400px] duration-200 "
-                style={{ backgroundImage: `url(${item.img})` }}
-              ></div>
-
+              <div className="w-full">
+                <h2 className="uppercase absolute bottom-1 right-3 underline">
+                  Total Cal: {item.cal_burn}
+                </h2>
+              </div>
             </div>
 
-        ))}
+            <div
+              className=" w-full flex flex-col justify-center items-center bg-white text-black rounded-2xl hover:bg-[#827BD9] hover:text-white bg-[length:400px] duration-200 "
+              style={{ backgroundImage: `url(${item.img})` }}
+            ></div>
           </div>
+        ))}
+      </div>
     </div>
-
-      );
+  );
 };
 
-      export default IndexActivity;
+export default IndexActivity;
