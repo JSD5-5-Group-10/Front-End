@@ -16,6 +16,7 @@ export const LoginGoogle = () => {
     onError: (error) => console.log("Login Failed:", error),
   });
 
+  //   console.log(token);
   useEffect(() => {
     const Login = async () => {
       try {
@@ -31,8 +32,8 @@ export const LoginGoogle = () => {
         );
         // console.log(response);
         if (response.status === 200) {
-          localStorage.setItem("token", response.data.token);
           dispatch(authActions.login());
+          localStorage.setItem("token", response.data.token);
           navigate("/");
         } else {
           console.log("Login failed");
