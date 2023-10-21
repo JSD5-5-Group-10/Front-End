@@ -11,13 +11,14 @@ export const ResetPassword = () => {
   const { token } = useParams();
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (password !== ConfirmPassword) {
       return toast.warning("Password is not Match");
     }
     if (password.length < 8) {
       return toast.warning("Password is less than 8 words");
     }
-    e.preventDefault();
+
     try {
       const newPassword = await axios.post(
         `https://backend-group10.onrender.com/api/user/reset-password/${token}`,

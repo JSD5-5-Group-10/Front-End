@@ -1,14 +1,17 @@
 import axios from "axios";
 import bglogo from "./assets/bglogin.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Registration = () => {
-  const [email, setEmail] = useState();
-  const [name, setName] = useState();
-  const [password, setPassword] = useState("");
-  const [pwConfirm, setPwConfirm] = useState("");
+  // const [email, setEmail] = useState();
+  // const [name, setName] = useState();
+  // const [password, setPassword] = useState("");
+  // const [pwConfirm, setPwConfirm] = useState("");
 
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
   //IMAGE
   const [select, setSelect] = useState();
@@ -16,6 +19,11 @@ export const Registration = () => {
     "https://res.cloudinary.com/dvktdqeof/image/upload/v1697364303/omjmvbcedhsvuvz7vchc.png"
   );
 
+  useEffect(() => {
+    if (token) {
+      return navigate("/");
+    }
+  }, [token]);
   //Cloud Upload
   const uploadImg = async () => {
     const formData = new FormData();
@@ -29,41 +37,45 @@ export const Registration = () => {
     setImg(res.data);
     alert("Upload Successfully.");
   };
-
+  console.log(img);
   const profile_img = img.url;
   // console.log(email);
   // console.log(name);
   // console.log(password);
   // console.log(profile_img);
 
+  const [register, setRegister] = useState({
+    email: "",
+    name: "",
+    password: "",
+    pwConfirm: "",
+    profile_img: img.url,
+  });
+  // console.log(register);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === pwConfirm) {
-      if (password.length >= 8) {
+    console.log(register);
+    if (register.password === register.pwConfirm) {
+      if (register.password.length >= 8) {
         try {
           const User = await axios.post(
             "https://backend-group10.onrender.com/api/user/register",
-            {
-              email,
-              name,
-              password,
-              profile_img,
-            }
+            register
           );
           if (User) {
-            alert("Your Account Register Successfully!");
+            toast.success("Your Account Register Successfully!");
             navigate("/login");
-            // console.log(User);
+            console.log(User);
           }
         } catch (error) {
           // console.log(error);
-          return alert("เมลซ้ำนะครับผม.. ใช้เมลอื่นได้หมายจ๊ะ?");
+          return toast.error("อีเมลซ้ำนะครับผม.. ใช้เมลอื่นได้หมายจ๊ะ?");
         }
       } else {
-        return alert("your password less than 8 words.");
+        return toast.warning("Password is less than 8 words.");
       }
     } else {
-      return alert("Password and Confirm Password do not match.");
+      return toast.warning("Password and Confirm Password do not match.");
     }
   };
 
@@ -94,7 +106,10 @@ export const Registration = () => {
                 <div className="mt-2">
                   <input
                     required
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={register.email}
+                    onChange={(e) =>
+                      setRegister({ ...register, email: e.target.value })
+                    }
                     type="email"
                     autoComplete="email"
                     className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
@@ -110,7 +125,10 @@ export const Registration = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    onChange={(e) => setName(e.target.value)}
+                    value={register.name}
+                    onChange={(e) =>
+                      setRegister({ ...register, name: e.target.value })
+                    }
                     type="text"
                     required
                     autoComplete="fullname"
@@ -126,7 +144,7 @@ export const Registration = () => {
                     className="flex text-sm font-medium leading-6 text-gray-900"
                   >
                     Password{" "}
-                    {password.length < 8 && (
+                    {register.password.length < 8 && (
                       <p className="text-red-600">
                         : ต้องมากกว่า 8 ตัวอักขละนารูโต๊ะะ!
                       </p>
@@ -135,7 +153,10 @@ export const Registration = () => {
                 </div>
                 <div className="mt-2">
                   <input
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={register.password}
+                    onChange={(e) =>
+                      setRegister({ ...register, password: e.target.value })
+                    }
                     type="password"
                     required
                     autoComplete="current-password"
@@ -150,14 +171,17 @@ export const Registration = () => {
                     className="flex text-sm font-medium leading-6 text-gray-900"
                   >
                     Confirm Password{" "}
-                    {password != pwConfirm && (
+                    {register.password != register.pwConfirm && (
                       <p className="text-red-600">: ใส่รหัสไม่ตรงกัน </p>
                     )}
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
-                    onChange={(e) => setPwConfirm(e.target.value)}
+                    value={register.pwConfirm}
+                    onChange={(e) =>
+                      setRegister({ ...register, pwConfirm: e.target.value })
+                    }
                     type="password"
                     required
                     autoComplete="current-password"
@@ -207,6 +231,7 @@ export const Registration = () => {
             </p>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

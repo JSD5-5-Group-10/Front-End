@@ -46,7 +46,7 @@ export const ForgotPassword = () => {
 
   setTimeout(() => {
     setToggle(false);
-  }, 1000 * 30);
+  }, 1000 * 5);
 
   return (
     <div className="flex justify-center ">
@@ -67,6 +67,7 @@ export const ForgotPassword = () => {
               autoComplete="off"
               name="email"
               value={email}
+              required
               className="form-control border my-10 mt-20 rounded-md w-full p-4"
               onChange={(e) => setEmail(e.target.value)}
             />

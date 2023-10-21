@@ -8,10 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { LoginGoogle } from "./LoginGoogle";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
@@ -22,26 +27,26 @@ export const Login = () => {
       return navigate("/");
     }
   }, [token]);
-
+  // console.log(login);
   const handleLogin = async (e) => {
     e.preventDefault();
+    // console.log(login);
     try {
+      // console.log(login);
       const user = await axios.post(
         "https://backend-group10.onrender.com/api/user/login",
-        {
-          email,
-          password,
-        }
+
+        login
       );
       if (!user) {
-        return console.log("error");
+        return toast.warning("Your email or password has wrong!");
       }
       console.log(user.data.token);
       localStorage.setItem("token", user.data.token);
       dispatch(authActions.login());
       navigate("/");
     } catch (error) {
-      console.log(error);
+      return toast.warning("Your email or password has wrong!");
     }
   };
 
@@ -83,8 +88,10 @@ export const Login = () => {
                   </label>
                   <div className="mt-2">
                     <input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={login.email}
+                      onChange={(e) =>
+                        setLogin({ ...login, email: e.target.value })
+                      }
                       type="email"
                       autoComplete="email"
                       required
@@ -112,8 +119,10 @@ export const Login = () => {
                   </div>
                   <div className="mt-2">
                     <input
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={login.password}
+                      onChange={(e) =>
+                        setLogin({ ...login, password: e.target.value })
+                      }
                       type="password"
                       autoComplete="current-password"
                       required
@@ -150,6 +159,7 @@ export const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

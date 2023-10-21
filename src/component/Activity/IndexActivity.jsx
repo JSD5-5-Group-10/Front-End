@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { BiRun } from "react-icons/bi";
 import { GrYoga } from "react-icons/gr";
 import { GiJumpingRope } from "react-icons/gi";
-import Imgyoga from "./assets/yoga.jpg";
-import Running from "./assets/running.jpg";
-import Arabic from "./assets/Arabic.jpg";
+// import Imgyoga from "./assets/yoga.jpg";
+// import Running from "./assets/running.jpg";
+// import Arabic from "./assets/Arabic.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

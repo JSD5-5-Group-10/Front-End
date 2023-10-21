@@ -68,7 +68,7 @@ const router = createBrowserRouter([
   { path: "/weightPage", element: <WeightPage /> },
   { path: "/yogaPage", element: <YogaPage /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
-  { path: "/reset_password/:token", element: <ResetPassword /> },
+  { path: "/reset-password/:token", element: <ResetPassword /> },
   { path: "/success", element: <Success /> },
   { path: "/calculate", element: <ActivityDisplay /> },
   { path: "/weightloss", element: <WeightLossSimulator /> },
