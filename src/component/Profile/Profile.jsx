@@ -4,12 +4,15 @@ import PieChartWithCenterLabel from "../dashboard/PieChartWithCenterLabel";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import profileImage from "../../public/profile.gif";
+import coverImage from "../../public/cover.jpg";
+import { FaUserEdit } from "react-icons/fa";
+import { BiEdit } from "react-icons/bi";
 
 const Profile = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [pwconfirm, setPwconfirm] = useState("");
@@ -23,6 +26,7 @@ const Profile = () => {
   const [uplaodProfileimg, setUplaodProfileimg] = useState(null); //  upload pic profile
   const [uploadCover, setUploadCover] = useState(); // upload pic cover
   const [reload, setReload] = useState(!true);
+  // console.log(password);
 
   // calculate age
   useEffect(() => {
@@ -231,49 +235,57 @@ const Profile = () => {
       <header>
         <div className="relative">
           <img
-            src={
-              data.image?.cover_img ||
-              "https://png.pngtree.com/thumb_back/fh260/back_our/20190619/ourmid/pngtree-hand-painted-ink-silhouette-youth-fitness-propaganda-poster-background-material-image_136531.jpg"
-            }
+            src={data.image?.cover_img || `${coverImage}`}
             alt="coverImage"
             className="h-[200px] w-screen"
           />
-
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
-            className="bg-[#827BD9] text-white rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute"
+            className="bg-[#827BD9] text-white rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
           >
             <input type="file" className="w-0" />
             Edit Cover Photo
+          </label>
+          <label
+            onChange={(e) => setUploadCover(e.target.files[0])}
+            className="bg-transparent text-white rounded-lg p-[5px] top-[10rem] right-[1rem] absolute md:hidden "
+          >
+            <BiEdit size={25} />
+            <input type="file" className="w-0" />
           </label>
 
           <div>
             <img
               className="rounded-full w-32 h-32 object-cover top-[6rem] left-[1rem] absolute "
-              src={
-                profile_img ||
-                data.image?.profile_img ||
-                "https://i.pinimg.com/originals/d9/e1/67/d9e167534a68c3004275b493a60fa214.png"
-              }
+              src={profile_img || data.image?.profile_img || `${profileImage}`}
               alt="profileImage"
             />
           </div>
         </div>
 
-        <div className="flex bg-white ml-32 mt-1">
+        <div className="flex bg-white ml-32 mt-1 ">
           <button
             onClick={() => setEdit(!edit)}
-            className="bg-[#827BD9] text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3"
+            className="bg-[#827BD9] text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:inline hidden"
           >
             Edit Profile
           </button>
-          <h1 className="font-bold mx-5 text-3xl uppercase">{data.name}</h1>
+          <button
+            onClick={() => setEdit(!edit)}
+            className="bg-[#827BD9] text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:hidden"
+          >
+            <FaUserEdit size={20} />
+          </button>
+
+          <h1 className="font-bold mx-5 text-xl lg:text-3xl md:text-2xl uppercase">
+            {data.name}
+          </h1>
         </div>
       </header>
 
       {/* form edit profile */}
       {!edit ? (
-        <div className="ml-5 w-[500px]">
+        <div className="lg:ml-5 lg:w-[500px] w-[400px] mx-auto">
           <h1 className="text-2xl py-3 text-center font-bold">
             Update Profile
           </h1>
@@ -390,7 +402,7 @@ const Profile = () => {
       </section>
 
       {/* Chart */}
-      <div className="md:flex gap-4 my-5  justify-around ">
+      <div className="xl:flex gap-4 my-5 justify-around">
         <div className="my-2">
           <Chartsbar />
         </div>

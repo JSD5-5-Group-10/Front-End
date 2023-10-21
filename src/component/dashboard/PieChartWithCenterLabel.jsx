@@ -61,7 +61,7 @@ export default function PieChartWithCenterLabel() {
 
   const size = {
     width: 400,
-    height: 300,
+    height: 350,
   };
 
   const StyledText = styled("text")(({ theme }) => ({
@@ -88,7 +88,7 @@ export default function PieChartWithCenterLabel() {
   );
 
   return (
-    <div className="w-[450px] m-auto py-3 item-center rounded shadow-lg border-2 ">
+    <div className="w-[400px] sm:w-[450px] m-auto py-3 item-center rounded shadow-lg border-2">
       <div className="flex justify-center items-center">
         <h1 className="text-center mr-1 font-bold text-xl">Calories Burned </h1>
         <img
@@ -97,7 +97,7 @@ export default function PieChartWithCenterLabel() {
           alt=""
         />
       </div>
-      <PieChart series={[{ data, innerRadius: 90 }]} {...size}>
+      <PieChart series={[{ data, innerRadius: 100 }]} {...size}>
         <PieCenterLabel>Calories : {sumCalories.toFixed(2)}</PieCenterLabel>
       </PieChart>
     </div>
