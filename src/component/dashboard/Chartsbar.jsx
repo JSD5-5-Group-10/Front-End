@@ -47,6 +47,7 @@ export const Chartsbar = () => {
             },
           }
         );
+        console.log(response);
         if (!response) {
           return console.log("error");
         }
@@ -88,9 +89,9 @@ export const Chartsbar = () => {
   if (data && data[3] && data[3].Time) seriesB.push(data[3].Time);
   if (data && data[4] && data[4].Time) seriesB.push(data[4].Time);
 
-  // console.log(band);
-  // console.log(seriesA);
-  // console.log(seriesB);
+  console.log(band);
+  console.log(seriesA);
+  console.log(seriesB);
 
   return (
     <>
