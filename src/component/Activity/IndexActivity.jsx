@@ -111,7 +111,7 @@ const IndexActivity = ({ act_type }) => {
                   document.getElementById(elementId2).showModal(item.act_id)
                 }
               >
-                Delet
+                Delete
               </button>
               <dialog id={elementId2} className="modal">
                 <div className="modal-box">
