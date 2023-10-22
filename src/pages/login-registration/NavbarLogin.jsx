@@ -11,7 +11,7 @@ const NavbarLogin = () => {
       </div>
       <div className="flex-none">
         <ul className="hidden lg:menu lg:menu-horizontal text-white px-1">
-          <Link to="/">
+          <Link to="/aboutus">
             <li>
               <a>About Us</a>
             </li>
@@ -32,7 +32,7 @@ const NavbarLogin = () => {
             <details>
               <summary>Menu</summary>
               <ul className="p-1 bg-[#8278d9]/80">
-                <Link to="/">
+                <Link to="/aboutus">
                   <li>
                     <a>About Us</a>
                   </li>

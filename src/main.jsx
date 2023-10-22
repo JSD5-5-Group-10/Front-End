@@ -20,6 +20,7 @@ import { ResetPassword } from "./pages/login-registration/ResetPassword.jsx";
 import { ActivityDisplay } from "./component/Activity/CalculateCalories.jsx";
 import { Success } from "./pages/login-registration/Success.jsx";
 import { WeightLossSimulator } from "./component/Activity/WeightLossSimulator.jsx";
+import { AboutUs } from "./component/AboutUs/AboutUs.jsx";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
   { path: "/success", element: <Success /> },
   { path: "/calculate", element: <ActivityDisplay /> },
   { path: "/weightloss", element: <WeightLossSimulator /> },
+  { path: "/aboutus", element: <AboutUs /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
