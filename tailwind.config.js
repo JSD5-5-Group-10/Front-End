@@ -4,6 +4,11 @@ export default {
   theme: {
     extend: {},
   },
+  variants: {
+    extend: {
+      group: ["hover", "group-hover"], // เปิดใช้งาน group-hover
+    },
+  },
   plugins: [require("daisyui")],
   darkMode: "class",
 };

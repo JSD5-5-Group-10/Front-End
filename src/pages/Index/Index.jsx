@@ -6,12 +6,12 @@ import { BiMessageSquareAdd } from "react-icons/bi";
 
 export const Index = () => {
   return (
-    <div className=" md:flex h-screen">
-      <div className="flex z-100">
+    <div className="flex md:flex h-screen">
+      <div className="z-10">
         <Navbar />
       </div>
 
-      <div className="w-full">
+      <div className="w-full z-0">
         <div className="flex justify-center items-center">
           <Link to="/ActivityForm" className="flex items-center">
             <h1 className="text-3xl font-medium my-8">Add Activity</h1>
@@ -20,12 +20,8 @@ export const Index = () => {
             </span>
           </Link>
         </div>
-        <div>
-          <div></div>
-          <div></div>
-        </div>
 
-        <div className="flex justify-center mx-auto z-0">
+        <div className="flex justify-center z-0">
           <IndexActivity />
         </div>
       </div>
