@@ -53,7 +53,7 @@ function WeightVideo() {
               <div className="relative w-auto h-auto" key={index}>
                 <iframe
                 src={item.iframe} 
-                allow="web-share" 
+                allow="fullscreen" 
                 className="rounded-xl object-cover w-[300px] h-[169px] md:w-[400px] md:h-[225px] 
                            hover:shadow-md hover:shadow-[#8278D9] hover:scale-105"
                 />
