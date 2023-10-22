@@ -8,12 +8,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ActivityFormPage from "./pages/ActivityForm/ActivityFormPage.jsx";
 import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage.jsx";
 import { ProfilePage } from "./pages/ProfilePages/ProfilePage.jsx";
-import { AllExercisePage } from "./pages/ExercisePage.jsx/allExercisePage.jsx";
+
+import { AllExercisePage } from "./pages/ExercisePage.jsx/AllExercisePage.jsx";
 import { RunningPage } from "./pages/ExercisePage.jsx/RunningPage.jsx";
 import { AerobicsPage } from "./pages/ExercisePage.jsx/AerobicsPage.jsx";
 import { ThaiBoxingPage } from "./pages/ExercisePage.jsx/ThaiBoxingPage.jsx";
 import { WeightPage } from "./pages/ExercisePage.jsx/WeightPage.jsx";
-import { YogaPage } from "./pages/ExercisePage.jsx/yogaPage.jsx";
+import { YogaPage } from "./pages/ExercisePage.jsx/YogaPage.jsx";
+
 import { ForgotPassword } from "./pages/login-registration/ForgotPassword.jsx";
 import { ResetPassword } from "./pages/login-registration/ResetPassword.jsx";
 import { ActivityDisplay } from "./component/Activity/CalculateCalories.jsx";
