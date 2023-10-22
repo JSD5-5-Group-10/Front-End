@@ -3,33 +3,34 @@ import { BarChart } from "@mui/x-charts/BarChart";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export const Chartsbar = () => {
-  const data = [
-    {
-      _id: "Run",
-      kgBurned: 0,
-      Time: 0,
-    },
-    {
-      _id: "Yoga",
-      kgBurned: 0,
-      Time: 0,
-    },
-    {
-      _id: "KitaMuaythai",
-      kgBurned: 0,
-      Time: 0,
-    },
-    {
-      _id: "Aerobics",
-      kgBurned: 0,
-      Time: 0,
-    },
-    {
-      _id: "weight",
-      kgBurned: 0,
-      Time: 0,
-    },
-  ];
+
+  // const data = [
+  //   {
+  //     _id: "Run",
+  //     kgBurned: 0,
+  //     Time: 0,
+  //   },
+  //   {
+  //     _id: "Yoga",
+  //     kgBurned: 0,
+  //     Time: 0,
+  //   },
+  //   {
+  //     _id: "KitaMuaythai",
+  //     kgBurned: 0,
+  //     Time: 0,
+  //   },
+  //   {
+  //     _id: "Aerobics",
+  //     kgBurned: 0,
+  //     Time: 0,
+  //   },
+  //   {
+  //     _id: "weight",
+  //     kgBurned: 0,
+  //     Time: 0,
+  //   },
+  // ];
   // console.log(data[0]._id);
 
   const [dataSum, setDataSum] = useState([]);
@@ -46,10 +47,11 @@ export const Chartsbar = () => {
             },
           }
         );
+        console.log(response);
         if (!response) {
           return console.log("error");
         }
-        // console.log(response.data.data);
+        console.log(response.data.data);
         setDataSum(response.data?.data);
       } catch (error) {
         console.log(error);
@@ -87,9 +89,9 @@ export const Chartsbar = () => {
   if (data && data[3] && data[3].Time) seriesB.push(data[3].Time);
   if (data && data[4] && data[4].Time) seriesB.push(data[4].Time);
 
-  // console.log(band);
-  // console.log(seriesA);
-  // console.log(seriesB);
+  console.log(band);
+  console.log(seriesA);
+  console.log(seriesB);
 
   return (
     <>
