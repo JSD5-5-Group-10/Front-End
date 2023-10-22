@@ -441,7 +441,7 @@ const Profile = () => {
           <PieChartWithCenterLabel />
         </div>
         <div className="my-2">
-          {/* <Chartsbar /> */}
+          <Chartsbar />
         </div>
       </div>
       <ToastContainer />
