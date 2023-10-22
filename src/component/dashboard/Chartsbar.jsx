@@ -1,35 +1,66 @@
 import React from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 export const Chartsbar = () => {
   const data = [
     {
       _id: "Run",
-      kgBurned: 0.5,
-      Time: 210,
+      kgBurned: 0,
+      Time: 0,
     },
     {
       _id: "Yoga",
-      kgBurned: 0.2,
-      Time: 45,
+      kgBurned: 0,
+      Time: 0,
     },
     {
       _id: "KitaMuaythai",
-      kgBurned: 0.5,
-      Time: 0.4,
+      kgBurned: 0,
+      Time: 0,
     },
     {
       _id: "Aerobics",
-      kgBurned: 234.77,
-      Time: 50,
+      kgBurned: 0,
+      Time: 0,
     },
     {
-      _id: "gegeg",
-      kgBurned: 234.77,
-      Time: 50,
+      _id: "weight",
+      kgBurned: 0,
+      Time: 0,
     },
   ];
   // console.log(data[0]._id);
+
+  const [dataSum, setDataSum] = useState([]);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://back-end-tp-test.onrender.com/api/activity/chart2",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response) {
+          return console.log("error");
+        }
+        // console.log(response.data.data);
+        setDataSum(response.data?.data);
+      } catch (error) {
+        console.log(error);
+      }
+      if (!token) {
+        return navigate("/login");
+      }
+    };
+    fetchData();
+  }, [token]);
+  console.log(dataSum)
 
   const stringValue = data[0]?.kgBurned.toLocaleString();
   // console.log(stringValue);

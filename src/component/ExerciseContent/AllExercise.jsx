@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Yogaimg from "./assets/yoga960px.jpg";
+import Runimg from "./assets/running960px.jpg";
+import Boxingimg from "./assets/muaythai960px.jpg";
+import Weightimg from "./assets/weight960px.jpg";
+import Aerobicimg from "./assets/aerobic960px.jpg";
 
-function AllExercise() {
+function AllExercise(){
   const data = [
     {
       title: "Yoga",
-      imgSrc:
-        "https://drive.google.com/uc?id=1ac0TttcdlGiTQJqTa9aSnepGii6xeJXy",
+      imgSrc: Yogaimg,
       altText: "yoga img",
       description:
         "Spiritual discipline based on a science, which focuses on mind and body",
@@ -14,8 +18,7 @@ function AllExercise() {
     },
     {
       title: "Running",
-      imgSrc:
-        "https://drive.google.com/uc?id=1fyjE-yDQwA0QOVK6lukz8WDZMN1vwpXx",
+      imgSrc: Runimg,
       altText: "running img",
       description:
         "Foot racing over a variety of distances and courses, popular sports in nearly all times and places",
@@ -23,24 +26,21 @@ function AllExercise() {
     },
     {
       title: "Thai Boxing",
-      imgSrc:
-        "https://drive.google.com/uc?id=1sUyURiEbC6jvFeVkfiCey8fJ5xhMvLH7",
+      imgSrc: Boxingimg,
       altText: "boxing img",
       description: "Combat Sport (martial art) has been developed in Thailand",
       router: "/thaiBoxingPage"
     },
     {
       title: "Weight Training",
-      imgSrc:
-        "https://drive.google.com/uc?id=1r8mkjX6rfXWrvAYO5jBgBw1N1c8XYnnv",
+      imgSrc: Weightimg,
       altText: "weight img",
       description: "System of physical conditioning using free weights",
       router: "/weightPage"
     },
     {
       title: "Aerobics",
-      imgSrc:
-        "https://drive.google.com/uc?id=1mAgZEdxYEBU4EOhWFPWG_72zVpRYfO4u",
+      imgSrc: Aerobicimg,
       altText: "aerobics img",
       description:
         "Physical exercise of low to high intensity that depends on the aerobic energy-generating process",
@@ -60,7 +60,7 @@ function AllExercise() {
             <img
               src={item.imgSrc}
               alt={item.altText}
-              className="rounded-2xl opacity-70 hover:shadow-md hover:shadow-[#8278D9] hover:opacity-100"
+              className="rounded-2xl opacity-70 hover:shadow-md hover:shadow-[#8278D9] hover:opacity-100 hover:scale-105"
             />
             </Link>
             <div className="textContainer">
