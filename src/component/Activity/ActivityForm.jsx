@@ -3,11 +3,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import aerobics from "../../../public/aerobics.svg";
-// import run from "../../../public/run.svg";
-// import thaiboxing from "../../../public/thaiboxing.svg";
-// import weight from "../../../public/weight.svg";
-// import yoga from "../../../public/yoga.svg";
+// import aerobics from "../../public/aerobics.svg";
+// import run from "../../public/run.svg";
+// import thaiboxing from "../../public/thaiboxing.svg";
+// import weights from "../../public/weight.svg";
+// import yoga from "../../public/yoga.svg";
 
 const ActivityForm = () => {
   const [type, setType] = useState("");
@@ -19,9 +19,30 @@ const ActivityForm = () => {
   const [kilogram, setKilogram] = useState(null);
   const cal = `${kcal} kcal`;
   const kilo = `${kilogram} kg`;
+
+  const [addActicity, setAddActivity] = useState({
+    act_type: type !== "" ? type.toString() : null,
+    act_name: name.toString(),
+    act_desc: descrition !== "" ? descrition.toString() : null,
+    duration: parseInt(time),
+    cur_weight: parseFloat(weight),
+    cal_burn: parseFloat(kcal),
+    kg_burn: parseFloat(kilogram),
+  });
+
+  // const [addActicity, setAddActivity] = useState({
+  //   act_type: "",
+  //   act_name: "",
+  //   act_desc: "",
+  //   duration: 0,
+  //   cur_weight: 0.0,
+  //   cal_burn: 0.0,
+  //   kg_burn: 0.0,
+  // });
+
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("");
 
   const year = new Date().getFullYear();
   const month = String(new Date().getMonth() + 1).padStart(2, "0");
@@ -29,48 +50,48 @@ const ActivityForm = () => {
   const formattedDateTime = `${day}-${month}-${year}`;
 
   useEffect(() => {
-    type === "Run"
-      ? setName("Run") && setImage(run)
-      : type === "Yoga"
-      ? setName("Yoga") && setImage(yoga)
-      : type === "Aerobics"
-      ? setName("Aerobics") && setImage(aerobics)
-      : type === "KitaMuaythai"
-      ? setName("KitaMuaythai") && setImage(thaiboxing)
-      : type === "Training"
-      ? setName("Weight Training") && setImage(weight)
+    addActicity.act_type === "Run"
+      ? setName("Run") || setImage(run)
+      : addActicity.act_type === "Yoga"
+      ? setName("Yoga") || setImage(yoga)
+      : addActicity.act_type === "Aerobics"
+      ? setName("Aerobics") || setImage(aerobics)
+      : addActicity.act_type === "KitaMuaythai"
+      ? setName("KitaMuaythai") || setImage(thaiboxing)
+      : addActicity.act_type === "Training"
+      ? setName("Weight Training") || setImage(weights)
       : "";
-  }, [type]);
-  console.log(image);
-  const isValidate = () => {
-    let proceed = true;
-    let errMsg = "Enter your : ";
-    if (type === null || type === "") {
-      proceed = false;
-      errMsg += "Please Select Type ";
-    }
-    if (name === null || name === "") {
-      proceed = false;
-      errMsg += "Activity Name ";
-    }
-    if (descrition === null || descrition === "") {
-      proceed = false;
-      errMsg += "Descrition ";
-    }
-    if (time === null || time === 0) {
-      proceed = false;
-      errMsg += "Time ";
-    }
-    if (weight === null || weight === 0) {
-      proceed = false;
-      errMsg += "Weight ";
-    }
-    if (!proceed) {
-      toast.warning(errMsg);
-      console.log(errMsg);
-    }
-    return proceed;
-  };
+  }, [addActicity.act_type]);
+
+  // const isValidate = () => {
+  //   let proceed = true;
+  //   let errMsg = "Enter your : ";
+  //   if (type === null || type === "") {
+  //     proceed = false;
+  //     errMsg += "Please Select Type ";
+  //   }
+  //   if (name === null || name === "") {
+  //     proceed = false;
+  //     errMsg += "Activity Name ";
+  //   }
+  //   if (descrition === null || descrition === "") {
+  //     proceed = false;
+  //     errMsg += "Descrition ";
+  //   }
+  //   if (time === null || time === 0) {
+  //     proceed = false;
+  //     errMsg += "Time ";
+  //   }
+  //   if (weight === null || weight === 0) {
+  //     proceed = false;
+  //     errMsg += "Weight ";
+  //   }
+  //   if (!proceed) {
+  //     toast.warning(errMsg);
+  //     // console.log(errMsg);
+  //   }
+  //   return proceed;
+  // };
 
   // post add activity
   const saveData = async (e) => {
@@ -80,13 +101,13 @@ const ActivityForm = () => {
         const response = await axios.post(
           `https://backend-group10.onrender.com/api/activity/add`,
           {
-            act_type: type,
-            act_name: name,
-            act_desc: descrition,
-            duration: parseInt(time),
-            cur_weight: parseFloat(weight),
-            cal_burn: parseFloat(kcal),
-            kg_burn: parseFloat(kilogram),
+            // act_type: type,
+            // act_name: name,
+            // act_desc: descrition,
+            // duration: parseInt(time),
+            // cur_weight: parseFloat(weight),
+            // cal_burn: parseFloat(kcal),
+            // kg_burn: parseFloat(kilogram),
           },
           {
             headers: {
@@ -121,19 +142,23 @@ const ActivityForm = () => {
       KitaMuaythai: 6,
       Training: 8,
     };
-
-    if (type in METs) {
-      const met = METs[type];
-      const kcal = met * 0.0175 * weight * time;
-      const cal = kcal / 7700;
-      setKcal(kcal.toFixed(2));
-      setKilogram(cal.toFixed(2));
+    if (addActicity.act_type in METs) {
+      const met = METs[addActicity.act_type];
+      const kcal = met * 0.0175 * addActicity.cur_weight * addActicity.duration;
+      const kgburn = kcal / 7700;
+      setAddActivity({
+        ...addActicity,
+        cal_burn: kcal.toFixed(2),
+        kg_burn: kgburn.toFixed(2),
+      });
     }
   };
 
   useEffect(() => {
     calculateActivity();
-  }, [type, time, weight]);
+  }, [addActicity.act_type, addActicity.duration, addActicity.cur_weight]);
+
+  console.log(addActicity);
 
   return (
     <div className="flex min-h-screen gap-5">
@@ -142,10 +167,10 @@ const ActivityForm = () => {
           Activity Form
         </h1>
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form onSubmit={saveData} className="flex">
+          <form onSubmit={saveData} className="flex max-[370px]:text-[0.7rem] ">
             <div className="space-y-6">
               {/* activity type */}
-              <div className="flex leading-10">
+              <div className="flex leading-10 ">
                 <label
                   htmlFor="type"
                   className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500"
@@ -154,7 +179,10 @@ const ActivityForm = () => {
                 </label>
                 <select
                   name="type"
-                  onChange={(e) => setType(e.target.value)}
+                  value={addActicity.act_type}
+                  onChange={(e) =>
+                    setAddActivity({ ...addActicity, act_type: e.target.value })
+                  }
                   className="appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 >
                   <option className="text-[#131c85]" value="">
@@ -183,8 +211,10 @@ const ActivityForm = () => {
                   Activity Name
                 </span>
                 <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={addActicity.act_name}
+                  onChange={(e) =>
+                    setAddActivity({ ...addActicity, act_name: e.target.value })
+                  }
                   type="name"
                   name="detial"
                   className="px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -197,8 +227,10 @@ const ActivityForm = () => {
                   Description
                 </span>
                 <input
-                  value={descrition}
-                  onChange={(e) => setDescrition(e.target.value)}
+                  value={addActicity.act_desc}
+                  onChange={(e) =>
+                    setAddActivity({ ...addActicity, act_desc: e.target.value })
+                  }
                   type="text"
                   name="detial"
                   className="px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -213,8 +245,10 @@ const ActivityForm = () => {
                   Duration (Min)
                 </span>
                 <input
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
+                  value={addActicity.duration}
+                  onChange={(e) =>
+                    setAddActivity({ ...addActicity, duration: e.target.value })
+                  }
                   type="number"
                   name="duration"
                   className="[&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -227,8 +261,13 @@ const ActivityForm = () => {
                   Current weight
                 </span>
                 <input
-                  value={weight}
-                  onChange={(e) => setWeight(e.target.value)}
+                  value={addActicity.cur_weight}
+                  onChange={(e) =>
+                    setAddActivity({
+                      ...addActicity,
+                      cur_weight: e.target.value,
+                    })
+                  }
                   type="number"
                   name="weight"
                   className="[&::-webkit-inner-spin-button]:appearance-none px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -241,7 +280,11 @@ const ActivityForm = () => {
                   Calories Burn
                 </span>
                 <input
-                  value={kcal === null ? "0" : cal}
+                  value={
+                    addActicity.cal_burn === null
+                      ? "0"
+                      : `${addActicity.cal_burn} kcal`
+                  }
                   type="text"
                   name="date"
                   className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -254,7 +297,11 @@ const ActivityForm = () => {
                   Kilogram Burn
                 </span>
                 <input
-                  value={kcal === null ? "0" : kilo}
+                  value={
+                    addActicity.kg_burn === null
+                      ? "0"
+                      : `${addActicity.kg_burn} kg`
+                  }
                   type="text"
                   name="date"
                   className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -275,7 +322,7 @@ const ActivityForm = () => {
         <ToastContainer />
       </div>
       {/* display activitycard before submit */}
-      <div className="hidden lg:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+      <div className="hidden xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
           Activity Card
         </h1>
@@ -287,7 +334,7 @@ const ActivityForm = () => {
             {/* {item.icon} */}
           </div>
 
-          <div className="absolute w-full h-full bg-black/50 text-white rounded-xl flex flex-col items-center justify-center font-bold">
+          <div className="absolute w-full h-full bg-black/40 text-white rounded-xl flex flex-col items-center justify-center font-bold">
             <div className=" mb-1">Activity Type : {type || "Type"}</div>
             <div className="mb-1">Activity Name : {name || "JSD5"}</div>
             <div className="mb-1">Time : {time || "0"} Minute</div>
@@ -304,10 +351,10 @@ const ActivityForm = () => {
             </div>
           </div>
           <div
-            className="bg-[length:180px] bg-no-repeat bg-center  w-full flex flex-col justify-center items-center bg-white text-black rounded-2xl hover:bg-[#827BD9] hover:text-white duration-200 "
-            // style={{
-            //   backgroundImage: `url(${image})`,
-            // }}
+            className="bg-[length:300px_300px] bg-no-repeat bg-center  w-full flex flex-col justify-center items-center bg-white text-black rounded-2xl hover:bg-[#827BD9] hover:text-white duration-200 "
+            style={{
+              backgroundImage: `url(${image})`,
+            }}
           ></div>
         </div>
       </div>

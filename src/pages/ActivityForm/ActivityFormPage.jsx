@@ -3,7 +3,7 @@ import ActivityForm from "../../component/Activity/ActivityForm";
 
 function ActivityFormPage() {
   return (
-    <div className="md:flex">
+    <div className="md:flex max-w-[1380px] m-auto">
       <div className="absolute z-50 md:hidden">
         <Navbar />
       </div>

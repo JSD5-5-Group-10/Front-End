@@ -29,11 +29,11 @@ export const Chartsbar = () => {
       Time: 50,
     },
   ];
-  console.log(data[0]._id);
+  // console.log(data[0]._id);
 
   const stringValue = data[0]?.kgBurned.toLocaleString();
-  console.log(stringValue);
-  console.log(typeof stringValue);
+  // console.log(stringValue);
+  // console.log(typeof stringValue);
 
   const band = [];
   if (data && data[0] && data[0]._id) band.push(data[0]._id.toLocaleString());
@@ -56,13 +56,13 @@ export const Chartsbar = () => {
   if (data && data[3] && data[3].Time) seriesB.push(data[3].Time);
   if (data && data[4] && data[4].Time) seriesB.push(data[4].Time);
 
-  console.log(band);
-  console.log(seriesA);
-  console.log(seriesB);
+  // console.log(band);
+  // console.log(seriesA);
+  // console.log(seriesB);
 
   return (
     <>
-      <div className="w-[450px] m-auto py-3 item-center rounded shadow-lg border-2 ">
+      <div className="w-[400px] sm:w-[450px] m-auto py-3 item-center rounded shadow-lg border-2 ">
         <div className="text-center mr-1 font-bold text-xl">Chartsbar</div>
         <BarChart
           xAxis={[
@@ -79,8 +79,8 @@ export const Chartsbar = () => {
               data: seriesB,
             },
           ]}
-          width={450}
-          height={300}
+          width={420}
+          height={350}
         />
       </div>
     </>

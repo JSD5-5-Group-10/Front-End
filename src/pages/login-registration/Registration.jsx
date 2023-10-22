@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavbarLogin from "./NavbarLogin";
 
 export const Registration = () => {
   // const [email, setEmail] = useState();
@@ -34,10 +35,10 @@ export const Registration = () => {
       formData
     );
     // console.log(res);
-    setImg(res.data);
+    setRegister({ ...register, profile_img: res.data.url });
     alert("Upload Successfully.");
   };
-  console.log(img);
+  // console.log(img);
   const profile_img = img.url;
   // console.log(email);
   // console.log(name);
@@ -49,12 +50,12 @@ export const Registration = () => {
     name: "",
     password: "",
     pwConfirm: "",
-    profile_img: img.url,
+    profile_img,
   });
   // console.log(register);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(register);
+    // console.log(register);
     if (register.password === register.pwConfirm) {
       if (register.password.length >= 8) {
         try {
@@ -65,7 +66,7 @@ export const Registration = () => {
           if (User) {
             toast.success("Your Account Register Successfully!");
             navigate("/login");
-            console.log(User);
+            // console.log(User);
           }
         } catch (error) {
           // console.log(error);
@@ -80,159 +81,162 @@ export const Registration = () => {
   };
 
   return (
-    <>
-      <div className="flex  h-screen ">
-        <div className=" w-2/3  m-auto hidden ab lg:inline">
-          <div className="flex h-[600px] ">
+    <div className="w-[1360px]">
+      <NavbarLogin />
+      <div className="flex justify-center mt-20 items-center h-screen ">
+        <div className=" w-1/2  m-auto hidden ab lg:inline">
+          <div className="h-[600px] flex justify-end">
             <img className="bg-cover" src={bglogo} alt="bg-logo" />
           </div>
         </div>
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              REGISTER
-            </h2>
-          </div>
+        <div className="flex min-h-full w-[300px] flex-1 flex-col justify-center items-center lg:items-start px-6 py-12 lg:px-8 ">
+          <div className="w-[400px]">
+            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+              <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                REGISTER
+              </h2>
+            </div>
 
-          <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    required
-                    value={register.email}
-                    onChange={(e) =>
-                      setRegister({ ...register, email: e.target.value })
-                    }
-                    type="email"
-                    autoComplete="email"
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="fullname"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Fullname
-                </label>
-                <div className="mt-2">
-                  <input
-                    value={register.name}
-                    onChange={(e) =>
-                      setRegister({ ...register, name: e.target.value })
-                    }
-                    type="text"
-                    required
-                    autoComplete="fullname"
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
+            <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
                   <label
-                    htmlFor="password"
-                    className="flex text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="email"
+                    className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Password{" "}
-                    {register.password.length < 8 && (
-                      <p className="text-red-600">
-                        : ต้องมากกว่า 8 ตัวอักขละนารูโต๊ะะ!
-                      </p>
-                    )}
+                    Email address
                   </label>
+                  <div className="mt-2">
+                    <input
+                      required
+                      value={register.email}
+                      onChange={(e) =>
+                        setRegister({ ...register, email: e.target.value })
+                      }
+                      type="email"
+                      autoComplete="email"
+                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
+                    />
+                  </div>
                 </div>
-                <div className="mt-2">
-                  <input
-                    value={register.password}
-                    onChange={(e) =>
-                      setRegister({ ...register, password: e.target.value })
-                    }
-                    type="password"
-                    required
-                    autoComplete="current-password"
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center justify-between">
+                <div>
                   <label
-                    htmlFor="repassword"
-                    className="flex text-sm font-medium leading-6 text-gray-900"
+                    htmlFor="fullname"
+                    className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Confirm Password{" "}
-                    {register.password != register.pwConfirm && (
-                      <p className="text-red-600">: ใส่รหัสไม่ตรงกัน </p>
-                    )}
+                    Fullname
                   </label>
+                  <div className="mt-2">
+                    <input
+                      value={register.name}
+                      onChange={(e) =>
+                        setRegister({ ...register, name: e.target.value })
+                      }
+                      type="text"
+                      required
+                      autoComplete="fullname"
+                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
                 </div>
-                <div className="mt-2">
-                  <input
-                    value={register.pwConfirm}
-                    onChange={(e) =>
-                      setRegister({ ...register, pwConfirm: e.target.value })
-                    }
-                    type="password"
-                    required
-                    autoComplete="current-password"
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
 
-              <div>
-                <div className="flex items-center justify-between">
-                  <input
-                    type="file"
-                    onChange={(e) => {
-                      setSelect(e.target.files[0]);
-                    }}
-                  />
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="password"
+                      className="flex text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Password{" "}
+                      {register.password.length < 8 && (
+                        <p className="text-red-600">
+                          : ต้องมากกว่า 8 ตัวอักขละนารูโต๊ะะ!
+                        </p>
+                      )}
+                    </label>
+                  </div>
+                  <div className="mt-2">
+                    <input
+                      value={register.password}
+                      onChange={(e) =>
+                        setRegister({ ...register, password: e.target.value })
+                      }
+                      type="password"
+                      required
+                      autoComplete="current-password"
+                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="repassword"
+                      className="flex text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Confirm Password{" "}
+                      {register.password != register.pwConfirm && (
+                        <p className="text-red-600">: ใส่รหัสไม่ตรงกัน </p>
+                      )}
+                    </label>
+                  </div>
+                  <div className="mt-2">
+                    <input
+                      value={register.pwConfirm}
+                      onChange={(e) =>
+                        setRegister({ ...register, pwConfirm: e.target.value })
+                      }
+                      type="password"
+                      required
+                      autoComplete="current-password"
+                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <input
+                      type="file"
+                      onChange={(e) => {
+                        setSelect(e.target.files[0]);
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className="flex w-1/3 justify-center rounded-md bg-[#8278d9] px-1 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      onClick={() => uploadImg()}
+                    >
+                      Upload
+                    </button>
+                  </div>
+                </div>
+
+                <div>
                   <button
-                    type="button"
-                    className="flex w-1/3 justify-center rounded-md bg-[#8278d9] px-1 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={() => uploadImg()}
+                    type="submit"
+                    className="flex w-full justify-center rounded-md bg-[#8278d9] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Upload
+                    Register
                   </button>
                 </div>
-              </div>
+              </form>
 
-              <div>
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-[#8278d9] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              {/* <Image cloudName="dvktdqeof" publicId="" /> */}
+
+              <p className="mt-10 text-center text-sm text-gray-500">
+                Already a member?{" "}
+                <Link
+                  to="/login"
+                  className="font-semibold leading-6 text-[#8278d9] hover:text-indigo-100"
                 >
-                  Register
-                </button>
-              </div>
-            </form>
-
-            {/* <Image cloudName="dvktdqeof" publicId="" /> */}
-
-            <p className="mt-10 text-center text-sm text-gray-500">
-              Already a member?{" "}
-              <Link
-                to="/login"
-                className="font-semibold leading-6 text-[#8278d9] hover:text-indigo-100"
-              >
-                Login Now
-              </Link>
-            </p>
+                  Login Now
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
         <ToastContainer />
       </div>
-    </>
+    </div>
   );
 };

@@ -36,19 +36,14 @@ export const WeightLossSimulator = () => {
   //     setSelectedDates([]);
   //   }
   // };
-  const [type, setType] = useState("");
 
+  const [type, setType] = useState("");
   const [lossWeight, setLossWeight] = useState();
   const [weight, setWeight] = useState();
-
   const [numberOfDays, setNumberOfDays] = useState();
-  // สูตรหา Kcal
-  // const [totalkcal, setTotalkcal] = useState();
-  // const [kcal, setKcal] = useState();
-
   const [time, setTime] = useState(0);
-
   const [image, setImage] = useState();
+
   useEffect(() => {
     type === "Run"
       ? setImage(run)
@@ -80,7 +75,7 @@ export const WeightLossSimulator = () => {
       const timeByOneDay = kgcalOneDay / (met * 0.0175 * weight);
       // const kcal = met * 0.0175 * weight * time;
       if (timeByOneDay > 180) {
-        return alert(
+        return toast.error(
           "การออกกำลังกายมากกว่า 3 ชั่วโมงต่อวัน เป็นสิ่งไม่ดีนะครับ"
         );
       }
@@ -90,11 +85,6 @@ export const WeightLossSimulator = () => {
     }
   };
 
-  // useEffect(() => {
-  //   calculateActivity();
-  // }, [type, numberOfDays]);
-
-  // console.log(totalkcal);
   return (
     <>
       <div className="flex flex-col my-20 lg:flex lg:flex-row">
@@ -205,20 +195,7 @@ export const WeightLossSimulator = () => {
                     </option>
                   </select>
                 </div>
-                {/* activity-name */}
-                {/* <label className="flex rounded-lg leading-10">
-                  <span className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Activity Name
-                  </span>
-                  <input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    type="name"
-                    name="detial"
-                    className="px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                    placeholder="Activity Name"
-                  />
-                </label> */}
+
                 {/* descrition */}
                 <label className="flex rounded-lg leading-10">
                   <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
@@ -263,32 +240,7 @@ export const WeightLossSimulator = () => {
                     placeholder="Kilogram"
                   />
                 </label>
-                {/* Calories Burned  */}
-                {/* <label className="flex rounded-lg leading-10">
-                  <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Calories Burn
-                  </span>
-                  <input
-                    value={kcal === null ? "0" : "cal"}
-                    type="text"
-                    name="date"
-                    className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                    disabled
-                  />
-                </label> */}
-                {/* kilogram bure */}
-                {/* <label className="flex rounded-lg leading-10">
-                  <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Kilogram Burn
-                  </span>
-                  <input
-                    value={kcal === null ? "0" : "kilo"}
-                    type="text"
-                    name="date"
-                    className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                    disabled
-                  />
-                </label> */}
+
                 <div className="flex justify-end">
                   <button
                     type="submit"
@@ -304,106 +256,5 @@ export const WeightLossSimulator = () => {
         </div>
       </div>
     </>
-
-    // <div className="m-2 bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900 mt-2">
-    //   <ToastContainer />
-    //   {numberOfDays > 0 && (
-    //     <div>
-    //       <p className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //         Number of days: {numberOfDays}
-    //       </p>
-    //       <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-    //         <thead className="bg-gray-50 dark:bg-gray-800">
-    //           <tr>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Selected
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Index
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Date
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Type
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Activity Name
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Descrition
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Time
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               Kcal
-    //             </th>
-    //             <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    //               KG
-    //             </th>
-    //           </tr>
-    //         </thead>
-    //         <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-    //           {dateRange.map((date, index) => (
-    //             <tr key={index}>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 <input
-    //                   type="checkbox"
-    //                   checked={selectedDates[index]}
-    //                   onChange={() => handleCheckboxChange(index)}
-    //                   className="px-4 py-4 ml-5"
-    //                 />
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 {index}
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 {date}
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 {type}
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 {name}
-    //               </td>
-    //               <td className="bg-gray-900 px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-    //                 {descrition}
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 {time}
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 {kcal}
-    //               </td>
-    //               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //                 Null
-    //               </td>
-    //             </tr>
-    //           ))}
-    //           <tr className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-    //             <td className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"></td>
-    //             <td className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"></td>
-    //             <td className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"></td>
-    //             <td className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"></td>
-    //             <td className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"></td>
-    //             <td className="px-4 py-3.5 text-sm font-bold text-center rtl:text-left text-gray-500 dark:text-gray-100">
-    //               TOTAL
-    //             </td>
-    //             <td className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 dark:text-gray-100">
-    //               {time * numberOfDays}
-    //             </td>
-    //             <td className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 dark:text-gray-100">
-    //               {totalkcal}
-    //             </td>
-    //             <td className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 dark:text-gray-100">
-    //               Null
-    //             </td>
-    //           </tr>
-    //         </tbody>
-    //       </table>
-    //     </div>
-    //   )}
-    // </div>
   );
 };
