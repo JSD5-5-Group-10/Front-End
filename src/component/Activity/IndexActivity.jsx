@@ -26,7 +26,7 @@ const IndexActivity = ({ act_type }) => {
         if (!userActivity) {
           return console.log("error");
         }
-        console.log(userActivity.data.data);
+        // console.log(userActivity.data.data.activity);
         setData(userActivity.data?.data[0].activity);
       } catch (error) {
         console.log(error);
@@ -45,24 +45,22 @@ const IndexActivity = ({ act_type }) => {
       const response = await axios.delete(
         `https://backend-group10.onrender.com/api/activity/delete`,
 
-     
         {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
           data: {
-            act_id: id
-          }
+            act_id: id,
+          },
         }
-
       );
       console.log("DELETE", response.status);
-      console.log(response)
+      console.log(response);
       if (response.status === 200) {
-        toast.success("Delete successfully.")
-        setTimeout(()=>{
+        toast.success("Delete successfully.");
+        setTimeout(() => {
           location.reload();
-        },3000)
+        }, 3000);
       }
     } catch (err) {
       toast.error("Failed: " + err.message);
@@ -98,7 +96,7 @@ const IndexActivity = ({ act_type }) => {
                     <div className=" mb-1">Activity Type : {act_type}</div>
                     <PopupActivity item={item} />
                   </div>
-                  
+
                   <div className="modal-action">
                     <form method="dialog">
                       <button className="btn">Close</button>
@@ -119,10 +117,8 @@ const IndexActivity = ({ act_type }) => {
                 <div className="modal-box">
                   <div className="card">
                     <div className=" mb-1">Do u wanna delet {act_type}</div>
-
                   </div>
-                  <button
-                    onClick={() => deleteData(item.act_id)} > yes </button>
+                  <button onClick={() => deleteData(item.act_id)}> yes </button>
                   <div className="modal-action">
                     <form method="dialog">
                       <button className="btn">Close</button>
@@ -130,7 +126,6 @@ const IndexActivity = ({ act_type }) => {
                   </div>
                 </div>
               </dialog>
-
 
               <div className="p-2 mr-3 flex items-center absolute ">
                 {item.icon}
@@ -150,7 +145,7 @@ const IndexActivity = ({ act_type }) => {
                   </h2>
                 </div>
               </div>
-            
+
               <div
                 className=" w-full flex flex-col justify-center items-center bg-white text-black rounded-2xl hover:bg-[#827BD9] hover:text-white bg-[length:400px] duration-200 "
                 style={{ backgroundImage: `url(${item.img})` }}
@@ -159,7 +154,7 @@ const IndexActivity = ({ act_type }) => {
           );
         })}
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

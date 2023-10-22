@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 export const ResetPassword = () => {
   const [password, setPassword] = useState();
@@ -9,10 +11,14 @@ export const ResetPassword = () => {
   const { token } = useParams();
 
   const handleSubmit = async (e) => {
-    if (password !== ConfirmPassword) {
-      return alert("Password is not Match");
-    }
     e.preventDefault();
+    if (password !== ConfirmPassword) {
+      return toast.warning("Password is not Match");
+    }
+    if (password.length < 8) {
+      return toast.warning("Password is less than 8 words");
+    }
+
     try {
       const newPassword = await axios.post(
         `https://backend-group10.onrender.com/api/user/reset-password/${token}`,
@@ -23,7 +29,7 @@ export const ResetPassword = () => {
       if (!newPassword) {
         return console.log("error");
       }
-      alert("Your password have been Updated!");
+      toast.success("Your password have been Updated!");
       navigate("/success");
     } catch (error) {
       console.log(error);
@@ -80,6 +86,7 @@ export const ResetPassword = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
