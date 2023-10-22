@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Yogaimg from "../Activity/assets/yoga960px.jpg";
-import Runimg from "../Activity/assets/running960px.jpg";
-import Boxingimg from "../Activity/assets/muaythai960px.jpg";
-import Weightimg from "../Activity/assets/weight960px.jpg";
-import Aerobicimg from "../Activity/assets/aerobic960px.jpg";
+import Yogaimg from "./assets/yoga960px.jpg";
+import Runimg from "./assets/running960px.jpg";
+import Boxingimg from "./assets/muaythai960px.jpg";
+import Weightimg from "./assets/weight960px.jpg";
+import Aerobicimg from "./assets/aerobic960px.jpg";
 
 function AllExercise(){
   const data = [
