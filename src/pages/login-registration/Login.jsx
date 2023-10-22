@@ -6,12 +6,22 @@ import { authActions } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { LoginGoogle } from "./LoginGoogle";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+
+  // console.log(token);
+  useEffect(() => {
+    if (token) {
+      return navigate("/");
+    }
+  }, [token]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -119,6 +129,11 @@ export const Login = () => {
                   >
                     Login
                   </button>
+                  <p className="text-center py-2 text-sm text-gray-400">
+                    ---------- OR ----------
+                  </p>
+
+                  <LoginGoogle />
                 </div>
               </form>
 

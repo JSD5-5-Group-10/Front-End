@@ -41,6 +41,7 @@ function RunningVideo () {
               <div className="relative w-auto h-auto" key={index}>
                 <iframe
                 src={item.iframe}
+                allow="fullscreen"
                 className="rounded-xl object-cover w-[300px] h-[169px] md:w-[400px] md:h-[225px] 
                            opacity-70 hover:shadow-md hover:shadow-[#8278D9] hover:opacity-100 hover:scale-105"
                 />

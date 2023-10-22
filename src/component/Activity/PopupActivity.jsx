@@ -1,37 +1,125 @@
 
 import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
-const PopupActivity = ({item}) => {
-  
-  const { act_id, title: act_type,act_desc, act_name ,cal_burn,created_at
-    ,cur_weight,duration,kg_burn}= item
-  const [actName, setName] = useState(act_name);
-  const [desc, setDesc] = useState(act_desc);
-  const [Time, setTime] = useState(created_at);
-  const [Weight, setweight] = useState(cur_weight);
-  const [id, setid] = useState(act_id);
-  const [kcal, setkcal] = useState(kg_burn);
-  const [cal, setcal] = useState(cal_burn);
-  const [actType,setType] = useState(act_type);
+import axios from "axios";
+
+const PopupActivity = ({ item }) => {
+  const [change, setChange] = useState("");
+  const token = localStorage.getItem("token");
+  const [type, setType] = useState("");
+  const navigate = useNavigate();
+  const {
+    act_id,
+    act_type,
+    act_desc,
+    act_name,
+    cal_burn,
+    cur_weight,
+    duration,
+    kg_burn
+  } = item
+
+  const [activityData, setActivityData] = useState({
+    act_name: act_name,
+    act_desc: act_desc,
+    cur_weight: parseFloat(cur_weight),
+    act_id: act_id,
+    kg_burn: parseFloat(kg_burn),
+    cal_burn: parseFloat(cal_burn),
+    act_type: act_type,
+    duration: parseInt(duration),
+  });
+
+  const isValidate = () => {
+    console.log(activityData);
+    let proceed = true;
+    let errMsg = "Enter your : ";
+    if (activityData.act_type === null || activityData.act_type === "") {
+      proceed = false;
+      errMsg += "Please Select Type ";
+    }
+    if (activityData.duration === "" || activityData.duration === 0) {
+      proceed = false;
+      errMsg += "duration ";
+    }
+    if (activityData.cur_weight === "" || activityData.cur_weight === 0) {
+      proceed = false;
+      errMsg += "Weight ";
+    }
+    if (!proceed) {
+      toast.warning(errMsg);
+      console.log(errMsg);
+    }
+    return proceed;
+  };
 
 
-  
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    setName(act_name);
-    setDesc(act_desc);
-    setType(act_type)
-  }, [act_name, act_desc,act_type]);
- 
-  const handleEdit = (e) => {
+
+  const updatedActivityData = [activityData];
+  console.log(updatedActivityData);
+
+
+
+
+  const Update = async (e) => {
     e.preventDefault();
-    editTutorial(id, actName, desc,actType);
-    setName(act_name);
-    setDesc(act_desc);
-    setType(act_type)
-  }
-  console.log(item)
+    if (isValidate()) {
+      try {
+
+        const response = await axios.put(
+          `https://backend-group10.onrender.com/api/activity/update`,
+          activityData,
+
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (response.status === 200) {
+          // console.log('Activity updated successfully');
+
+          toast.success("Activity updated successfully")
+          setTimeout(()=>{
+            location.reload();
+          },3000)
+        }
+      } catch (err) {
+        toast.error("Failed: " + err.message);
+      }
+    }
+  };
+
+
+  // calculate kcal and kilogram
+  const calculateActivity = () => {
+    const METs = {
+      Run: 9.6,
+      Yoga: 2.5,
+      Aerobics: 5,
+      KitaMuaythai: 6,
+      Training: 8,
+    };
+
+    if (activityData.act_type in METs) {
+      const met = METs[activityData.act_type];
+      const kcal = met * 0.0175 * activityData.cur_weight * activityData.duration;
+      const cal = kcal / 7700;
+      setActivityData({
+        ...activityData,
+        cal_burn: kcal.toFixed(2),
+        kg_burn: cal.toFixed(2),
+      });
+    }
+    setChange();
+  };
+  useEffect(() => {
+    calculateActivity();
+  }, [activityData.act_type, activityData.duration, activityData.cur_weight]);
+
   return (
     <div className="flex min-h-screen gap-5">
       <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
@@ -39,8 +127,7 @@ const PopupActivity = ({item}) => {
           Activity Form
         </h1>
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="flex">
-            <div>{item}</div>
+          <form className="flex" onSubmit={Update}>
             <div className="space-y-6">
               {/* activity type */}
               <div className="flex leading-10">
@@ -52,7 +139,8 @@ const PopupActivity = ({item}) => {
                 </label>
                 <select
                   name="type"
-                  onChange={(e) => actType(e.target.value)}
+                  value={activityData.act_type}
+                  onChange={(e) => setActivityData({ ...activityData, act_type: e.target.value })}
                   className="appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 >
                   <option className="text-[#131c85]" value="">
@@ -81,8 +169,8 @@ const PopupActivity = ({item}) => {
                   Activity Name
                 </span>
                 <input
-                  value={actName}
-                  onChange={(e) => setName(e.target.value)}
+                  value={activityData.act_name}
+                  onChange={(e) => setActivityData({ ...activityData, act_name: e.target.value })}
                   type="name"
                   name="detial"
                   className="px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -95,8 +183,8 @@ const PopupActivity = ({item}) => {
                   Description
                 </span>
                 <input
-                  value={desc}
-                  onChange={(e) => setDesc(e.target.value)}
+                  value={activityData.act_desc}
+                  onChange={(e) => setActivityData({ ...activityData, act_desc: e.target.value })}
                   type="text"
                   name="detial"
                   className="px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -111,8 +199,8 @@ const PopupActivity = ({item}) => {
                   Duration (Min)
                 </span>
                 <input
-                  value={Time}
-                  onChange={(e) => setTime(e.target.value)}
+                  value={activityData.duration}
+                  onChange={(e) => setActivityData({ ...activityData, duration: e.target.value })}
                   type="number"
                   name="duration"
                   className="[&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -125,8 +213,8 @@ const PopupActivity = ({item}) => {
                   Current weight
                 </span>
                 <input
-                  value={Weight}
-                  onChange={(e) => setweight(e.target.value)}
+                  value={activityData.cur_weight}
+                  onChange={(e) => setActivityData({ ...activityData, cur_weight: e.target.value })}
                   type="number"
                   name="weight"
                   className="[&::-webkit-inner-spin-button]:appearance-none px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -139,7 +227,7 @@ const PopupActivity = ({item}) => {
                   Calories Burn
                 </span>
                 <input
-                  value={kcal === null ? "0" : cal}
+                  value={activityData.cal_burn === null ? "0" : activityData.cal_burn}
                   type="text"
                   name="date"
                   className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -152,7 +240,7 @@ const PopupActivity = ({item}) => {
                   Kilogram Burn
                 </span>
                 <input
-                  value={kcal === null ? "0" : Weight}
+                  value={activityData.kg_burn === null ? "0" : activityData.kg_burn}
                   type="text"
                   name="date"
                   className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -163,6 +251,7 @@ const PopupActivity = ({item}) => {
                 <button
                   type="submit"
                   className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
                 >
                   CONFIRM
                 </button>
@@ -172,9 +261,12 @@ const PopupActivity = ({item}) => {
         </div>
         <ToastContainer />
       </div>
-      </div>
+    </div>
 
   )
 }
 
 export default PopupActivity;
+
+
+

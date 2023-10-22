@@ -22,6 +22,7 @@ import { Success } from "./pages/login-registration/Success.jsx";
 import { WeightLossSimulator } from "./component/Activity/WeightLossSimulator.jsx";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const router = createBrowserRouter([
   {
@@ -67,18 +68,20 @@ const router = createBrowserRouter([
   { path: "/weightPage", element: <WeightPage /> },
   { path: "/yogaPage", element: <YogaPage /> },
   { path: "/forgot-password", element: <ForgotPassword /> },
-  { path: "/reset_password/:token", element: <ResetPassword /> },
+  { path: "/reset-password/:token", element: <ResetPassword /> },
   { path: "/success", element: <Success /> },
   { path: "/calculate", element: <ActivityDisplay /> },
   { path: "/weightloss", element: <WeightLossSimulator /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <StyledEngineProvider injectFirst>
-      <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
-    </StyledEngineProvider>
-  </Provider>
+  <GoogleOAuthProvider clientId="985286034044-gc8s0cdcqbugs4dmpnumtjtei0559nrv.apps.googleusercontent.com">
+    <Provider store={store}>
+      <StyledEngineProvider injectFirst>
+        <React.StrictMode>
+          <RouterProvider router={router} />
+        </React.StrictMode>
+      </StyledEngineProvider>
+    </Provider>
+  </GoogleOAuthProvider>
 );
