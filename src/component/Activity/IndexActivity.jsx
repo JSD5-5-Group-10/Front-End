@@ -7,12 +7,17 @@ import PopupActivity from "./PopupActivity";
 import PicData from "../funtion/PicData";
 import BtnLeft from "../../component/Activity/assets/left.svg";
 import BtnRight from "../../component/Activity/assets/right.svg";
+import Yogalogo from "./assets/yogalogo.png";
+import Yoga from "./assets/yoga.svg";
+import Run from "./assets/run.svg";
+import Thaiboxing from "./assets/thaiboxing.svg";
+import Weight from "./assets/weight.svg";
+import Aerobics from "./assets/aerobics.svg";
 
 const IndexActivity = ({ act_type }) => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,15 +88,34 @@ const IndexActivity = ({ act_type }) => {
     );
   };
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const pageNumbers = Math.ceil(filter.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filter.slice(indexOfFirstItem, indexOfLastItem);
+  console.log(currentItems);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="z-0 ">
       <div className="flex flex-col z-0 items-center lg:flex lg:flex-row lg:w-full lg:justify-between px-20">
         <div className="flex items-center z-0">
-          <h1 className="text-2xl font-medium lg:text-3xl lg:font-medium lg:my-2">
+          <h1 className="text-2xl mr-3 font-medium lg:text-3xl lg:font-medium lg:my-2">
             Activity Card{" "}
           </h1>
-          <img src={BtnLeft} alt="" className="cursor-pointer" />
-          <img src={BtnRight} alt="" className="cursor-pointer" />
+          {Array.from({ length: pageNumbers }).map((_, index) => (
+            <div key={index} className="">
+              <button
+                className="btn  mx-2 "
+                onClick={() => paginate(index + 1)}
+              >
+                {index + 1}
+              </button>
+            </div>
+          ))}
         </div>
         <div className="hidden lg:flex items-center text">
           <div className="menu menu-horizontal text-white px-1 z-50">
@@ -123,7 +147,7 @@ const IndexActivity = ({ act_type }) => {
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => filterType("WeightTraining")}>
+                    <button onClick={() => filterType("Training")}>
                       Weight
                     </button>
                   </li>
@@ -138,7 +162,7 @@ const IndexActivity = ({ act_type }) => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content z-[1] text-white bg-[#8278d9]/90 menu p-2 shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content z-[1] text-white bg-[#8278d9]/90 menu p-2 shadow  rounded-box w-52"
           >
             <li>
               <button onClick={() => setFilter(data)}>All</button>
@@ -164,7 +188,7 @@ const IndexActivity = ({ act_type }) => {
         </div>
       </div>
       <div className="mt-5 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
-        {filter.map((item, index) => {
+        {currentItems.map((item, index) => {
           //ประกาศโมดูลคู่กับ map เพื่อที่จะmap ข้อมูลเข้าpopup ได้
           const elementId = `my_modal_activity_item_${item.act_id}`;
           const elementId2 = `my_modal_activity_item_2${item.act_id}`;
@@ -174,19 +198,28 @@ const IndexActivity = ({ act_type }) => {
             day: "numeric",
             month: "long",
           });
-          let aerobics = PicData[0].coverImg;
-          let run = PicData[1].coverImg;
-          let boxing = PicData[2].coverImg;
-          let WeightTraining = PicData[3].coverImg;
-          let Yoga = PicData[4].coverImg;
-          console.log(PicData[3].coverImg);
 
           // console.log(setImage);
           return (
             <div
               key={index}
               className="w-[400px] h-[200px] hover:h-[300px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
-            lg:h-[300px] "
+            lg:h-[300px] bg-contain bg-no-repeat bg-center"
+              style={{
+                backgroundImage: `url(${
+                  item.act_type === "Run"
+                    ? Run
+                    : item.act_type === "Yoga"
+                    ? Yoga
+                    : item.act_type === "Aerobics"
+                    ? Aerobics
+                    : item.act_type === "KitaMuaythai"
+                    ? Thaiboxing
+                    : item.act_type === "Training"
+                    ? Weight
+                    : null
+                })`,
+              }}
             >
               <dialog id={elementId} className="modal">
                 <div className="modal-box">
@@ -258,11 +291,7 @@ const IndexActivity = ({ act_type }) => {
                 </div>
               </div>
 
-              <div
-                className="z-0 w-full flex flex-col justify-center items-center text-black rounded-2xl  bg-[length:400px] duration-200 "
-                style={{ backgroundImage: `url(${run})` }}
-              ></div>
-              <div className="z-10 flex items-end gap-3 m-5">
+              <div className="z-10 w-full flex items-end justify-end gap-3 m-5 ">
                 <button
                   className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
                   onClick={() =>
