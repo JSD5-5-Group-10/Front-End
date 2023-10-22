@@ -4,6 +4,7 @@ import { AiOutlineAlignLeft } from "react-icons/ai";
 import { authActions } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { googleLogout } from "@react-oauth/google";
+import { ToggleDarkmode } from "./ToggleDarkmode";
 
 export default function Navbar() {
   const [isHidden, setIsHidden] = useState(true);
@@ -27,7 +28,7 @@ export default function Navbar() {
     try {
       dispatch(authActions.logout());
       navigate("/login");
-      googleLogout()
+      googleLogout();
       localStorage.clear();
     } catch (error) {
       console.log(error);
@@ -37,23 +38,25 @@ export default function Navbar() {
   const navListMainPage = () => {
     return (
       <div className="z-50">
-        <h1 className="h text-indigo-100  text-center">MENU</h1>
+        <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold">
+          MENU
+        </h1>
         <hr className="my-2 text-gray-600" />
         <div>
           <ul className=" text-indigo-100">
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black ">
+            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/">Home</Link>
             </li>
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
+            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/profilePage">Profile</Link>
             </li>
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
+            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/calculate">CAL Calculator</Link>
             </li>
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
+            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/weightloss">Weight Loss Simulator</Link>
             </li>
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black">
+            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/Registration">Registration</Link>
             </li>
           </ul>
@@ -69,9 +72,9 @@ export default function Navbar() {
         <div>
           <button
             onClick={toggleDropdown}
-            className=" text-[15px] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-[#E6E1FF] text-black"
+            className=" text-[15px] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600"
           >
-            exercise content
+            Exercise Content
           </button>
         </div>
         <div
@@ -80,23 +83,23 @@ export default function Navbar() {
           } p-2.5 mt-2 flex items-end px-4 duration-300 w-4/5 `}
         >
           <ul>
-            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/allExercise">All content</Link>
             </li>
 
-            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/yogaPage">Yoga</Link>
             </li>
-            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/runningPage">running</Link>
             </li>
-            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black ">
+            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/thaiBoxingPage">Thai Boxing</Link>
             </li>
-            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/weightPage">weight training</Link>
             </li>
-            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black">
+            <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/aerobicsPage">Aerobics</Link>
             </li>
           </ul>
@@ -114,11 +117,10 @@ export default function Navbar() {
         >
           <AiOutlineAlignLeft size={40} />
         </button>
-
         <div
           className={`sidebar ${isOpen ? "md:w-1/5 sm:1/3" : "hidden"}  
             ${isDesktop ? "md:block md:w-[250px]" : "hidden"} 
-            sidebar md:sticky h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg mr-1`}
+            sidebar md:sticky h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
         >
           <button
             onClick={toggleSidebar}
@@ -140,6 +142,10 @@ export default function Navbar() {
             >
               Logout
             </button>
+          </div>
+          {/* toggle darkmode */}
+          <div className=" absolute md:top-[1px] top-11 ">
+            <ToggleDarkmode />
           </div>
         </div>
       </div>

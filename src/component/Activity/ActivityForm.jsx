@@ -10,88 +10,49 @@ import weights from "../../public/weight.svg";
 import yoga from "../../public/yoga.svg";
 
 const ActivityForm = () => {
-  const [type, setType] = useState("");
-  const [name, setName] = useState("");
-  const [descrition, setDescrition] = useState("");
-  const [time, setTime] = useState(0);
-  const [weight, setWeight] = useState(0);
-  const [kcal, setKcal] = useState(null);
-  const [kilogram, setKilogram] = useState(null);
-  const cal = `${kcal} kcal`;
-  const kilo = `${kilogram} kg`;
-
-  const [addActicity, setAddActivity] = useState({
-    act_type: type !== "" ? type.toString() : null,
-    act_name: name.toString(),
-    act_desc: descrition !== "" ? descrition.toString() : null,
-    duration: parseInt(time),
-    cur_weight: parseFloat(weight),
-    cal_burn: parseFloat(kcal),
-    kg_burn: parseFloat(kilogram),
+  const [addActivity, setAddActivity] = useState({
+    act_type: "",
+    act_name: "",
+    act_desc: "",
+    duration: 0,
+    cur_weight: 0,
   });
-
-  // const [addActicity, setAddActivity] = useState({
-  //   act_type: "",
-  //   act_name: "",
-  //   act_desc: "",
-  //   duration: 0,
-  //   cur_weight: 0.0,
-  //   cal_burn: 0.0,
-  //   kg_burn: 0.0,
-  // });
-
+  const [image, setImage] = useState("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [image, setImage] = useState("");
-
   const year = new Date().getFullYear();
   const month = String(new Date().getMonth() + 1).padStart(2, "0");
   const day = String(new Date().getDate()).padStart(2, "0");
   const formattedDateTime = `${day}-${month}-${year}`;
 
-  useEffect(() => {
-    addActicity.act_type === "Run"
-      ? setName("Run") || setImage(run)
-      : addActicity.act_type === "Yoga"
-      ? setName("Yoga") || setImage(yoga)
-      : addActicity.act_type === "Aerobics"
-      ? setName("Aerobics") || setImage(aerobics)
-      : addActicity.act_type === "KitaMuaythai"
-      ? setName("KitaMuaythai") || setImage(thaiboxing)
-      : addActicity.act_type === "Training"
-      ? setName("Weight Training") || setImage(weights)
-      : "";
-  }, [addActicity.act_type]);
-
-  // const isValidate = () => {
-  //   let proceed = true;
-  //   let errMsg = "Enter your : ";
-  //   if (type === null || type === "") {
-  //     proceed = false;
-  //     errMsg += "Please Select Type ";
-  //   }
-  //   if (name === null || name === "") {
-  //     proceed = false;
-  //     errMsg += "Activity Name ";
-  //   }
-  //   if (descrition === null || descrition === "") {
-  //     proceed = false;
-  //     errMsg += "Descrition ";
-  //   }
-  //   if (time === null || time === 0) {
-  //     proceed = false;
-  //     errMsg += "Time ";
-  //   }
-  //   if (weight === null || weight === 0) {
-  //     proceed = false;
-  //     errMsg += "Weight ";
-  //   }
-  //   if (!proceed) {
-  //     toast.warning(errMsg);
-  //     // console.log(errMsg);
-  //   }
-  //   return proceed;
-  // };
+  const isValidate = () => {
+    let proceed = true;
+    let errMsg = "Enter your : ";
+    if (addActivity.act_type === "") {
+      proceed = false;
+      errMsg += "Please Select Type ";
+    }
+    if (addActivity.act_name === "") {
+      proceed = false;
+      errMsg += "Activity Name ";
+    }
+    if (addActivity.act_desc === "") {
+      proceed = false;
+      errMsg += "Descrition ";
+    }
+    if (addActivity.duration === 0) {
+      proceed = false;
+      errMsg += "Time ";
+    }
+    if (addActivity.cur_weight === 0) {
+      proceed = false;
+      errMsg += "Weight ";
+    }
+    if (!proceed) {
+      toast.warning(errMsg);
+    }
+    return proceed;
+  };
 
   // post add activity
   const saveData = async (e) => {
@@ -100,38 +61,47 @@ const ActivityForm = () => {
       try {
         const response = await axios.post(
           `https://backend-group10.onrender.com/api/activity/add`,
-          {
-            // act_type: type,
-            // act_name: name,
-            // act_desc: descrition,
-            // duration: parseInt(time),
-            // cur_weight: parseFloat(weight),
-            // cal_burn: parseFloat(kcal),
-            // kg_burn: parseFloat(kilogram),
-          },
+          addActivity,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        console.log("POST", response.status);
-        console.log(response);
+        // console.log("POST", response.status);
+        // console.log(response);
         if (response.status === 200) {
           toast.success("Update successfully.");
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
         }
-        navigate("/");
       } catch (err) {
         toast.error("Failed: " + err.message);
       }
     }
   };
 
+  //If there is no token, return to the Login page.
   useEffect(() => {
     if (!token) {
       return navigate("/login");
     }
   }, [token]);
+
+  const setChange = () => {
+    addActivity.act_type === "Run"
+      ? setImage(run)
+      : addActivity.act_type === "Yoga"
+      ? setImage(yoga)
+      : addActivity.act_type === "Aerobics"
+      ? setImage(aerobics)
+      : addActivity.act_type === "KitaMuaythai"
+      ? setImage(thaiboxing)
+      : addActivity.act_type === "Training"
+      ? setImage(weights)
+      : null;
+  };
 
   // calculate kcal and kilogram
   const calculateActivity = () => {
@@ -142,23 +112,22 @@ const ActivityForm = () => {
       KitaMuaythai: 6,
       Training: 8,
     };
-    if (addActicity.act_type in METs) {
-      const met = METs[addActicity.act_type];
-      const kcal = met * 0.0175 * addActicity.cur_weight * addActicity.duration;
+    if (addActivity.act_type in METs) {
+      const met = METs[addActivity.act_type];
+      const kcal = met * 0.0175 * addActivity.cur_weight * addActivity.duration;
       const kgburn = kcal / 7700;
       setAddActivity({
-        ...addActicity,
+        ...addActivity,
         cal_burn: kcal.toFixed(2),
         kg_burn: kgburn.toFixed(2),
       });
     }
+    setChange();
   };
 
   useEffect(() => {
     calculateActivity();
-  }, [addActicity.act_type, addActicity.duration, addActicity.cur_weight]);
-
-  console.log(addActicity);
+  }, [addActivity.act_type, addActivity.duration, addActivity.cur_weight]);
 
   return (
     <div className="flex min-h-screen gap-5">
@@ -179,9 +148,9 @@ const ActivityForm = () => {
                 </label>
                 <select
                   name="type"
-                  value={addActicity.act_type}
+                  value={addActivity.act_type}
                   onChange={(e) =>
-                    setAddActivity({ ...addActicity, act_type: e.target.value })
+                    setAddActivity({ ...addActivity, act_type: e.target.value })
                   }
                   className="appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 >
@@ -211,9 +180,10 @@ const ActivityForm = () => {
                   Activity Name
                 </span>
                 <input
-                  value={addActicity.act_name}
+                  maxLength={25}
+                  value={addActivity.act_name}
                   onChange={(e) =>
-                    setAddActivity({ ...addActicity, act_name: e.target.value })
+                    setAddActivity({ ...addActivity, act_name: e.target.value })
                   }
                   type="name"
                   name="detial"
@@ -227,9 +197,9 @@ const ActivityForm = () => {
                   Description
                 </span>
                 <input
-                  value={addActicity.act_desc}
+                  value={addActivity.act_desc}
                   onChange={(e) =>
-                    setAddActivity({ ...addActicity, act_desc: e.target.value })
+                    setAddActivity({ ...addActivity, act_desc: e.target.value })
                   }
                   type="text"
                   name="detial"
@@ -245,9 +215,9 @@ const ActivityForm = () => {
                   Duration (Min)
                 </span>
                 <input
-                  value={addActicity.duration}
+                  value={addActivity.duration}
                   onChange={(e) =>
-                    setAddActivity({ ...addActicity, duration: e.target.value })
+                    setAddActivity({ ...addActivity, duration: e.target.value })
                   }
                   type="number"
                   name="duration"
@@ -261,10 +231,10 @@ const ActivityForm = () => {
                   Current weight
                 </span>
                 <input
-                  value={addActicity.cur_weight}
+                  value={addActivity.cur_weight}
                   onChange={(e) =>
                     setAddActivity({
-                      ...addActicity,
+                      ...addActivity,
                       cur_weight: e.target.value,
                     })
                   }
@@ -281,9 +251,9 @@ const ActivityForm = () => {
                 </span>
                 <input
                   value={
-                    addActicity.cal_burn === null
+                    addActivity.cal_burn === null
                       ? "0"
-                      : `${addActicity.cal_burn} kcal`
+                      : `${addActivity.cal_burn} kcal`
                   }
                   type="text"
                   name="date"
@@ -298,9 +268,9 @@ const ActivityForm = () => {
                 </span>
                 <input
                   value={
-                    addActicity.kg_burn === null
+                    addActivity.kg_burn === null
                       ? "0"
-                      : `${addActicity.kg_burn} kg`
+                      : `${addActivity.kg_burn} kg`
                   }
                   type="text"
                   name="date"
@@ -335,18 +305,26 @@ const ActivityForm = () => {
           </div>
 
           <div className="absolute w-full h-full bg-black/40 text-white rounded-xl flex flex-col items-center justify-center font-bold">
-            <div className=" mb-1">Activity Type : {type || "Type"}</div>
-            <div className="mb-1">Activity Name : {name || "JSD5"}</div>
-            <div className="mb-1">Time : {time || "0"} Minute</div>
-            <div className="mb-1">Weight : {weight || "0"} KG</div>
+            <div className=" mb-1">
+              Activity Type : {addActivity.act_type || "Type"}
+            </div>
+            <div className="mb-1">
+              Activity Name : {addActivity.act_name || "JSD5"}
+            </div>
+            <div className="mb-1">
+              Time : {addActivity.duration || "0"} Minute
+            </div>
+            <div className="mb-1">
+              Weight : {addActivity.cur_weight || "0"} KG
+            </div>
             <div className=" mb-1 break-words ">Date : {formattedDateTime}</div>
             <div className="mb-1 text-center break-all">
-              Description : {descrition || "Description"}
+              Description : {addActivity.act_desc || "Description"}
             </div>
             <div className="w-full">
               <h2 className="uppercase absolute bottom-1 right-3 underline">
                 <span className="text-[#ff6c3b] underline">Total Burn:</span>{" "}
-                {kcal || 0} kcal / {kilogram || 0} kg
+                {addActivity.cal_burn || 0} kcal / {addActivity.kg_burn || 0} kg
               </h2>
             </div>
           </div>

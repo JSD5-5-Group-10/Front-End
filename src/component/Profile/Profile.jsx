@@ -13,20 +13,20 @@ const Profile = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
   const [pwconfirm, setPwconfirm] = useState("");
-  const [age, setAge] = useState(); // input date
-  const [profile_img, setProfile_img] = useState("");
   const [cover_img, setCover_img] = useState("");
-  const [description, setDescription] = useState("");
   const [edit, setEdit] = useState(true);
-  const [birthday, setBirthday] = useState();
-
+  const [birthday, setBirthday] = useState("");
   const [uplaodProfileimg, setUplaodProfileimg] = useState(null); //  upload pic profile
   const [uploadCover, setUploadCover] = useState(); // upload pic cover
   const [reload, setReload] = useState(!true);
-  // console.log(password);
+  const [editProfile, setEditProfile] = useState({
+    name: "",
+    password: "",
+    age: 0,
+    profile_img: "",
+    description: "",
+  });
 
   // calculate age
   useEffect(() => {
@@ -45,7 +45,10 @@ const Profile = () => {
         setBirthday("");
         return toast.error("Age must not be negative.");
       }
-      setAge(ages);
+      // console.log(ages);
+      if (!isNaN(ages) && ages !== "") {
+        setEditProfile({ ...editProfile, age: ages });
+      }
     };
     calculateAge();
   }, [birthday]);
@@ -63,7 +66,7 @@ const Profile = () => {
         "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
         formData
       );
-      console.log(response.data);
+      // console.log(response.data);
       setCover_img(response.data.url);
     };
     uploadImage();
@@ -73,7 +76,7 @@ const Profile = () => {
   const uploadImages = async (e) => {
     e.preventDefault();
     try {
-      console.log(uplaodProfileimg);
+      // console.log(uplaodProfileimg);
       if (uplaodProfileimg === null) {
         return null;
       }
@@ -84,12 +87,11 @@ const Profile = () => {
         "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
         formData
       );
-      console.log(response.data);
+      // console.log(response.data);
       setUplaodProfileimg(null);
-      setProfile_img(response.data.url);
+      setEditProfile({ ...editProfile, profile_img: response.data.url });
     } catch (error) {
       toast.error("An error occurred while uploading the image:", error);
-      // You can add error handling code here, such as displaying an error message.
     }
   };
 
@@ -101,7 +103,7 @@ const Profile = () => {
       }
       const updateField = {};
       if (cover_img !== "") updateField.cover_img = cover_img;
-      console.log(updateField);
+      // console.log(updateField);
       try {
         const response = await axios.put(
           `https://backend-group10.onrender.com/api/user/update`,
@@ -112,8 +114,8 @@ const Profile = () => {
             },
           }
         );
-        console.log("PUT", response.status);
-        console.log(response);
+        // console.log("PUT", response.status);
+        // console.log(response);
         setReload(!true);
         if (response.status === 200) {
           toast.success("Update successfully.");
@@ -144,7 +146,7 @@ const Profile = () => {
         setData(response.data?.data[0]);
         setReload(true);
       } catch (error) {
-        console.log(error);
+        toast.error(error);
       }
       if (!token) {
         return navigate("/login");
@@ -154,20 +156,24 @@ const Profile = () => {
       fetchData();
     }
   }, [token, reload]);
-
+  console.log(editProfile);
   // put update user
   const saveData = async (e) => {
     e.preventDefault();
-    if (password !== pwconfirm) {
+    if (editProfile.password !== pwconfirm) {
       return toast.error("Passwords do NOT match.");
     }
+    // console.log(editProfile);
     const updateField = {};
-    if (name !== "") updateField.name = name;
-    if (password !== "") updateField.password = password;
-    if (!isNaN(age) && age !== "") updateField.age = parseInt(age);
-    if (profile_img !== "") updateField.profile_img = profile_img;
-    if (description !== "") updateField.description = description;
-    console.log(updateField);
+    if (editProfile.name !== "") updateField.name = editProfile.name;
+    if (editProfile.password !== "")
+      updateField.password = editProfile.password;
+    if (editProfile.age !== "") updateField.age = editProfile.age;
+    if (editProfile.profile_img !== "")
+      updateField.profile_img = editProfile.profile_img;
+    if (editProfile.description !== "")
+      updateField.description = editProfile.description;
+    // console.log(updateField);
     try {
       const response = await axios.put(
         `https://backend-group10.onrender.com/api/user/update`,
@@ -178,16 +184,13 @@ const Profile = () => {
           },
         }
       );
-      console.log("put", response.status);
-      console.log(response);
+      // console.log("put", response.status);
+      // console.log(response);
       if (response.status === 200) {
         toast.success("Update successfully.");
-        setName("");
-        setAge("");
-        setDescription("");
-        setPassword("");
         setPwconfirm("");
         setBirthday("");
+        setEditProfile("");
         setEdit(true);
         setReload(!true);
       }
@@ -218,8 +221,8 @@ const Profile = () => {
           },
         }
       );
-      console.log(response);
-      console.log("DELETE", response.status);
+      // console.log(response);
+      // console.log("DELETE", response.status);
       if (response.status === 200) {
         toast.success("Delete successfully.");
         navigate("/login");
@@ -229,9 +232,9 @@ const Profile = () => {
       toast.error("Failed: " + err.message);
     }
   };
-
+  // setEditProfile({ ...editProfile, age: e.target.value })
   return (
-    <div className="w-full">
+    <div className="w-full dark:bg-gray-600 ">
       <header>
         <div className="relative">
           <img
@@ -241,10 +244,10 @@ const Profile = () => {
           />
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
-            className="bg-[#827BD9] text-white rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
+            className="bg-[#827BD9] text-white text-sm rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
           >
             <input type="file" className="w-0" />
-            Edit Cover Photo
+            Edit Cover
           </label>
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
@@ -257,7 +260,11 @@ const Profile = () => {
           <div>
             <img
               className="rounded-full w-32 h-32 object-cover top-[6rem] left-[1rem] absolute "
-              src={profile_img || data.image?.profile_img || `${profileImage}`}
+              src={
+                editProfile.profile_img ||
+                data.image?.profile_img ||
+                `${profileImage}`
+              }
               alt="profileImage"
             />
           </div>
@@ -296,8 +303,10 @@ const Profile = () => {
                   Full name
                 </span>
                 <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={editProfile.name}
+                  onChange={(e) =>
+                    setEditProfile({ ...editProfile, name: e.target.value })
+                  }
                   type="text"
                   name="name"
                   className="px-2 w-full rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -337,8 +346,13 @@ const Profile = () => {
                   Information
                 </span>
                 <input
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={editProfile.description}
+                  onChange={(e) =>
+                    setEditProfile({
+                      ...editProfile,
+                      description: e.target.value,
+                    })
+                  }
                   type="text"
                   name="description"
                   className="w-full bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -349,8 +363,13 @@ const Profile = () => {
                   Password
                 </span>
                 <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={editProfile.password}
+                  onChange={(e) =>
+                    setEditProfile({
+                      ...editProfile,
+                      password: e.target.value,
+                    })
+                  }
                   type="password"
                   name="password"
                   className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
@@ -389,8 +408,11 @@ const Profile = () => {
       ) : null}
 
       {/* Information */}
-      <section className="flex flex-col border my-2 p-5 mx-2 h-[150px] justify-center rounded-md">
+      <section className="flex flex-col border my-2 p-5 md:h-[200px] justify-center rounded-md">
         <div>
+          <p className="my-2 text-xl font-bold">
+            User Email: <span className="font-normal">{data?.email}</span>
+          </p>
           <p className="my-2 text-xl font-bold">
             Age: <span className="font-normal">{data?.age}</span>
           </p>
@@ -398,16 +420,28 @@ const Profile = () => {
             Information:{" "}
             <span className="font-normal">{data?.description}</span>
           </p>
+          <p className="my-2 text-lg font-bold">
+            Member since.:{" "}
+            <span className="font-normal">
+              {new Date(data?.created_at).toLocaleString()}
+            </span>
+          </p>
+          <p className="my-2 text-lg font-bold">
+            Latest update:{" "}
+            <span className="font-normal">
+              {new Date(data?.updated_at).toLocaleString()}
+            </span>
+          </p>
         </div>
       </section>
 
       {/* Chart */}
-      <div className="xl:flex gap-4 my-5 justify-around">
-        <div className="my-2">
-          <Chartsbar />
-        </div>
+      <div className="min-[1280px]:flex gap-4 my-5 justify-around">
         <div className="my-2">
           <PieChartWithCenterLabel />
+        </div>
+        <div className="my-2">
+          <Chartsbar />
         </div>
       </div>
       <ToastContainer />

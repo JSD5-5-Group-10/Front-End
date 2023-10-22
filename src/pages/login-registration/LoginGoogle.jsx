@@ -5,6 +5,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authActions } from "../../redux/store";
+import { ToastContainer, toast } from "react-toastify";
 
 export const LoginGoogle = () => {
   const [token, setToken] = useState();
@@ -32,14 +33,16 @@ export const LoginGoogle = () => {
         );
         // console.log(response);
         if (response.status === 200) {
+          toast.success("Login Success");
           dispatch(authActions.login());
           localStorage.setItem("token", response.data.token);
           navigate("/");
-        } else {
-          console.log("Login failed");
         }
       } catch (error) {
-        console.error("Error during login:", error);
+        toast.error(
+          "Error during login contact admin thorexercisetracking@gmail.com :",
+          error
+        );
       }
     };
     Login();
@@ -60,6 +63,7 @@ export const LoginGoogle = () => {
 
         <span>Login with Google</span>
       </button>
+      <ToastContainer />
     </div>
   );
 };
