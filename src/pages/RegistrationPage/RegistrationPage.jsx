@@ -3,14 +3,12 @@ import { Registration } from "../login-registration/Registration";
 
 export const RegistrationPage = () => {
   return (
-    <div className="md:flex">
+    <div className="flex justify-center">
       {/* <div>
         <Navbar />
       </div> */}
 
-      <div className="mx-auto">
-        <Registration />
-      </div>
+      <Registration />
     </div>
   );
 };
