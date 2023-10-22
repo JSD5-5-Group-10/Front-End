@@ -12,7 +12,7 @@ export default function PieChartWithCenterLabel() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://back-end-tp-test.onrender.com/api/activity/chart",
+          "https://backend-group10.onrender.com/api/activity/chart",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ export default function PieChartWithCenterLabel() {
 
   const size = {
     width: 400,
-    height: 300,
+    height: 250,
   };
 
   const StyledText = styled("text")(({ theme }) => ({
@@ -88,16 +88,16 @@ export default function PieChartWithCenterLabel() {
   );
 
   return (
-    <div className="w-[450px] m-auto py-3 item-center rounded shadow-lg border-2 ">
+    <div className="w-[400px] sm:w-[450px] h-[400px] justify-center pt-12 m-auto py-3 item-center rounded shadow-lg border-2">
       <div className="flex justify-center items-center">
-        <h1 className="text-center mr-1 font-bold text-xl">Calories Burned </h1>
+        <h1 className="text-center mr-1 mb-5 font-bold text-xl">Calories Burned </h1>
         <img
           className="w-[22px]"
           src="https://cdn-icons-png.flaticon.com/512/7246/7246702.png"
           alt=""
         />
       </div>
-      <PieChart series={[{ data, innerRadius: 90 }]} {...size}>
+      <PieChart series={[{ data, innerRadius: 80 }]} {...size}>
         <PieCenterLabel>Calories : {sumCalories.toFixed(2)}</PieCenterLabel>
       </PieChart>
     </div>

@@ -8,57 +8,6 @@ import Arabic from "./assets/Arabic.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-// const test = [
-//   {
-//     id: 1,
-//     type: "Run",
-//     name: "อยากผอม",
-//     descrition: "ออกกำลังกายกันเถอะ",
-//     startdate: "2023-09-01",
-//     enddate: "2023-09-03",
-//     time: 60,
-//     weight: 60,
-//     icon: <BiRun size={100} />,
-//     img: Running,
-//   },
-//   {
-//     id: 2,
-//     type: "Arabic",
-//     name: "อยากผอม",
-//     descrition: "ออกกำลังกายกันเถอะ",
-//     startdate: "2023-09-01",
-//     enddate: "2023-09-03",
-//     time: 60,
-//     weight: 60,
-//     icon: <GiJumpingRope size={100} />,
-//     img: Arabic,
-//   },
-//   {
-//     id: 3,
-//     type: "Yoga",
-//     name: "อยากผอม",
-//     descrition: "ออกกำลังกายกันเถอะ",
-//     startdate: "2023-09-01",
-//     enddate: "2023-09-03",
-//     time: 60,
-//     weight: 60,
-//     icon: <GrYoga size={100} />,
-//     img: Imgyoga,
-//   },
-//   {
-//     id: 4,
-//     type: "Yoga",
-//     name: "อยากผอม",
-//     descrition: "ออกกำลังกายกันเถอะ",
-//     startdate: "2023-09-01",
-//     enddate: "2023-09-03",
-//     time: 60,
-//     weight: 60,
-//     icon: <GrYoga size={100} />,
-//     img: Imgyoga,
-//   },
-// ];
-
 const IndexActivity = () => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
@@ -68,7 +17,7 @@ const IndexActivity = () => {
     const fetchData = async () => {
       try {
         const userActivity = await axios.get(
-          "https://back-end-tp-test.onrender.com/api/activity",
+          "https://backend-group10.onrender.com/api/activity",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -91,7 +40,6 @@ const IndexActivity = () => {
   }, [token]);
 
   console.log(token);
-
   console.log(data);
   return (
     <div>

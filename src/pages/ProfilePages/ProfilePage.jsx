@@ -14,7 +14,7 @@ export const ProfilePage = () => {
   }, [token]);
 
   return (
-    <div className="md:flex mx-auto">
+    <div className="md:flex mx-auto w-auto min-[1380px]:w-[1380px]">
       <div className="absolute z-50 md:hidden">
         <Navbar />
       </div>

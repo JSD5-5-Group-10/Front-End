@@ -2,6 +2,7 @@ import React from "react";
 import BasicStacking from "../component/dashboard/BasicStacking";
 import StraightAnglePieChart from "../component/dashboard/StraightAnglePieChart";
 import PieChartWithCenterLabel from "../component/dashboard/PieChartWithCenterLabel";
+import HorizontalBars from "../component/dashboard/auyDash";
 import { Chartsbar } from "../component/dashboard/Chartsbar";
 import Navbar from "../component/Navbar";
 
@@ -20,6 +21,8 @@ export const Dashboard = () => {
           <StraightAnglePieChart />
           <Chartsbar />
           <BasicStacking />
+
+          <HorizontalBars />
         </div>
       </div>
     </div>

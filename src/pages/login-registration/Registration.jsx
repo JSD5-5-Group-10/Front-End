@@ -1,4 +1,5 @@
 import axios from "axios";
+import bglogo from "./assets/bglogin.svg";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -41,7 +42,7 @@ export const Registration = () => {
       if (password.length >= 8) {
         try {
           const User = await axios.post(
-            "https://back-end-tp-test.onrender.com/api/user/register",
+            "https://backend-group10.onrender.com/api/user/register",
             {
               email,
               name,
@@ -68,13 +69,11 @@ export const Registration = () => {
 
   return (
     <>
-      <div className="flex h-screen ">
-        <div className=" w-2/3 m-auto hidden lg:inline">
-          <img
-            className="rounded-xl shadow-lg border-2"
-            src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-            alt=""
-          />
+      <div className="flex  h-screen ">
+        <div className=" w-2/3  m-auto hidden ab lg:inline">
+          <div className="flex h-[600px] ">
+            <img className="bg-cover" src={bglogo} alt="bg-logo" />
+          </div>
         </div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -83,7 +82,7 @@ export const Registration = () => {
             </h2>
           </div>
 
-          <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
+          <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
@@ -98,7 +97,7 @@ export const Registration = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
+                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
                   />
                 </div>
               </div>
@@ -115,7 +114,7 @@ export const Registration = () => {
                     type="text"
                     required
                     autoComplete="fullname"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -140,7 +139,7 @@ export const Registration = () => {
                     type="password"
                     required
                     autoComplete="current-password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -162,7 +161,7 @@ export const Registration = () => {
                     type="password"
                     required
                     autoComplete="current-password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
