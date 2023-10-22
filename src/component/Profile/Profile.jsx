@@ -244,14 +244,14 @@ const Profile = () => {
           />
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
-            className="bg-[#827BD9] text-white text-sm rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
+            className="bg-[#827BD9] cursor-pointer text-white text-sm rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
           >
             <input type="file" className="w-0" />
             Edit Cover
           </label>
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
-            className="bg-transparent text-white rounded-lg p-[5px] top-[10rem] right-[1rem] absolute md:hidden "
+            className="bg-transparent cursor-pointer text-white rounded-lg p-[5px] top-[10rem] right-[1rem] absolute md:hidden "
           >
             <BiEdit size={25} />
             <input type="file" className="w-0" />
@@ -273,13 +273,13 @@ const Profile = () => {
         <div className="flex bg-white ml-32 mt-1 ">
           <button
             onClick={() => setEdit(!edit)}
-            className="bg-[#827BD9] text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:inline hidden"
+            className="bg-[#827BD9] cursor-pointer text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:inline hidden"
           >
             Edit Profile
           </button>
           <button
             onClick={() => setEdit(!edit)}
-            className="bg-[#827BD9] text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:hidden"
+            className="bg-[#827BD9] cursor-pointer text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:hidden"
           >
             <FaUserEdit size={20} />
           </button>
