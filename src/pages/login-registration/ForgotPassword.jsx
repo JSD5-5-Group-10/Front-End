@@ -50,7 +50,7 @@ export const ForgotPassword = () => {
 
   return (
     <div className="flex justify-center ">
-      <div className="flex justify-center items-center h-screen  bg-white min-w-[400px] max-w-[700px]">
+      <div className="flex justify-center items-center h-screen  dark:text-cyan-50 text-black dark:bg-gray-800 bg-white min-w-[400px] max-w-[700px]">
         <div className="w-3/4 mt-10 ">
           <div>
             <h4 className="text-2xl  my-5 font-bold">Forgot Password?</h4>
@@ -68,7 +68,7 @@ export const ForgotPassword = () => {
               name="email"
               value={email}
               required
-              className="form-control border my-10 mt-20 rounded-md w-full p-4"
+              className="form-control bg-white text-black dark:bg-gray-800 dark:text-cyan-50 border my-10 mt-20 rounded-md w-full p-4"
               onChange={(e) => setEmail(e.target.value)}
             />
             {!toggle ? (
@@ -80,7 +80,7 @@ export const ForgotPassword = () => {
                 Send
               </button>
             ) : (
-              <p className="">อย่ากดซ้ำนะจ๊ะ รอ 30 วิ</p>
+              <p className="text-center">Please wait for 3 second...</p>
             )}
           </form>
           <div className="mt-40 flex justify-center">
