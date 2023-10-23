@@ -115,7 +115,7 @@ export default function Navbar() {
           onClick={toggleSidebar}
           className={`${
             isDesktop ? "md:hidden" : "block"
-          } text-black dark:text-black`}
+          } text-black dark:text-indigo-600 `}
         >
           <AiOutlineAlignLeft size={40} />
         </button>

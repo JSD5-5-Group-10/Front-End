@@ -8,35 +8,6 @@ import thaiboxing from "./assets/boxinglogo.png";
 import yoga from "./assets/yogalogo.png";
 import training from "./assets/weightlogo.png";
 export const ActivityDisplay = () => {
-  // เรียกใช้ calculateDays เมื่อ startDate หรือ endDate เปลี่ยนแปลง
-  // useEffect(() => {
-  //   calculateDays();
-  // }, [startDate, endDate]);
-
-  // const calculateDays = () => {
-  //   if (startDate && endDate) {
-  //     const start = new Date(startDate);
-  //     const end = new Date(endDate);
-  //     const daysDifference = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-  //     setNumberOfDays(daysDifference + 1);
-
-  //     // Create an array of dates within the range
-  //     const range = [];
-  //     for (let i = 0; i <= daysDifference; i++) {
-  //       const currentDate = new Date(start);
-  //       currentDate.setDate(currentDate.getDate() + i);
-  //       range.push(currentDate.toDateString());
-  //     }
-  //     setDateRange(range);
-
-  //     // Initialize selected dates to all false
-  //     setSelectedDates(new Array(range.length).fill(false));
-  //   } else {
-  //     setNumberOfDays(0);
-  //     setDateRange([]);
-  //     setSelectedDates([]);
-  //   }
-  // };
   const [type, setType] = useState("");
 
   const [time, setTime] = useState(0);
@@ -57,6 +28,7 @@ export const ActivityDisplay = () => {
       Muaythai: 6,
       Training: 8,
     };
+    console.log(totalkcal);
 
     if (type in METs) {
       const met = METs[type];
@@ -94,15 +66,139 @@ export const ActivityDisplay = () => {
   // console.log(totalkcal);
   return (
     <>
-      <div className="flex items-center justify-center ">
-        <div className="flex  w-full max-w-[1360px]">
-          <div className="mr-10 z-50">
+      <div className="flex items-center justify-center">
+        <div className="flex w-full max-w-[1360px] bg-white text-black dark:bg-gray-800 dark:text-cyan-50 ">
+          {/* nav */}
+          <div className="absolute z-50 md:hidden">
             <Navbar />
           </div>
+          <div className="hidden md:inline">
+            <Navbar />
+          </div>
+
           <div className="flex justify-center items-center w-full">
             <div className="flex flex-col gap-10 justify-center items-center my-20 xl:flex xl:flex-row">
+              {/* Form */}
+              <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
+                <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
+                  Activity Form
+                </h1>
+                <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+                  <form onSubmit={calculateActivity} className="flex">
+                    <div className="space-y-6">
+                      {/* activity type */}
+                      <div className="flex leading-10">
+                        <label
+                          htmlFor="type"
+                          className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500"
+                        >
+                          Activity Type
+                        </label>
+                        <select
+                          name="type"
+                          onChange={(e) => setType(e.target.value)}
+                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50  appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                        >
+                          <option
+                            className="text-[#131c85] dark:text-cyan-50 "
+                            value=""
+                          >
+                            Please Select Activity type
+                          </option>
+                          <option
+                            className="text-[#131c85] dark:text-cyan-50 "
+                            value="Run"
+                          >
+                            Run
+                          </option>
+                          <option
+                            className="text-[#131c85] dark:text-cyan-50 "
+                            value="Yoga"
+                          >
+                            Yoga
+                          </option>
+                          <option
+                            className="text-[#131c85] dark:text-cyan-50 "
+                            value="Aerobics"
+                          >
+                            Aerobics
+                          </option>
+                          <option
+                            className="text-[#131c85] dark:text-cyan-50 "
+                            value="KitaMuaythai"
+                          >
+                            Kita Muaythai
+                          </option>
+                          <option
+                            className="text-[#131c85] dark:text-cyan-50"
+                            value="Training"
+                          >
+                            Weight Training
+                          </option>
+                        </select>
+                      </div>
+
+                      {/* descrition */}
+                      <label className="flex rounded-lg leading-10">
+                        <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                          Days
+                        </span>
+                        <input
+                          value={numberOfDays}
+                          onChange={(e) => setNumberOfDays(e.target.value)}
+                          type="number"
+                          name="detial"
+                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                          placeholder="Day"
+                          maxLength="50"
+                          rows="2"
+                        />
+                      </label>
+                      {/* duration  */}
+                      <label className="flex rounded-lg leading-10">
+                        <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                          Duration (Min)
+                        </span>
+                        <input
+                          value={time}
+                          onChange={(e) => setTime(e.target.value)}
+                          type="number"
+                          name="duration"
+                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                          placeholder="Minute"
+                        />
+                      </label>
+                      {/* Weight */}
+                      <label className="flex rounded-lg leading-10">
+                        <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                          Current weight
+                        </span>
+                        <input
+                          value={weight}
+                          onChange={(e) => setWeight(e.target.value)}
+                          type="number"
+                          name="weight"
+                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50  [&::-webkit-inner-spin-button]:appearance-none px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                          placeholder="Kilogram"
+                        />
+                      </label>
+
+                      <div className="flex justify-end">
+                        <button
+                          type="submit"
+                          className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          CONFIRM
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <ToastContainer />
+              </div>
+
               {/* display activitycard before submit */}
-              <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+              <div className="w-[400px] flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
                 <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
                   CAL Calculator
                 </h1>
@@ -128,8 +224,9 @@ export const ActivityDisplay = () => {
                     </div>
                     <div className="w-full">
                       <h2 className="uppercase absolute bottom-1 right-3 ">
-                        <span className="text-lg">
-                          TOTAL BURN : {kcal || 0} KCAL / {allburnkg || 0} KG
+                        <span className="text-lg font-bold">
+                          TOTAL BURN : {totalkcal || 0} KCAL / {allburnkg || 0}{" "}
+                          KG
                         </span>
                       </h2>
                     </div>
@@ -144,152 +241,10 @@ export const ActivityDisplay = () => {
                 </div>
                 <div className="mt-4">
                   <h1 className="text-xs text-center text-red-500">
-                    ***โปรแกรมนี้คำนวนโดย METs คุณควรออกกำลังกาย และ
-                    ควบคุมอาหารไปพร้อมๆกัน***
+                    ***This program is calculated by METs, you should exercise
+                    and Control your food at the same time.***
                   </h1>
                 </div>
-              </div>
-
-              {/* Form */}
-              <div className="flex flex-col items-center mt-10 m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
-                <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
-                  Activity Form
-                </h1>
-                <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-                  <form onSubmit={calculateActivity} className="flex">
-                    <div className="space-y-6">
-                      {/* activity type */}
-                      <div className="flex leading-10">
-                        <label
-                          htmlFor="type"
-                          className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500"
-                        >
-                          Activity Type
-                        </label>
-                        <select
-                          name="type"
-                          onChange={(e) => setType(e.target.value)}
-                          className="appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                        >
-                          <option className="text-[#131c85]" value="">
-                            Please Select Activity type
-                          </option>
-                          <option className="text-[#131c85]" value="Run">
-                            Run
-                          </option>
-                          <option className="text-[#131c85]" value="Yoga">
-                            Yoga
-                          </option>
-                          <option className="text-[#131c85]" value="Aerobics">
-                            Aerobics
-                          </option>
-                          <option
-                            className="text-[#131c85]"
-                            value="KitaMuaythai"
-                          >
-                            Kita Muaythai
-                          </option>
-                          <option className="text-[#131c85]" value="Training">
-                            Weight Training
-                          </option>
-                        </select>
-                      </div>
-                      {/* activity-name */}
-                      {/* <label className="flex rounded-lg leading-10">
-                  <span className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Activity Name
-                  </span>
-                  <input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    type="name"
-                    name="detial"
-                    className="px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                    placeholder="Activity Name"
-                  />
-                </label> */}
-                      {/* descrition */}
-                      <label className="flex rounded-lg leading-10">
-                        <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                          Days
-                        </span>
-                        <input
-                          value={numberOfDays}
-                          onChange={(e) => setNumberOfDays(e.target.value)}
-                          type="number"
-                          name="detial"
-                          className="[&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                          placeholder="Day"
-                          maxLength="50"
-                          rows="2"
-                        />
-                      </label>
-                      {/* duration  */}
-                      <label className="flex rounded-lg leading-10">
-                        <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                          Duration (Min)
-                        </span>
-                        <input
-                          value={time}
-                          onChange={(e) => setTime(e.target.value)}
-                          type="number"
-                          name="duration"
-                          className="[&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                          placeholder="Minute"
-                        />
-                      </label>
-                      {/* Weight */}
-                      <label className="flex rounded-lg leading-10">
-                        <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                          Current weight
-                        </span>
-                        <input
-                          value={weight}
-                          onChange={(e) => setWeight(e.target.value)}
-                          type="number"
-                          name="weight"
-                          className="[&::-webkit-inner-spin-button]:appearance-none px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                          placeholder="Kilogram"
-                        />
-                      </label>
-                      {/* Calories Burned  */}
-                      {/* <label className="flex rounded-lg leading-10">
-                  <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Calories Burn
-                  </span>
-                  <input
-                    value={kcal === null ? "0" : "cal"}
-                    type="text"
-                    name="date"
-                    className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                    disabled
-                  />
-                </label> */}
-                      {/* kilogram bure */}
-                      {/* <label className="flex rounded-lg leading-10">
-                  <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
-                    Kilogram Burn
-                  </span>
-                  <input
-                    value={kcal === null ? "0" : "kilo"}
-                    type="text"
-                    name="date"
-                    className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
-                    disabled
-                  />
-                </label> */}
-                      <div className="flex justify-end">
-                        <button
-                          type="submit"
-                          className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        >
-                          CONFIRM
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <ToastContainer />
               </div>
             </div>
           </div>
