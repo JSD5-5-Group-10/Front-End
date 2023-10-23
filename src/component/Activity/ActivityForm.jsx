@@ -118,8 +118,8 @@ const ActivityForm = () => {
       const kgburn = kcal / 7700;
       setAddActivity({
         ...addActivity,
-        cal_burn: kcal.toFixed(2),
-        kg_burn: kgburn.toFixed(2),
+        cal_burn: parseFloat(kcal.toFixed(2)),
+        kg_burn: parseFloat(kgburn.toFixed(2)),
       });
     }
     setChange();
@@ -128,6 +128,8 @@ const ActivityForm = () => {
   useEffect(() => {
     calculateActivity();
   }, [addActivity.act_type, addActivity.duration, addActivity.cur_weight]);
+
+  console.log(addActivity);
 
   return (
     <div className="flex min-h-screen gap-5">
@@ -232,7 +234,10 @@ const ActivityForm = () => {
                 <input
                   value={addActivity.duration}
                   onChange={(e) =>
-                    setAddActivity({ ...addActivity, duration: e.target.value })
+                    setAddActivity({
+                      ...addActivity,
+                      duration: parseInt(e.target.value),
+                    })
                   }
                   type="number"
                   name="duration"
@@ -250,7 +255,7 @@ const ActivityForm = () => {
                   onChange={(e) =>
                     setAddActivity({
                       ...addActivity,
-                      cur_weight: e.target.value,
+                      cur_weight: parseInt(e.target.value),
                     })
                   }
                   type="number"
