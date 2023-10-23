@@ -23,6 +23,7 @@ import { AboutUs } from "./component/AboutUs/AboutUs.jsx";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { DarkModeProvider } from "./component/DarkmodeContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -73,12 +74,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <GoogleOAuthProvider clientId="985286034044-gc8s0cdcqbugs4dmpnumtjtei0559nrv.apps.googleusercontent.com">
-    <Provider store={store}>
-      <StyledEngineProvider injectFirst>
-        <React.StrictMode>
-          <RouterProvider router={router} />
-        </React.StrictMode>
-      </StyledEngineProvider>
-    </Provider>
+    <DarkModeProvider>
+      <Provider store={store}>
+        <StyledEngineProvider injectFirst>
+          <React.StrictMode>
+            <RouterProvider router={router} />
+          </React.StrictMode>
+        </StyledEngineProvider>
+      </Provider>
+    </DarkModeProvider>
   </GoogleOAuthProvider>
 );

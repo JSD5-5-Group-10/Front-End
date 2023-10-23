@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="w-full">
           <button
             onClick={toggleDropdown}
-            className=" text-[15px] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600"
+            className="text-[15px] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600"
           >
             Exercise Content
           </button>
@@ -91,13 +91,13 @@ export default function Navbar() {
               <Link to="/yogaPage">Yoga</Link>
             </li>
             <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
-              <Link to="/runningPage">running</Link>
+              <Link to="/runningPage">Running</Link>
             </li>
             <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/thaiBoxingPage">Thai Boxing</Link>
             </li>
             <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
-              <Link to="/weightPage">weight training</Link>
+              <Link to="/weightPage">Weight Training</Link>
             </li>
             <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/aerobicsPage">Aerobics</Link>
@@ -109,22 +109,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="min-h-screen">
       <div>
         <button
           onClick={toggleSidebar}
-          className={`${isDesktop ? "md:hidden" : "block"} text-black`}
+          className={`${
+            isDesktop ? "md:hidden" : "block"
+          } text-black dark:text-black`}
         >
           <AiOutlineAlignLeft size={40} />
         </button>
         <div
           className={`sidebar ${isOpen ? "md:w-1/5 sm:1/3" : "hidden"}  
-            ${isDesktop ? "md:block md:w-[250px]" : "hidden"} 
-            sidebar md:sticky h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
+            ${isDesktop ? "md:block w-[250px]" : "hidden"} 
+            sidebar md:sticky min-h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
         >
           <button
             onClick={toggleSidebar}
-            className={`${isDesktop ? "md:hidden" : "block"} text-black`}
+            className={`${
+              isDesktop ? "md:hidden" : "block"
+            } text-black dark:text-cyan-50`}
           >
             <AiOutlineAlignLeft size={40} />
           </button>
@@ -138,7 +142,7 @@ export default function Navbar() {
                     </button> */}
             <button
               onClick={handleLogout}
-              className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+              className={` h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
             >
               Logout
             </button>

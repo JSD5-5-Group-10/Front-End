@@ -69,6 +69,10 @@ const IndexActivity = ({ act_type }) => {
 
   console.log(token);
   console.log(data);
+
+  const img1 =
+    "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_1280.jpg";
+  const img2 = "https://watermark.lovepik.com/photo/40009/6649.jpg_wh1200.jpg";
   return (
     <div>
       <div className=" lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
@@ -148,7 +152,16 @@ const IndexActivity = ({ act_type }) => {
 
               <div
                 className=" w-full flex flex-col justify-center items-center bg-white text-black rounded-2xl hover:bg-[#827BD9] hover:text-white bg-[length:400px] duration-200 "
-                style={{ backgroundImage: `url(${item.img})` }}
+                // style={{ backgroundImage: `url(${item.img})` }}
+                style={{
+                  backgroundImage: `url(${
+                    item.act_type === "Run"
+                      ? img1
+                      : item.act_type === "Yoga"
+                      ? img2
+                      : null
+                  })`,
+                }}
               ></div>
             </div>
           );

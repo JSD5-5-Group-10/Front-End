@@ -3,6 +3,7 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function PieChartWithCenterLabel() {
   const [dataSum, setDataSum] = useState([]);
@@ -20,12 +21,12 @@ export default function PieChartWithCenterLabel() {
           }
         );
         if (!response) {
-          return console.log("error");
+          return toast.error("error");
         }
         // console.log(response.data.data);
         setDataSum(response.data?.data);
       } catch (error) {
-        console.log(error);
+        toast.error(error);
       }
       if (!token) {
         return navigate("/login");
@@ -88,18 +89,24 @@ export default function PieChartWithCenterLabel() {
   );
 
   return (
-    <div className="w-[400px] sm:w-[450px] h-[400px] justify-center pt-12 m-auto py-3 item-center rounded shadow-lg border-2">
+    <div className="w-[400px] dark:border-gray-700  sm:w-[450px] h-[380px] justify-center m-auto py-5 item-center rounded shadow-lg border-2 dark:border-1 dark:bg-gray-800 dark:text-cyan-50">
+      <ToastContainer />
       <div className="flex justify-center items-center">
-        <h1 className="text-center mr-1 mb-5 font-bold text-xl">Calories Burned </h1>
+        <h1 className="text-center mr-1 mb-5 font-bold text-2xl text-black dark:text-cyan-50">
+          Calories Burned{" "}
+        </h1>
         <img
-          className="w-[22px]"
+          className="w-[22px] mb-5"
           src="https://cdn-icons-png.flaticon.com/512/7246/7246702.png"
           alt=""
         />
       </div>
-      <PieChart series={[{ data, innerRadius: 80 }]} {...size}>
-        <PieCenterLabel>Calories : {sumCalories.toFixed(2)}</PieCenterLabel>
-      </PieChart>
+      <div className="bg-white py-5 m-2 rounded-md">
+        {" "}
+        <PieChart series={[{ data, innerRadius: 80 }]} {...size}>
+          <PieCenterLabel>Calories : {sumCalories.toFixed(2)}</PieCenterLabel>
+        </PieChart>
+      </div>
     </div>
   );
 }
