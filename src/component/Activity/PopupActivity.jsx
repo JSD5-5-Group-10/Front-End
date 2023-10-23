@@ -167,6 +167,7 @@ const PopupActivity = ({ item }) => {
                   Activity Name
                 </span>
                 <input
+                  maxLength={20}
                   value={activityData.act_name}
                   onChange={(e) =>
                     setActivityData({
@@ -197,7 +198,7 @@ const PopupActivity = ({ item }) => {
                   name="detial"
                   className="px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Descrition"
-                  maxLength="50"
+                  maxLength={30}
                   rows="2"
                 />
               </label>

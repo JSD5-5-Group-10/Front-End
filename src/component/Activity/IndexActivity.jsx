@@ -19,7 +19,7 @@ const IndexActivity = ({ act_type }) => {
     const fetchData = async () => {
       try {
         const userActivity = await axios.get(
-          `https://backend-group10.onrender.com/api/activity?_limit=3&_page=${currentPage}`,
+          `https://backend-group10.onrender.com/api/activity`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -278,12 +278,14 @@ const IndexActivity = ({ act_type }) => {
                     {item.act_type} {index + 1}
                   </span>
                 </div>
-                <div className="mb-1 pr-20 mr-15">Name : {item.act_name}</div>
+                <div className="mb-1 pr-20 mr-15 break-all text-center">
+                  Name : {item.act_name}
+                </div>
                 <div className="text-xl mb-1 font-medium  pr-20 mr-15">
                   {item.duration} mins
                 </div>
 
-                <div className="group hidden group-hover:inline-flex lg:inline-flex pr-20 mr-15">
+                <div className="group hidden group-hover:inline-flex lg:inline-flex pr-20 mr-15 break-all text-center">
                   Description : {item.act_desc}
                 </div>
                 <div className="w-full">
