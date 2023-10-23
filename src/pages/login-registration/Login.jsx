@@ -54,8 +54,8 @@ export const Login = () => {
   // console.log(email);
   // console.log(password);
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex w-[1360px]  flex-col md:flex">
+    <div className="flex items-center justify-center dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
+      <div className="flex w-[1360px] flex-col md:flex">
         <NavbarLogin />
         <div className="mx-auto">
           <div className="flex mt-20 h-screen">
@@ -73,19 +73,19 @@ export const Login = () => {
               </div>
 
               <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
-                <h2 className="mb-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                <h2 className="mb-10 dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                   Login to your account
                 </h2>
                 <form
                   onSubmit={handleLogin}
-                  className="space-y-4"
+                  className="space-y-4 dark:text-cyan-50 text-black"
                   action="#"
                   method="POST"
                 >
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm dark:text-cyan-50 text-black font-medium leading-6 "
                     >
                       Email address
                     </label>
@@ -98,7 +98,7 @@ export const Login = () => {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -107,7 +107,7 @@ export const Login = () => {
                     <div className="flex items-center justify-between">
                       <label
                         htmlFor="password"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="block text-sm dark:text-cyan-50 text-black font-medium leading-6 "
                       >
                         Password
                       </label>
@@ -129,7 +129,7 @@ export const Login = () => {
                         type="password"
                         autoComplete="current-password"
                         required
-                        className="block w-full dark:text-cyan-50 rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>

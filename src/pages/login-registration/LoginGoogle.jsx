@@ -22,8 +22,8 @@ export const LoginGoogle = () => {
     const Login = async () => {
       try {
         if (!token) {
-          console.log("User is not defined");
-          return;
+          // console.log("User is not defined");
+          return null;
         }
         const response = await axios.post(
           "https://backend-group10.onrender.com/api/user/loginGoogle",
@@ -52,7 +52,7 @@ export const LoginGoogle = () => {
     <div>
       <button
         onClick={() => login()}
-        className="mx-auto px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700  hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150"
+        className="mx-auto px-4 py-2 border flex gap-2 border-slate-200 dark:border-cyan-50 dark:text-cyan-50  rounded-lg text-slate-700  hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150"
       >
         <img
           className="w-6 h-6"

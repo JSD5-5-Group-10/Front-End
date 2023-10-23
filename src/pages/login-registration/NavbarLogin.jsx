@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { ToggleDarkmode } from "../../component/ToggleDarkmode";
 const NavbarLogin = () => {
   return (
     <div className="navbar bg-[#8278d9] max-w-[1360px] fixed rounded-b-lg shadow-2xl">
@@ -8,6 +8,9 @@ const NavbarLogin = () => {
         <Link to="/" className="btn btn-ghost normal-case text-white text-xl">
           Thor Exercise Tracking
         </Link>
+      </div>
+      <div>
+        <ToggleDarkmode />
       </div>
       <div className="flex-none">
         <ul className="hidden lg:menu lg:menu-horizontal text-white px-1">
