@@ -69,7 +69,7 @@ export const WeightLossSimulator = () => {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="flex  w-full max-h-[1000px] max-w-[1360px] bg-white text-black dark:bg-gray-800 dark:text-cyan-50">
+      <div className="flex  w-full  max-w-[1360px] bg-white text-black dark:bg-gray-800 dark:text-cyan-50">
         {/* nav */}
         <div className="absolute z-50 md:hidden">
           <Navbar />

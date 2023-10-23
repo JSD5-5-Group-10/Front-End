@@ -81,7 +81,7 @@ export const Registration = () => {
   };
 
   return (
-    <div className="w-[1360px]">
+    <div className="w-[1360px] dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
       <NavbarLogin />
       <div className="flex justify-center mt-20 items-center h-screen ">
         <div className=" w-1/2  m-auto hidden ab lg:inline">
@@ -92,7 +92,7 @@ export const Registration = () => {
         <div className="flex min-h-full w-[300px] flex-1 flex-col justify-center items-center lg:items-start px-6 py-12 lg:px-8 ">
           <div className="w-[400px]">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-              <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              <h2 className="mt-3 dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 REGISTER
               </h2>
             </div>
@@ -102,7 +102,7 @@ export const Registration = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm dark:text-cyan-50 font-medium leading-6 text-gray-900"
                   >
                     Email address
                   </label>
@@ -115,14 +115,14 @@ export const Registration = () => {
                       }
                       type="email"
                       autoComplete="email"
-                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 "
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                     />
                   </div>
                 </div>
                 <div>
                   <label
                     htmlFor="fullname"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block dark:text-cyan-50 text-sm font-medium leading-6 text-gray-900"
                   >
                     Fullname
                   </label>
@@ -135,7 +135,7 @@ export const Registration = () => {
                       type="text"
                       required
                       autoComplete="fullname"
-                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -144,12 +144,12 @@ export const Registration = () => {
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="password"
-                      className="flex text-sm font-medium leading-6 text-gray-900"
+                      className="flex text-sm dark:text-cyan-50 font-medium leading-6 text-gray-900"
                     >
                       Password{" "}
                       {register.password.length < 8 && (
-                        <p className="text-red-600">
-                          : ต้องมากกว่า 8 ตัวอักขละนารูโต๊ะะ!
+                        <p className="text-red-600 dark:text-red-400">
+                          : please enter 8 characters.
                         </p>
                       )}
                     </label>
@@ -163,7 +163,7 @@ export const Registration = () => {
                       type="password"
                       required
                       autoComplete="current-password"
-                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -171,11 +171,13 @@ export const Registration = () => {
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="repassword"
-                      className="flex text-sm font-medium leading-6 text-gray-900"
+                      className="flex text-sm dark:text-cyan-50 font-medium leading-6 text-gray-900"
                     >
                       Confirm Password{" "}
                       {register.password != register.pwConfirm && (
-                        <p className="text-red-600">: ใส่รหัสไม่ตรงกัน </p>
+                        <p className="text-red-600 dark:text-red-400">
+                          : password not match.{" "}
+                        </p>
                       )}
                     </label>
                   </div>
@@ -188,7 +190,7 @@ export const Registration = () => {
                       type="password"
                       required
                       autoComplete="current-password"
-                      className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -223,7 +225,7 @@ export const Registration = () => {
 
               {/* <Image cloudName="dvktdqeof" publicId="" /> */}
 
-              <p className="mt-10 text-center text-sm text-gray-500">
+              <p className="mt-10 text-center dark:text-cyan-50 text-sm text-gray-500">
                 Already a member?{" "}
                 <Link
                   to="/login"

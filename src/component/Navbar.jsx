@@ -37,7 +37,7 @@ export default function Navbar() {
 
   const navListMainPage = () => {
     return (
-      <div className="z-50">
+      <div className="z-50 ">
         <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold">
           MENU
         </h1>
@@ -109,7 +109,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="min-h-screen">
+    <nav className="min-h-full">
       <div>
         <button
           onClick={toggleSidebar}
@@ -122,7 +122,7 @@ export default function Navbar() {
         <div
           className={`sidebar ${isOpen ? "md:w-1/5 sm:1/3" : "hidden"}  
             ${isDesktop ? "md:block w-[250px]" : "hidden"} 
-            sidebar md:sticky min-h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
+            sidebar md:sticky md:h-[1200px] lg:h-full min-h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
         >
           <button
             onClick={toggleSidebar}
