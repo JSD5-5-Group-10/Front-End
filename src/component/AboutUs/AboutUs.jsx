@@ -19,10 +19,11 @@ import NavbarLogin from "../../pages/login-registration/NavbarLogin";
 
 export const AboutUs = () => {
   return (
-    <div>
-      <div className="flex mb-20">
+    <div className="w-[1380px] mx-auto bg-white text-black dark:bg-gray-800 dark:text-cyan-50 ">
+      <div className="flex w-full">
         <NavbarLogin />
       </div>
+
       <section className="aboutfit grid grid-cols-1 md:grid-cols-2 gap-10 mx-10 mt-20">
         <div className="textbox1 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-[auto] h-[auto] order-2 sm:order-1">
           <h1 className="text-3xl md:text-5xl font-black mt-20 ml-7">
@@ -53,7 +54,7 @@ export const AboutUs = () => {
       </section>
 
       <section className="team">
-        <div className="textbox2 bg-[#E3BBFF] text-[#191F5D] text-center font-black text-3xl md:text-5xl w-full h-full mt-10">
+        <div className="textbox2 rounded-md pb-1 bg-[#E3BBFF] text-[#191F5D] text-center font-black text-3xl md:text-5xl w-full h-full mt-10">
           About Us
         </div>
       </section>
@@ -224,6 +225,7 @@ export const AboutUs = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };
