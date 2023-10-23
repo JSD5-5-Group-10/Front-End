@@ -238,10 +238,16 @@ const IndexActivity = ({ act_type }) => {
               <dialog id={elementId2} className="modal">
                 <div className="modal-box flex flex-col">
                   <div className="card">
-                    <div className=" mb-1">Do u wanna delete {act_type}</div>
+                    <div className=" mb-1 ">
+                      Do u wanna delete{" "}
+                      <span className="text-red-500">
+                        {" "}
+                        {index + 1}.{item.act_type}
+                      </span>
+                    </div>
                   </div>
                   <button
-                    className={` h-10 px-5 max-w-[100px] text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+                    className={` h-10 px-5 max-w-[100px] text-indigo-100 transition-colors duration-150 bg-green-600 rounded-lg focus:shadow-outline hover:bg-green-800`}
                     onClick={() => deleteData(item.act_id)}
                   >
                     YES
@@ -273,7 +279,7 @@ const IndexActivity = ({ act_type }) => {
                 <div className=" mb-1 pr-20">
                   Activity Type :{" "}
                   <span className="text-xl font-medium text-[#b09aff]">
-                    {item.act_type}
+                    {item.act_type} {index + 1}
                   </span>
                 </div>
                 <div className="mb-1 pr-20">Name : {item.act_name}</div>

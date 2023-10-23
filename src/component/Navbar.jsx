@@ -68,7 +68,7 @@ export default function Navbar() {
 
   const activityNavList = () => {
     return (
-      <div>
+      <div className="">
         <div className="w-full ">
           <button
             onClick={toggleDropdown}

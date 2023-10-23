@@ -100,8 +100,8 @@ export const WeightLossSimulator = () => {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="flex  ">
-        <div className="mr-10">
+      <div className="flex  w-full max-h-[1000px] max-w-[1360px]">
+        <div className="mr-10 z-50">
           <Navbar />
         </div>
         <div className="flex justify-center items-center w-full">
@@ -112,7 +112,8 @@ export const WeightLossSimulator = () => {
                 Weight Loss Simulator
               </h1>
               <div
-                className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row break-all  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+                className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row break-all  text-ellipsisp overflow-hidden 
+                hover:bg-[#827BD9] hover:h-[300px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
             xl:h-[400px] xl:w-[350px] lg:hover:scale-105  "
               >
                 <div className="p-2 mr-3 flex items-center absolute ">
@@ -173,7 +174,7 @@ export const WeightLossSimulator = () => {
             </div>
 
             {/* Form */}
-            <div className="flex flex-col items-center mt-10 m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+            <div className="flex flex-col  items-center mt-10 m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
               <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
                 Simulate Form
               </h1>
