@@ -45,7 +45,7 @@ export const Login = () => {
       console.log(user.data.token);
       localStorage.setItem("token", user.data.token);
       dispatch(authActions.login());
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       return toast.warning("Your email or password has wrong!");
     }
@@ -67,8 +67,8 @@ export const Login = () => {
 
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h1 className="text-3xl text-center font-bold leading-9 ">
-                  ธอร์ลอยไข่หวาน
+                <h1 className="text-3xl text-center text-[#8278d9] font-bold leading-9 ">
+                  FITBOD
                 </h1>
               </div>
 
