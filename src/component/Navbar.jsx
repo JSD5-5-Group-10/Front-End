@@ -68,8 +68,8 @@ export default function Navbar() {
 
   const activityNavList = () => {
     return (
-      <div>
-        <div className="w-full">
+      <div className="">
+        <div className="w-full ">
           <button
             onClick={toggleDropdown}
             className="text-[15px] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600"
@@ -80,7 +80,7 @@ export default function Navbar() {
         <div
           className={`${
             isHidden ? "hidden" : ""
-          } p-2.5 mt-2 flex items-end px-4 duration-300 w-4/5 `}
+          } p-2.5 mt-2 flex items-end px-4  duration-300 w-4/5 `}
         >
           <ul>
             <li className="p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
