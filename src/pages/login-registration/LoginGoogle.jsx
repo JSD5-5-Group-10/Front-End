@@ -17,7 +17,7 @@ export const LoginGoogle = () => {
     onError: (error) => console.log("Login Failed:", error),
   });
 
-  //   console.log(token);
+  console.log(token);
   useEffect(() => {
     const Login = async () => {
       try {
