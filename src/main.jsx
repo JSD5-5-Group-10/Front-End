@@ -28,6 +28,10 @@ import { DarkModeProvider } from "./component/DarkmodeContext.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/Home",
     element: <App />,
   },
   {

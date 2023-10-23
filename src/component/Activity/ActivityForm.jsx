@@ -193,11 +193,11 @@ const ActivityForm = () => {
               </div>
               {/* activity-name */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500  ">
                   Activity Name
                 </span>
                 <input
-                  maxLength={25}
+                  maxLength={20}
                   value={addActivity.act_name}
                   onChange={(e) =>
                     setAddActivity({ ...addActivity, act_name: e.target.value })
@@ -222,7 +222,7 @@ const ActivityForm = () => {
                   name="detial"
                   className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Descrition"
-                  maxLength="50"
+                  maxLength={30}
                   rows="2"
                 />
               </label>

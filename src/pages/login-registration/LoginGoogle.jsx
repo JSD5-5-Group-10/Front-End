@@ -17,7 +17,7 @@ export const LoginGoogle = () => {
     onError: (error) => console.log("Login Failed:", error),
   });
 
-  //   console.log(token);
+  // console.log(token);
   useEffect(() => {
     const Login = async () => {
       try {
@@ -36,7 +36,7 @@ export const LoginGoogle = () => {
           toast.success("Login Success");
           dispatch(authActions.login());
           localStorage.setItem("token", response.data.token);
-          navigate("/");
+          navigate("/Home");
         }
       } catch (error) {
         toast.error(
