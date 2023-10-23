@@ -139,7 +139,7 @@ const PopupActivity = ({ item }) => {
                       act_type: e.target.value,
                     })
                   }
-                  className="appearance-none bg-slate-50 rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="appearance-none text-black bg-slate-50 rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 >
                   <option className="text-[#131c85]" value="">
                     Please Select Activity type
@@ -163,7 +163,7 @@ const PopupActivity = ({ item }) => {
               </div>
               {/* activity-name */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2  px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Activity Name
                 </span>
                 <input
@@ -177,7 +177,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="name"
                   name="detial"
-                  className="px-2 bg-slate-50 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="px-2 bg-slate-50 text-black rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Activity Name"
                 />
               </label>
@@ -196,7 +196,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="detial"
-                  className="px-2 leading-snug bg-slate-50 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="px-2 leading-snug text-black bg-slate-50 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Descrition"
                   maxLength={30}
                   rows="2"
@@ -217,7 +217,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="duration"
-                  className="[&::-webkit-inner-spin-button]:appearance-none bg-slate-50 px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="text-black [&::-webkit-inner-spin-button]:appearance-none bg-slate-50 px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Minute"
                 />
               </label>
@@ -236,7 +236,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="weight"
-                  className="[&::-webkit-inner-spin-button]:appearance-none bg-slate-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="text-black [&::-webkit-inner-spin-button]:appearance-none bg-slate-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Kilogram"
                 />
               </label>
@@ -251,7 +251,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="text-gray-400 bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   disabled
                 />
               </label>
@@ -266,7 +266,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="text-gray-400 bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   disabled
                 />
               </label>
