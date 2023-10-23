@@ -66,7 +66,7 @@ const Profile = () => {
         "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
         formData
       );
-      // console.log(response.data);
+      console.log(response.data);
       setCover_img(response.data.url);
     };
     uploadImage();
@@ -156,7 +156,7 @@ const Profile = () => {
       fetchData();
     }
   }, [token, reload]);
-  console.log(editProfile);
+  // console.log(editProfile);
   // put update user
   const saveData = async (e) => {
     e.preventDefault();
@@ -232,9 +232,9 @@ const Profile = () => {
       toast.error("Failed: " + err.message);
     }
   };
-  // setEditProfile({ ...editProfile, age: e.target.value })
+
   return (
-    <div className="w-full dark:bg-gray-600 ">
+    <div className="w-full dark:bg-gray-800 bg-white">
       <header>
         <div className="relative">
           <img
@@ -244,7 +244,7 @@ const Profile = () => {
           />
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
-            className="bg-[#827BD9] cursor-pointer text-white text-sm rounded-lg hover:bg-violet-600 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
+            className="bg-indigo-600 cursor-pointer text-white text-sm rounded-lg hover:bg-indigo-800 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
           >
             <input type="file" className="w-0" />
             Edit Cover
@@ -270,16 +270,16 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex bg-white ml-32 mt-1 ">
+        <div className="flex bg-white ml-32 mt-1 text-black dark:bg-gray-800 dark:text-cyan-50 ">
           <button
             onClick={() => setEdit(!edit)}
-            className="bg-[#827BD9] cursor-pointer text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:inline hidden"
+            className="bg-indigo-600 cursor-pointer text-white rounded-lg border-gray-300 hover:bg-indigo-800 p-1 px-3 md:inline hidden"
           >
             Edit Profile
           </button>
           <button
             onClick={() => setEdit(!edit)}
-            className="bg-[#827BD9] cursor-pointer text-white rounded-lg border-gray-300 hover:bg-violet-600 p-1 px-3 md:hidden"
+            className="bg-[#827BD9] cursor-pointer text-white rounded-lg border-gray-300 hover:bg-indigo-800 p-1 px-3 md:hidden"
           >
             <FaUserEdit size={20} />
           </button>
@@ -292,7 +292,7 @@ const Profile = () => {
 
       {/* form edit profile */}
       {!edit ? (
-        <div className="lg:ml-5 lg:w-[500px] w-[400px] mx-auto">
+        <div className="lg:ml-5 lg:w-[500px] w-[400px] mx-auto bg-white text-black dark:bg-gray-800 dark:text-cyan-50 ">
           <h1 className="text-2xl py-3 text-center font-bold">
             Update Profile
           </h1>
@@ -309,7 +309,7 @@ const Profile = () => {
                   }
                   type="text"
                   name="name"
-                  className="px-2 w-full rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 w-full rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <label className="flex rounded-lg leading-10">
@@ -321,7 +321,7 @@ const Profile = () => {
                   onChange={(e) => setBirthday(e.target.value)}
                   type="date"
                   name="age"
-                  className="w-full px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <label className="flex rounded-lg leading-10">
@@ -332,7 +332,7 @@ const Profile = () => {
                   onChange={(e) => setUplaodProfileimg(e.target.files[0])}
                   type="file"
                   name="profile_img"
-                  className="w-full placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
                 <button
                   className="flex items-center px-3 justify-center bg-[#8278d9] text-white font-semibold rounded-r-lg hover:bg-indigo-500"
@@ -355,7 +355,7 @@ const Profile = () => {
                   }
                   type="text"
                   name="description"
-                  className="w-full bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <label className="flex rounded-lg leading-10">
@@ -372,7 +372,7 @@ const Profile = () => {
                   }
                   type="password"
                   name="password"
-                  className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <label className="flex rounded-lg leading-10">
@@ -384,14 +384,14 @@ const Profile = () => {
                   onChange={(e) => setPwconfirm(e.target.value)}
                   type="password"
                   name="password"
-                  className="w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <div className="flex justify-end">
                 <button
                   onClick={saveData}
                   type="submit"
-                  className=" flex w-1/2 justify-center rounded-full  bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-1/2 justify-center rounded-full  bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Update
                 </button>
@@ -408,26 +408,26 @@ const Profile = () => {
       ) : null}
 
       {/* Information */}
-      <section className="flex flex-col border my-2 p-5 md:h-[200px] justify-center rounded-md">
+      <section className="dark:border-gray-700 mx-3 sm:mx-1 flex flex-col border my-2 p-5 md:h-[200px] justify-center rounded dark:border-1 text-black dark:bg-gray-800 dark:text-cyan-50">
         <div>
-          <p className="my-2 text-xl font-bold">
-            User Email: <span className="font-normal">{data?.email}</span>
+          <p className="my-2 text-lg font-bold">
+            User Email : <span className="font-normal">{data?.email}</span>
           </p>
-          <p className="my-2 text-xl font-bold">
-            Age: <span className="font-normal">{data?.age}</span>
+          <p className="my-2 text-lg font-bold">
+            Age : <span className="font-normal">{data?.age} yaer</span>
           </p>
-          <p className="my-2 text-xl font-bold">
-            Information:{" "}
+          <p className="my-2 text-lg font-bold">
+            Information :{" "}
             <span className="font-normal">{data?.description}</span>
           </p>
           <p className="my-2 text-lg font-bold">
-            Member since.:{" "}
+            Member since :{" "}
             <span className="font-normal">
               {new Date(data?.created_at).toLocaleString()}
             </span>
           </p>
           <p className="my-2 text-lg font-bold">
-            Latest update:{" "}
+            Latest update :{" "}
             <span className="font-normal">
               {new Date(data?.updated_at).toLocaleString()}
             </span>
@@ -436,11 +436,11 @@ const Profile = () => {
       </section>
 
       {/* Chart */}
-      <div className="min-[1280px]:flex gap-4 my-5 justify-around">
-        <div className="my-2">
+      <div className="min-[1280px]:flex gap-4 justify-around">
+        <div className="">
           <PieChartWithCenterLabel />
         </div>
-        <div className="my-2">
+        <div className="">
           <Chartsbar />
         </div>
       </div>

@@ -22,8 +22,8 @@ export const LoginGoogle = () => {
     const Login = async () => {
       try {
         if (!token) {
-          console.log("User is not defined");
-          return;
+          // console.log("User is not defined");
+          return null;
         }
         const response = await axios.post(
           "https://backend-group10.onrender.com/api/user/loginGoogle",

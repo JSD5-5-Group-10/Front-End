@@ -131,7 +131,7 @@ const ActivityForm = () => {
 
   return (
     <div className="flex min-h-screen gap-5">
-      <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+      <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
           Activity Form
         </h1>
@@ -152,24 +152,39 @@ const ActivityForm = () => {
                   onChange={(e) =>
                     setAddActivity({ ...addActivity, act_type: e.target.value })
                   }
-                  className="appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 >
-                  <option className="text-[#131c85]" value="">
+                  <option className="text-[#131c85] dark:text-cyan-50" value="">
                     Please Select Activity type
                   </option>
-                  <option className="text-[#131c85]" value="Run">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Run"
+                  >
                     Run
                   </option>
-                  <option className="text-[#131c85]" value="Yoga">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Yoga"
+                  >
                     Yoga
                   </option>
-                  <option className="text-[#131c85]" value="Aerobics">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Aerobics"
+                  >
                     Aerobics
                   </option>
-                  <option className="text-[#131c85]" value="KitaMuaythai">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="KitaMuaythai"
+                  >
                     Kita Muaythai
                   </option>
-                  <option className="text-[#131c85]" value="Training">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Training"
+                  >
                     Weight Training
                   </option>
                 </select>
@@ -187,7 +202,7 @@ const ActivityForm = () => {
                   }
                   type="name"
                   name="detial"
-                  className="px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Activity Name"
                 />
               </label>
@@ -203,7 +218,7 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="detial"
-                  className="px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Descrition"
                   maxLength="50"
                   rows="2"
@@ -221,7 +236,7 @@ const ActivityForm = () => {
                   }
                   type="number"
                   name="duration"
-                  className="[&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Minute"
                 />
               </label>
@@ -240,7 +255,7 @@ const ActivityForm = () => {
                   }
                   type="number"
                   name="weight"
-                  className="[&::-webkit-inner-spin-button]:appearance-none px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   placeholder="Kilogram"
                 />
               </label>
@@ -257,7 +272,7 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   disabled
                 />
               </label>
@@ -274,7 +289,7 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                   disabled
                 />
               </label>
@@ -292,13 +307,13 @@ const ActivityForm = () => {
         <ToastContainer />
       </div>
       {/* display activitycard before submit */}
-      <div className="hidden xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+      <div className="dark:border-gray-700 hidden h-[668px] max-w-[400px] xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
           Activity Card
         </h1>
         <div
           className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
-            lg:h-[400px] lg:hover:scale-105  "
+            lg:h-[400px] lg:hover:scale-105"
         >
           <div className="p-2 mr-3 flex items-center absolute ">
             {/* {item.icon} */}
