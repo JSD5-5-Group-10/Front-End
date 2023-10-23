@@ -103,8 +103,8 @@ const PopupActivity = ({ item }) => {
       const cal = kcal / 7700;
       setActivityData({
         ...activityData,
-        cal_burn: kcal.toFixed(2),
-        kg_burn: cal.toFixed(2),
+        cal_burn: parseFloat(kcal.toFixed(2)),
+        kg_burn: parseFloat(cal.toFixed(2)),
       });
     }
     setChange();
@@ -211,7 +211,7 @@ const PopupActivity = ({ item }) => {
                   onChange={(e) =>
                     setActivityData({
                       ...activityData,
-                      duration: e.target.value,
+                      duration: parseInt(e.target.value),
                     })
                   }
                   type="number"
@@ -230,7 +230,7 @@ const PopupActivity = ({ item }) => {
                   onChange={(e) =>
                     setActivityData({
                       ...activityData,
-                      cur_weight: e.target.value,
+                      cur_weight: parseInt(e.target.value),
                     })
                   }
                   type="number"
