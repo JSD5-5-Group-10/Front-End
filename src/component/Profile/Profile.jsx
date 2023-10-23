@@ -355,7 +355,7 @@ const Profile = () => {
                   }
                   type="text"
                   name="description"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
               </label>
               <label className="flex rounded-lg leading-10">
