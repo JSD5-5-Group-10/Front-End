@@ -96,8 +96,8 @@ const IndexActivity = ({ act_type }) => {
   };
 
   return (
-    <div className="z-0 ">
-      <div className="flex flex-col z-0 items-center lg:flex lg:flex-row lg:w-full lg:justify-between px-20">
+    <div className="z-0 flex flex-col  justify-center items-center bg-white dark:text-cyan-50 text-black dark:bg-gray-800 ">
+      <div className="flex flex-col z-0 items-center lg:flex lg:flex-row lg:w-full lg:justify-between px-20 lg:gap-3">
         <div className="flex items-center z-0">
           <h1 className="text-2xl mr-3 font-medium lg:text-3xl lg:font-medium lg:my-2">
             Activity Card{" "}
@@ -105,7 +105,7 @@ const IndexActivity = ({ act_type }) => {
           {Array.from({ length: pageNumbers }).map((_, index) => (
             <div key={index} className="">
               <button
-                className="btn  mx-2 "
+                className="btn  mx-2 text-black bg-gray-200 border-none dark:bg-gray-700 dark:text-white "
                 onClick={() => paginate(index + 1)}
               >
                 {index + 1}
@@ -113,14 +113,14 @@ const IndexActivity = ({ act_type }) => {
             </div>
           ))}
         </div>
-        <div className="hidden lg:flex items-center text">
-          <div className="menu menu-horizontal text-white px-1 z-50">
+        <div className="hidden lg:flex lg:items-center lg:justify-center">
+          <div className="menu menu-horizontal  px-1">
             <li>
               <details>
-                <summary className="text-2xl font-medium text-black lg:text-3xl lg:font-medium lg:my-2">
+                <summary className="text-2xl z-50 font-medium dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
                   Filter
                 </summary>
-                <ul className="p-1 bg-[#8278d9]/90">
+                <ul className="p-1 z-10 bg-[#8278d9]/90">
                   <li>
                     <button onClick={() => setFilter(data)}>All</button>
                   </li>
@@ -158,7 +158,7 @@ const IndexActivity = ({ act_type }) => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content z-[1] text-white bg-[#8278d9]/90 menu p-2 shadow  rounded-box w-52"
+            className="dropdown-content z-50 text-white bg-[#8278d9]/90 menu p-2 shadow  rounded-box w-52"
           >
             <li>
               <button onClick={() => setFilter(data)}>All</button>
@@ -183,7 +183,7 @@ const IndexActivity = ({ act_type }) => {
           </ul>
         </div>
       </div>
-      <div className="mt-5 lg:grid lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10">
+      <div className="mt-5 -z-10 h-full lg:grid lg:h-full lg:grid-cols-2 lg:gap-x-10 ">
         {currentItems.map((item, index) => {
           //ประกาศโมดูลคู่กับ map เพื่อที่จะmap ข้อมูลเข้าpopup ได้
           const elementId = `my_modal_activity_item_${item.act_id}`;
@@ -199,8 +199,8 @@ const IndexActivity = ({ act_type }) => {
           return (
             <div
               key={index}
-              className="w-[400px] h-[200px] hover:h-[300px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
-            lg:h-[300px] bg-contain bg-no-repeat bg-center"
+              className="w-[350px] h-[200px] hover:h-[300px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+            lg:h-[300px] lg:mx-auto bg-contain bg-no-repeat bg-center"
               style={{
                 backgroundImage: `url(${
                   item.act_type === "Run"
@@ -251,7 +251,7 @@ const IndexActivity = ({ act_type }) => {
                   <div className="modal-action">
                     <form method="dialog">
                       <button
-                        className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+                        className={` h-10 px-5 item text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
                       >
                         Close
                       </button>
@@ -268,22 +268,22 @@ const IndexActivity = ({ act_type }) => {
 
               <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
                 <div className="w-full">
-                  <h2 className="uppercase absolute top-10 right-3 z-10  my-4 px-2 py-5 rounded-full bg-[#7D5CF5]">
+                  <h2 className="uppercase absolute  right-4 z-10  my-6 px-1 py-2 bottom-12  lg:px-2 lg:py-5 rounded-full bg-[#7D5CF5] lg:bottom-20">
                     {formattedDate}
                   </h2>
                 </div>
-                <div className=" mb-1 pr-20">
+                <div className=" mb-1 pr-20 mr-15">
                   Activity Type :{" "}
                   <span className="text-xl font-medium text-[#b09aff]">
                     {item.act_type} {index + 1}
                   </span>
                 </div>
-                <div className="mb-1 pr-20">Name : {item.act_name}</div>
-                <div className="text-xl mb-1 pr-20 font-medium">
+                <div className="mb-1 pr-20 mr-15">Name : {item.act_name}</div>
+                <div className="text-xl mb-1 font-medium  pr-20 mr-15">
                   {item.duration} mins
                 </div>
 
-                <div className="group hidden group-hover:inline-flex lg:inline-flex pr-20">
+                <div className="group hidden group-hover:inline-flex lg:inline-flex pr-20 mr-15">
                   Description : {item.act_desc}
                 </div>
                 <div className="w-full">
