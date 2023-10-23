@@ -19,7 +19,7 @@ const IndexActivity = ({ act_type }) => {
     const fetchData = async () => {
       try {
         const userActivity = await axios.get(
-          `https://backend-group10.onrender.com/api/activity?_limit=3&_page=${currentPage}`,
+          `https://backend-group10.onrender.com/api/activity`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -217,17 +217,17 @@ const IndexActivity = ({ act_type }) => {
                 })`,
               }}
             >
-              <dialog id={elementId} className="modal">
-                <div className="modal-box">
-                  <div className="card">
-                    <div className=" mb-1">Activity Type : {act_type}</div>
-                    <PopupActivity item={item} />
-                  </div>
-
+              <dialog id={elementId} className="modal ">
+                <div className="modal-box bg-white dark:text-cyan-50 text-black dark:bg-gray-800">
                   <div className="modal-action">
                     <form method="dialog">
-                      <button className="btn">Close</button>
+                      <button className="btn bg-white text-black hover:bg-gray-500">
+                        Close
+                      </button>
                     </form>
+                  </div>
+                  <div className="card">
+                    <PopupActivity item={item} />
                   </div>
                 </div>
               </dialog>

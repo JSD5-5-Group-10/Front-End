@@ -53,12 +53,12 @@ export default function Navbar() {
             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/calculate">CAL Calculator</Link>
             </li>
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
+            <li className=" p-2.5 my-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/weightloss">Weight Loss Simulator</Link>
             </li>
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
+            {/* <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/Registration">Registration</Link>
-            </li>
+            </li> */}
           </ul>
           <hr className="my-2 text-gray-600" />
         </div>
@@ -142,7 +142,7 @@ export default function Navbar() {
                     </button> */}
             <button
               onClick={handleLogout}
-              className={` h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+              className={` h-10 px-5 mt-3 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
             >
               Logout
             </button>
