@@ -83,7 +83,7 @@ export const Registration = () => {
   return (
     <div className="w-[1380px] dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
       <NavbarLogin />
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen mt-10 ">
         <div className=" w-1/2  m-auto hidden ab lg:inline">
           <div className="h-[600px] flex justify-end">
             <img className="bg-cover" src={bglogo} alt="bg-logo" />
@@ -97,7 +97,7 @@ export const Registration = () => {
                   REGISTER
                 </h2>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 h-auto">
                 <div>
                   <label
                     htmlFor="email"

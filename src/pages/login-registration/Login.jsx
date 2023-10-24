@@ -54,10 +54,10 @@ export const Login = () => {
   // console.log(email);
   // console.log(password);
   return (
-    <div className="lg:w-[1380px] mx-auto dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
+    <div className="lg:w-[1380px] mx-auto dark:text-cyan-50 text-black dark:bg-gray-800 bg-white min-h-screen">
       <div className="flex flex-col md:flex">
         <NavbarLogin />
-        <div className="mx-auto">
+        <div className="mx-auto mt-10">
           <div className="flex h-screen">
             <div className=" w-1/2  m-auto hidden lg:inline">
               <div className="flex h-[600px]">
