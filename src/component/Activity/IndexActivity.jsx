@@ -49,7 +49,7 @@ const IndexActivity = ({ act_type }) => {
     };
     fetchData();
   }, [token]);
-
+  console.log(Yoga);
   //Delete
   const deleteData = async (id) => {
     console.log(id);
