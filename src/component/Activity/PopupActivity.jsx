@@ -141,22 +141,37 @@ const PopupActivity = ({ item }) => {
                   }
                   className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                 >
-                  <option className="text-[#131c85]" value="">
+                  <option className="text-[#131c85] dark:text-cyan-50" value="">
                     Please Select Activity type
                   </option>
-                  <option className="text-[#131c85]" value="Run">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Run"
+                  >
                     Run
                   </option>
-                  <option className="text-[#131c85]" value="Yoga">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Yoga"
+                  >
                     Yoga
                   </option>
-                  <option className="text-[#131c85]" value="Aerobics">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Aerobics"
+                  >
                     Aerobics
                   </option>
-                  <option className="text-[#131c85]" value="KitaMuaythai">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="KitaMuaythai"
+                  >
                     Kita Muaythai
                   </option>
-                  <option className="text-[#131c85]" value="Training">
+                  <option
+                    className="text-[#131c85] dark:text-cyan-50"
+                    value="Training"
+                  >
                     Weight Training
                   </option>
                 </select>
@@ -177,7 +192,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="name"
                   name="detial"
-                  className="px-2 bg-slate-50 text-black rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Activity Name"
                 />
               </label>
@@ -196,7 +211,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="detial"
-                  className="px-2 leading-snug text-black bg-slate-50 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Descrition"
                   maxLength={30}
                   rows="2"
@@ -217,7 +232,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="duration"
-                  className="text-black [&::-webkit-inner-spin-button]:appearance-none bg-slate-50 px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800 focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
                 />
               </label>
@@ -236,7 +251,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="weight"
-                  className="text-black [&::-webkit-inner-spin-button]:appearance-none bg-slate-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
                 />
               </label>
@@ -251,7 +266,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="date"
-                  className="text-gray-400 bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
@@ -266,7 +281,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="date"
-                  className="text-gray-400 bg-white px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
