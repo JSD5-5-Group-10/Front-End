@@ -98,7 +98,9 @@ const IndexActivity = ({ act_type }) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filter.slice(indexOfFirstItem, indexOfLastItem);
+  const showNextButton = pageNumbers > 0; // ตรวจสอบว่ามีหน้ามากกว่า 5 หรือไม่
   // console.log(currentItems);
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -106,20 +108,38 @@ const IndexActivity = ({ act_type }) => {
   return (
     <div className="z-0 flex flex-col  justify-center items-center bg-white dark:text-cyan-50 text-black dark:bg-gray-800 ">
       <div className="flex flex-col z-0 items-center lg:flex lg:flex-row lg:w-full lg:justify-between px-20 lg:gap-3">
-        <div className="flex items-center z-0">
+        <div className="flex flex-row items-center z-0">
           <h1 className="text-2xl mr-3 font-medium lg:text-3xl lg:font-medium lg:my-2">
             Activity Card{" "}
           </h1>
-          {Array.from({ length: pageNumbers }).map((_, index) => (
-            <div key={index} className="">
-              <button
-                className="btn  mx-2 text-black bg-gray-200 border-none dark:bg-gray-700 dark:text-white "
-                onClick={() => paginate(index + 1)}
-              >
-                {index + 1}
-              </button>
-            </div>
-          ))}
+          <div className="flex flex-row items-center">
+            {Array.from({ length: pageNumbers }).map((_, index) => (
+              <div key={index} className="flex items-center">
+                {showNextButton && index === 1 ? (
+                  <>
+                    {currentPage > 1 ? (
+                      <button
+                        className="btn mx-2 text-black bg-gray-200 border-none dark:bg-gray-700 dark:text-white"
+                        onClick={() => paginate(currentPage - 1)}
+                      >
+                        &lt;
+                      </button>
+                    ) : null}
+                    <div className="text-center mx-2">{currentPage}</div>
+                    {currentPage < pageNumbers ? (
+                      <button
+                        className="btn mx-2 text-black bg-gray-200 border-none dark:bg-gray-700 dark:text-white"
+                        onClick={() => paginate(currentPage + 1)}
+                        disabled={currentPage === pageNumbers}
+                      >
+                        &gt;
+                      </button>
+                    ) : null}
+                  </>
+                ) : null}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="hidden lg:flex lg:items-center lg:justify-center">
           <div className="menu menu-horizontal  px-1">
@@ -244,9 +264,9 @@ const IndexActivity = ({ act_type }) => {
                   <div className="card">
                     <div className=" mb-1 ">
                       Do u wanna delete{" "}
-                      <span className="text-red-500">
+                      <span className="text-indigo-600">
                         {" "}
-                        {index + 1}.{item.act_type}
+                        {index + 1}. {item.act_type}
                       </span>
                     </div>
                   </div>
@@ -254,7 +274,7 @@ const IndexActivity = ({ act_type }) => {
                   <div className="modal-action">
                     <form method="dialog">
                       <button
-                        className={` h-10 px-5 max-w-[100px] mx-3 text-indigo-100 transition-colors duration-150 bg-green-600 rounded-lg focus:shadow-outline hover:bg-green-800`}
+                        className={` h-10 px-5 max-w-[100px] mx-3 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
                         onClick={() => deleteData(item.act_id)}
                       >
                         YES
@@ -271,7 +291,7 @@ const IndexActivity = ({ act_type }) => {
 
               <h1 className="p-3 text-lg text-white">{index + 1}</h1>
 
-              <div className="p-2 mr-3 flex items-center absolute ">
+              <div className="p-2 mr-3 flex items-center  absolute ">
                 {item.icon}
               </div>
 
