@@ -122,7 +122,7 @@ export default function Navbar() {
         <div
           className={`sidebar ${isOpen ? "md:w-1/5 sm:1/3" : "hidden"}  
             ${isDesktop ? "md:block w-[250px]" : "hidden"} 
-            sidebar min-h-[900px]  md:sticky md:h-[1200px]  xl:h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
+            sidebar min-h-[900px]  md:sticky md:h-[1200px] lg:h-screen lg:min-h-[1080px]  xl:h-screen fixed top-0 bottom-0 lg:left-0 p-2 overflow-auto bg-white text-black shadow-lg dark:bg-gray-950 dark:text-cyan-50`}
         >
           <button
             onClick={toggleSidebar}
