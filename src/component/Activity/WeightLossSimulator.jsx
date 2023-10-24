@@ -96,10 +96,10 @@ export const WeightLossSimulator = () => {
                 <form onSubmit={calculateActivity} className="flex">
                   <div className="space-y-6">
                     {/* activity type */}
-                    <div className="flex leading-10">
+                    <div className="flex leading-10 w-full">
                       <label
                         htmlFor="type"
-                        className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
+                        className=" flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg "
                       >
                         Activity Type
                       </label>
@@ -112,7 +112,7 @@ export const WeightLossSimulator = () => {
                           className="text-[#131c85] dark:text-cyan-50"
                           value=""
                         >
-                          Please Select Activity type
+                          Select Activity type
                         </option>
                         <option
                           className="text-[#131c85] dark:text-cyan-50"
@@ -148,7 +148,7 @@ export const WeightLossSimulator = () => {
                     </div>
                     {/* descrition */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Duration
                       </span>
                       <input
@@ -164,7 +164,7 @@ export const WeightLossSimulator = () => {
                     </label>
                     {/* duration  */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Weight (KG)
                       </span>
                       <input
@@ -178,7 +178,7 @@ export const WeightLossSimulator = () => {
                     </label>
                     {/* Weight */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Current weight
                       </span>
                       <input
