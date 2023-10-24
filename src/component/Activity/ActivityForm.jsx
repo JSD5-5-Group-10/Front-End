@@ -147,7 +147,7 @@ const ActivityForm = () => {
               <div className="flex leading-10">
                 <label
                   htmlFor="type"
-                  className="w-[150px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg"
+                  className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg"
                 >
                   Activity Type
                 </label>
