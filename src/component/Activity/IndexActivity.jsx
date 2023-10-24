@@ -125,7 +125,7 @@ const IndexActivity = ({ act_type }) => {
           <div className="menu menu-horizontal  px-1">
             <li>
               <details>
-                <summary className="text-2xl z-50 font-medium bg-indigo-600 dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
+                <summary className="text-2xl z-50 font-medium  dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
                   Filter
                 </summary>
                 <ul className="p-1 z-10 bg-indigo-600/90 max-w-[100px]">
