@@ -135,8 +135,8 @@ const ActivityForm = () => {
   // console.log(addActivity);
 
   return (
-    <div className="flex min-h-screen gap-5">
-      <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
+    <div className="xl:flex inline min-h-screen gap-5">
+      <div className="mt-5 xl:m-auto flex flex-col  items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600">
           Activity Form
         </h1>
@@ -319,13 +319,13 @@ const ActivityForm = () => {
         <ToastContainer />
       </div>
       {/* display activitycard before submit */}
-      <div className="dark:border-gray-700 hidden h-[668px] max-w-[400px] xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+      <div className="dark:border-gray-700 mt-3 xl:m-auto xl:h-[668px] xl:max-w-[400px] xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
           Activity Card
         </h1>
         <div
-          className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
-            lg:h-[400px] lg:hover:scale-105"
+          className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+            xl:h-[400px] lg:hover:scale-105"
         >
           <div className="p-2 mr-3 flex items-center absolute ">
             {/* {item.icon} */}
@@ -348,9 +348,9 @@ const ActivityForm = () => {
             <div className="mb-1 text-center break-all">
               Description : {addActivity.act_desc || "Description"}
             </div>
-            <div className="w-full">
+            <div className="w-full m-2">
               <h2 className="uppercase absolute bottom-1 right-3 underline">
-                <span className="text-[#ff6c3b] underline">Total Burn:</span>{" "}
+                <span className="text-indigo-500   underline">Total Burn:</span>{" "}
                 {addActivity.cal_burn || 0} kcal / {addActivity.kg_burn || 0} kg
               </h2>
             </div>
