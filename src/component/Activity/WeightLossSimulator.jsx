@@ -252,10 +252,6 @@ export const WeightLossSimulator = () => {
                           </span>
                         </div>
                       )}
-                      <span className="text-sm text-center font-bold">
-                        You should exercise for{" "}
-                        <p className="font-bold">{time || 0} minutes daily.</p>
-                      </span>
                     </h2>
                   </div>
                 </div>
