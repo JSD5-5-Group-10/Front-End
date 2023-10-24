@@ -7,6 +7,7 @@ import thaiboxing from "./assets/boxinglogo.png";
 import yoga from "./assets/yogalogo.png";
 import training from "./assets/weightlogo.png";
 import { useNavigate } from "react-router-dom";
+import { width } from "@mui/system";
 
 export const ActivityDisplay = () => {
   const [type, setType] = useState("");
@@ -28,12 +29,11 @@ export const ActivityDisplay = () => {
   }, [token]);
 
   const calculateActivity = (e) => {
-    e.preventDefault();
     const METs = {
       Run: 9.6,
       Yoga: 2.5,
       Aerobics: 5,
-      Muaythai: 6,
+      KitaMuaythai: 6,
       Training: 8,
     };
     // console.log(totalkcal);
@@ -47,10 +47,11 @@ export const ActivityDisplay = () => {
       setTotalkcal(totalKcal.toFixed(2));
       setKcal(kcal.toFixed(2));
     } else {
-      toast.error("Choose Type for Activity");
+      // toast.error("Choose Type for Activity");
     }
   };
   const [image, setImage] = useState();
+
   useEffect(() => {
     type === "Run"
       ? setImage(run)
@@ -63,13 +64,11 @@ export const ActivityDisplay = () => {
       : type === "Training"
       ? setImage(training)
       : "";
-
-    setWeight("");
-    setTime("");
-    setNumberOfDays("");
-    setKcal("");
-    setAllburnkg("");
   }, [type]);
+
+  useEffect(() => {
+    calculateActivity();
+  }, [type, time, weight, numberOfDays]);
 
   // console.log(totalkcal);
   return (
@@ -98,14 +97,14 @@ export const ActivityDisplay = () => {
                       <div className="flex leading-10">
                         <label
                           htmlFor="type"
-                          className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
+                          className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg "
                         >
                           Activity Type
                         </label>
                         <select
                           name="type"
                           onChange={(e) => setType(e.target.value)}
-                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         >
                           <option
                             className="text-[#131c85] dark:text-cyan-50 "
@@ -191,14 +190,14 @@ export const ActivityDisplay = () => {
                         />
                       </label>
 
-                      <div className="flex justify-end">
+                      {/* <div className="flex justify-end">
                         <button
                           type="submit"
                           className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                           CONFIRM
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </form>
                 </div>
