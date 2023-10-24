@@ -49,10 +49,10 @@ const IndexActivity = ({ act_type }) => {
     };
     fetchData();
   }, [token]);
-
+  // console.log(Yoga);
   //Delete
   const deleteData = async (id) => {
-    console.log(id);
+    // console.log(id);
     try {
       const response = await axios.delete(
         `https://backend-group10.onrender.com/api/activity/delete`,
@@ -66,7 +66,7 @@ const IndexActivity = ({ act_type }) => {
           },
         }
       );
-      console.log("DELETE", response.status);
+      // console.log("DELETE", response.status);
       console.log(response);
       if (response.status === 200) {
         toast.success("Delete successfully.");
@@ -125,10 +125,10 @@ const IndexActivity = ({ act_type }) => {
           <div className="menu menu-horizontal  px-1">
             <li>
               <details>
-                <summary className="text-2xl z-50 font-medium dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
+                <summary className="text-2xl z-50 font-medium bg-indigo-600 dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
                   Filter
                 </summary>
-                <ul className="p-1 z-10 bg-[#8278d9]/90">
+                <ul className="p-1 z-10 bg-indigo-600/90 max-w-[100px]">
                   <li>
                     <button onClick={() => setFilter(data)}>All</button>
                   </li>
@@ -166,7 +166,7 @@ const IndexActivity = ({ act_type }) => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content z-50 text-white bg-[#8278d9]/90 menu p-2 shadow  rounded-box w-52"
+            className="dropdown-content z-50 max-w-[100px] text-white bg-indigo-600/90 menu p-2 shadow  rounded-box w-52"
           >
             <li>
               <button onClick={() => setFilter(data)}>All</button>
@@ -229,7 +229,7 @@ const IndexActivity = ({ act_type }) => {
                 <div className="modal-box bg-white dark:text-cyan-50 text-black dark:bg-gray-800">
                   <div className="modal-action">
                     <form method="dialog">
-                      <button className="btn bg-white text-black hover:bg-gray-500">
+                      <button className="btn border-none bg-red-500 text-white hover:bg-red-700">
                         Close
                       </button>
                     </form>
@@ -250,16 +250,17 @@ const IndexActivity = ({ act_type }) => {
                       </span>
                     </div>
                   </div>
-                  <button
-                    className={` h-10 px-5 max-w-[100px] text-indigo-100 transition-colors duration-150 bg-green-600 rounded-lg focus:shadow-outline hover:bg-green-800`}
-                    onClick={() => deleteData(item.act_id)}
-                  >
-                    YES
-                  </button>
+
                   <div className="modal-action">
                     <form method="dialog">
                       <button
-                        className={` h-10 px-5 item text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+                        className={` h-10 px-5 max-w-[100px] mx-3 text-indigo-100 transition-colors duration-150 bg-green-600 rounded-lg focus:shadow-outline hover:bg-green-800`}
+                        onClick={() => deleteData(item.act_id)}
+                      >
+                        YES
+                      </button>
+                      <button
+                        className={` h-10 px-5 item  transition-colors duration-150  rounded-lg focus:shadow-outline bg-red-500 text-white hover:bg-red-700`}
                       >
                         Close
                       </button>
@@ -276,7 +277,7 @@ const IndexActivity = ({ act_type }) => {
 
               <div className="absolute w-full h-full bg-black/60 text-white rounded-xl flex flex-col items-center justify-center ">
                 <div className="w-full">
-                  <h2 className="uppercase absolute  right-4 z-10  my-6 px-1 py-2 bottom-12  lg:px-2 lg:py-5 rounded-full bg-[#7D5CF5] lg:bottom-20">
+                  <h2 className="uppercase absolute  right-4 z-10  my-6 px-1 py-2 bottom-12  lg:px-2 lg:py-5 rounded-full bg-indigo-600 lg:bottom-20">
                     {formattedDate}
                   </h2>
                 </div>
@@ -303,9 +304,9 @@ const IndexActivity = ({ act_type }) => {
                 </div>
               </div>
 
-              <div className="z-10 w-full flex items-end justify-end gap-3 m-5 ">
+              <div className="z-10 w-full flex items-end justify-end gap-3 m-2 lg:m-5 ">
                 <button
-                  className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+                  className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
                   onClick={() =>
                     document.getElementById(elementId).showModal(item.act_id)
                   }
@@ -313,7 +314,7 @@ const IndexActivity = ({ act_type }) => {
                   EDIT
                 </button>
                 <button
-                  className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-[#7D5CF5] rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+                  className={` h-10 px-5  text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
                   onClick={() =>
                     document.getElementById(elementId2).showModal(item.act_id)
                   }
