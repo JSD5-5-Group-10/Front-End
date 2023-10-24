@@ -148,7 +148,7 @@ export const WeightLossSimulator = () => {
                     </div>
                     {/* descrition */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="sm:w-[120px] w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Duration
                       </span>
                       <input
@@ -156,7 +156,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setNumberOfDays(e.target.value)}
                         type="number"
                         name="detial"
-                        className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Day"
                         maxLength="50"
                         rows="2"
@@ -164,7 +164,7 @@ export const WeightLossSimulator = () => {
                     </label>
                     {/* duration  */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="sm:w-[120px] w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-[120px]  flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Weight (KG)
                       </span>
                       <input
@@ -172,13 +172,13 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setLossWeight(e.target.value)}
                         type="number"
                         name="duration"
-                        className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Target Weight"
                       />
                     </label>
                     {/* Weight */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="sm:w-[120px] w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Current weight
                       </span>
                       <input
@@ -186,7 +186,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setWeight(e.target.value)}
                         type="number"
                         name="weight"
-                        className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Kilogram"
                       />
                     </label>
@@ -228,17 +228,18 @@ export const WeightLossSimulator = () => {
                   <div className="mb-1">
                     Target weight : {lossWeight || "0"} Kg
                   </div>
-                  <div className="w-full">
-                    <h2 className="uppercase absolute bottom-1 right-3 ">
+
+                  <div className="mb-4">
+                    <h2 className="">
                       {time > 0 && time < 60 && (
-                        <div className="text-end">
+                        <div className="text-center">
                           <span className="text-xs text-green-600">
                             Very easy, not even an hour a day. <br />
                           </span>
                         </div>
                       )}
                       {time >= 60 && time < 120 && (
-                        <div className="text-end">
+                        <div className="text-center">
                           <span className="text-xs text-yellow-600">
                             It's still possible. <br />
                           </span>
@@ -252,7 +253,7 @@ export const WeightLossSimulator = () => {
                           </span>
                         </div>
                       )}
-                      <span className="text-sm text-center font-bold">
+                      <span className="text-xl text-center font-bold">
                         You should exercise for{" "}
                         <p className="font-bold">{time || 0} minutes daily.</p>
                       </span>
