@@ -49,7 +49,7 @@ export const WeightLossSimulator = () => {
       Run: 9.6,
       Yoga: 2.5,
       Aerobics: 5,
-      Muaythai: 6,
+      KitaMuaythai: 6,
       Training: 8,
     };
 
