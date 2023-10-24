@@ -44,7 +44,7 @@ export default function Navbar() {
         <hr className="my-2 text-gray-600" />
         <div>
           <ul className=" text-indigo-100">
-            <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
+            <li className=" p-2.5np mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/Home">Home</Link>
             </li>
             <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
