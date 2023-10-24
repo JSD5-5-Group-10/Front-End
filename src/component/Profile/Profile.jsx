@@ -414,7 +414,7 @@ const Profile = () => {
             User Email : <span className="font-normal">{data?.email}</span>
           </p>
           <p className="my-2 text-lg font-bold">
-            Age : <span className="font-normal">{data?.age} year</span>
+            Age : <span className="font-normal">{data?.age} years</span>
           </p>
           <p className="my-2 text-lg font-bold">
             Information :{" "}
