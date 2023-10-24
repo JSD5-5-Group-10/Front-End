@@ -23,7 +23,7 @@ export const ResetPassword = () => {
       const newPassword = await axios.post(
         `https://backend-group10.onrender.com/api/user/reset-password/${token}`,
         {
-          password,
+          password: password,
         }
       );
       if (!newPassword) {
