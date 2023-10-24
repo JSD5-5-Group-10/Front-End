@@ -30,8 +30,16 @@ const IndexActivity = ({ act_type }) => {
           return console.log("error");
         }
         // console.log(userActivity.data.data.activity);
-        setData(userActivity.data?.data[0].activity);
-        setFilter(userActivity.data?.data[0].activity);
+        const data = userActivity.data?.data[0].activity;
+        setData(
+          data.sort((a, b) => {
+            if (a.created_at < b.created_at) return -1;
+            if (a.created_at > b.created_at) return -2;
+            return 0;
+          })
+        );
+        setFilter(data);
+        setData(data);
       } catch (error) {
         console.log(error);
       }
