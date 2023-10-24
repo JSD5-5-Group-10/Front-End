@@ -81,9 +81,9 @@ export const Registration = () => {
   };
 
   return (
-    <div className="w-[1360px] dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
+    <div className="w-[1380px] dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
       <NavbarLogin />
-      <div className="flex justify-center mt-20 items-center h-screen ">
+      <div className="flex justify-center items-center h-screen">
         <div className=" w-1/2  m-auto hidden ab lg:inline">
           <div className="h-[600px] flex justify-end">
             <img className="bg-cover" src={bglogo} alt="bg-logo" />
@@ -91,13 +91,12 @@ export const Registration = () => {
         </div>
         <div className="flex min-h-full w-[300px] flex-1 flex-col justify-center items-center lg:items-start px-6 py-12 lg:px-8 ">
           <div className="w-[400px]">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-              <h2 className="mt-3 dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                REGISTER
-              </h2>
-            </div>
-
             <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
+              <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <h2 className="mb-5 dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                  REGISTER
+                </h2>
+              </div>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
@@ -202,10 +201,11 @@ export const Registration = () => {
                       onChange={(e) => {
                         setSelect(e.target.files[0]);
                       }}
+                      className=" file:bg-indigo-600 file:text-white "
                     />
                     <button
                       type="button"
-                      className="flex w-1/3 justify-center rounded-md bg-[#8278d9] px-1 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-1/3 justify-center rounded-md bg-indigo-600 px-1 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       onClick={() => uploadImg()}
                     >
                       Upload
@@ -216,7 +216,7 @@ export const Registration = () => {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-[#8278d9] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Register
                   </button>
@@ -229,7 +229,7 @@ export const Registration = () => {
                 Already a member?{" "}
                 <Link
                   to="/login"
-                  className="font-semibold leading-6 text-[#8278d9] hover:text-indigo-100"
+                  className="font-semibold leading-6 text-indigo-600 hover:text-indigo-100"
                 >
                   Login Now
                 </Link>

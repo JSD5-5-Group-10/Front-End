@@ -19,14 +19,14 @@ import NavbarLogin from "../../pages/login-registration/NavbarLogin";
 
 export const AboutUs = () => {
   return (
-    <div className="w-[1380px] mx-auto bg-white text-black dark:bg-gray-800 dark:text-cyan-50 ">
+    <div className="min-[1380px]:w-[1380px] mx-auto bg-white text-black dark:bg-gray-800 dark:text-cyan-50">
       <div className="flex w-full">
         <NavbarLogin />
       </div>
 
-      <section className="aboutfit grid grid-cols-1 md:grid-cols-2 gap-10 mx-10 mt-20">
-        <div className="textbox1 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-[auto] h-[auto] order-2 sm:order-1">
-          <h1 className="text-3xl md:text-5xl font-black mt-20 ml-7">
+      <section className="lg:flex inline justify-around mt-20 mx-5">
+        <div className="rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full lg:mr-32 lg:mb-0">
+          <h1 className="text-3xl md:text-5xl font-black mt-20 mx-7">
             {AboutA.head}
           </h1>
           <h2 className="text-xl md:text-3xl mt-5 mx-7">{AboutA.slogan1}</h2>
@@ -34,7 +34,7 @@ export const AboutUs = () => {
           <p className="text-base mx-7 mt-5">{AboutA.des1}</p>
           <p className="text-base mx-7 ">{AboutA.des2}</p>
           <p className="text-base mx-7 ">{AboutA.des3}</p>
-          <div className="space-x-2 mx-7 mb-14">
+          <div className="space-x-2 mx-7">
             {AboutImgSet.map((img, index) => (
               <div className="image inline-block mt-5" key={index}>
                 <img
@@ -46,20 +46,22 @@ export const AboutUs = () => {
             ))}
           </div>
         </div>
-        <img
-          src={aboutimg}
-          alt="about image"
-          className="w-[500px] h-[auto] rounded-lg order-1 sm:order-2"
-        />
+        <div className="hidden lg:inline">
+          <img
+            src={aboutimg}
+            alt="about image"
+            className="w-full rounded-lg "
+          />
+        </div>
       </section>
 
-      <section className="team">
-        <div className="textbox2 rounded-md pb-1 bg-[#E3BBFF] text-[#191F5D] text-center font-black text-3xl md:text-5xl w-full h-full mt-10">
+      <section className="">
+        <div className="rounded-md pb-1 bg-[#E3BBFF] text-[#191F5D] text-center font-black text-3xl md:text-5xl h-full lg:mt-10">
           About Us
         </div>
       </section>
 
-      <section className="profile1 grid grid-cols-1 md:grid-cols-3 gap-5 mx-10 mt-5 mb-5">
+      <section className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 mx-10 mt-5 mb-5">
         <div className="profbox1 col-span-1 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full">
           <div className="avatarpic flex flex-row justify-center mt-5">
             <img src={avatar1} alt="avatar1 image" className="w-32 h-32" />
@@ -155,45 +157,40 @@ export const AboutUs = () => {
             </a>
           </div>
         </div>
-      </section>
 
-      <section className="profile2 grid grid-cols-1 md:grid-cols-2 gap-5 mx-10 mt-5 mb-5">
-        <section className="profbox4div grid grid-cols-3">
-          <div className="col-span-1 hidden md:block"></div>
-          <div className="profbox4 col-span-3 md:col-span-2 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full">
-            <div className="avatarpic flex flex-row justify-center mt-5">
-              <img src={avatar4} alt="avatar1 image" className="w-32 h-32" />
-            </div>
-            <div className="txtprof1 text-xl font-bold text-center md:text-2xl my-2">
-              {Prof4.head}
-            </div>
-            <div className="contact flex flex-row justify-center mb-5">
-              <a href={Prof4.link1} target="_blank">
-                <img
-                  src={linkedin}
-                  alt="linkedin image"
-                  className="object-cover w-10 h10 mr-5 hover:scale-105"
-                />
-              </a>
-              <a href={Prof4.link2} target="_blank">
-                <img
-                  src={portfolio}
-                  alt="linkedin image"
-                  className="object-cover w-10 h10 mr-5 hover:scale-105"
-                />
-              </a>
-              <a href={Prof4.link3} target="_blank">
-                <img
-                  src={github}
-                  alt="linkedin image"
-                  className="object-cover w-10 h10 hover:scale-105"
-                />
-              </a>
-            </div>
+        <div className="xl:hidden inline profbox4 col-span-1 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full">
+          <div className="avatarpic flex flex-row justify-center mt-5">
+            <img src={avatar4} alt="avatar1 image" className="w-32 h-32" />
           </div>
-        </section>
+          <div className="txtprof1 text-xl font-bold text-center md:text-2xl my-2">
+            {Prof4.head}
+          </div>
+          <div className="contact flex flex-row justify-center mb-5">
+            <a href={Prof4.link1} target="_blank">
+              <img
+                src={linkedin}
+                alt="linkedin image"
+                className="object-cover w-10 h10 mr-5 hover:scale-105"
+              />
+            </a>
+            <a href={Prof4.link2} target="_blank">
+              <img
+                src={portfolio}
+                alt="linkedin image"
+                className="object-cover w-10 h10 mr-5 hover:scale-105"
+              />
+            </a>
+            <a href={Prof4.link3} target="_blank">
+              <img
+                src={github}
+                alt="linkedin image"
+                className="object-cover w-10 h10 hover:scale-105"
+              />
+            </a>
+          </div>
+        </div>
 
-        <div className="profbox5 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full md:w-2/3">
+        <div className="xl:hidden inline profbox5 col-span-1 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full">
           <div className="avatarpic flex flex-row justify-center mt-5">
             <img src={avatar5} alt="avatar1 image" className="w-32 h-32" />
           </div>
@@ -226,6 +223,76 @@ export const AboutUs = () => {
         </div>
       </section>
 
+      <div className="hidden xl:inline">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-10 mt-5 mb-5">
+          <section className="profbox4div grid grid-cols-3">
+            <div className="col-span-1 hidden md:block"></div>
+            <div className="profbox4 col-span-3 md:col-span-2 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full">
+              <div className="avatarpic flex flex-row justify-center mt-5">
+                <img src={avatar4} alt="avatar1 image" className="w-32 h-32" />
+              </div>
+              <div className="txtprof1 text-xl font-bold text-center md:text-2xl my-2">
+                {Prof4.head}
+              </div>
+              <div className="contact flex flex-row justify-center mb-5">
+                <a href={Prof4.link1} target="_blank">
+                  <img
+                    src={linkedin}
+                    alt="linkedin image"
+                    className="object-cover w-10 h10 mr-5 hover:scale-105"
+                  />
+                </a>
+                <a href={Prof4.link2} target="_blank">
+                  <img
+                    src={portfolio}
+                    alt="linkedin image"
+                    className="object-cover w-10 h10 mr-5 hover:scale-105"
+                  />
+                </a>
+                <a href={Prof4.link3} target="_blank">
+                  <img
+                    src={github}
+                    alt="linkedin image"
+                    className="object-cover w-10 h10 hover:scale-105"
+                  />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <div className="profbox5 rounded-lg bg-[#E6E1FF] text-[#191F5D] w-full h-full lg:w-2/3">
+            <div className="avatarpic flex flex-row justify-center mt-5">
+              <img src={avatar5} alt="avatar1 image" className="w-32 h-32" />
+            </div>
+            <div className="txtprof1 text-xl font-bold text-center md:text-2xl my-2">
+              {Prof5.head}
+            </div>
+            <div className="contact flex flex-row justify-center mb-5">
+              <a href={Prof5.link1} target="_blank">
+                <img
+                  src={linkedin}
+                  alt="linkedin image"
+                  className="object-cover w-10 h10 mr-5 hover:scale-105"
+                />
+              </a>
+              <a href={Prof5.link2} target="_blank">
+                <img
+                  src={portfolio}
+                  alt="linkedin image"
+                  className="object-cover w-10 h10 mr-5 hover:scale-105"
+                />
+              </a>
+              <a href={Prof5.link3} target="_blank">
+                <img
+                  src={github}
+                  alt="linkedin image"
+                  className="object-cover w-10 h10 hover:scale-105"
+                />
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
