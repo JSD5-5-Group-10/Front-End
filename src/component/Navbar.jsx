@@ -54,7 +54,7 @@ export default function Navbar() {
               <Link to="/calculate">CAL Calculator</Link>
             </li>
             <li className=" p-2.5 my-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
-              <Link to="/weightloss">Weight Loss Simulator</Link>
+              <Link to="/weightloss">Weight Calculator</Link>
             </li>
             {/* <li className=" p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-black dark:text-cyan-50 dark:hover:text-indigo-600">
               <Link to="/Registration">Registration</Link>
