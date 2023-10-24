@@ -119,16 +119,18 @@ const IndexActivity = ({ act_type }) => {
                   <>
                     {currentPage > 1 ? (
                       <button
-                        className="btn mx-2 text-black bg-gray-200 border-none dark:bg-gray-700 dark:text-white"
+                        className="btn mx-2 text-black bg-indigo-200 font-bold text-lg hover:bg-indigo-600 dark:hover:bg-indigo-500  border-none dark:bg-gray-700 dark:text-white"
                         onClick={() => paginate(currentPage - 1)}
                       >
                         &lt;
                       </button>
                     ) : null}
-                    <div className="text-center mx-2">{currentPage}</div>
+                    <div className="text-center text-xl font-medium mx-2">
+                      {currentPage}
+                    </div>
                     {currentPage < pageNumbers ? (
                       <button
-                        className="btn mx-2 text-black bg-gray-200 border-none dark:bg-gray-700 dark:text-white"
+                        className="btn mx-2 text-black bg-indigo-200 border-none font-bold text-lg hover:bg-indigo-600 dark:hover:bg-indigo-500 dark:bg-gray-700 dark:text-white"
                         onClick={() => paginate(currentPage + 1)}
                         disabled={currentPage === pageNumbers}
                       >
@@ -141,11 +143,11 @@ const IndexActivity = ({ act_type }) => {
             ))}
           </div>
         </div>
-        <div className="hidden lg:flex lg:items-center lg:justify-center">
+        <div className="hidden lg:flex  lg:items-center lg:justify-center">
           <div className="menu menu-horizontal  px-1">
             <li>
               <details>
-                <summary className="text-2xl z-50 font-medium  dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
+                <summary className="text-2xl dropdown z-50 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
                   Filter
                 </summary>
                 <ul className="p-1 z-10 bg-indigo-600/90 max-w-[100px]">
@@ -181,7 +183,10 @@ const IndexActivity = ({ act_type }) => {
           </div>
         </div>
         <div className="dropdown dropdown-right  z-50 lg:hidden">
-          <label tabIndex={0} className="btn m-1">
+          <label
+            tabIndex={0}
+            className="btn m-1 text-black border-none mt-3 bg-indigo-200 hover:bg-indigo-600 "
+          >
             Filter
           </label>
           <ul

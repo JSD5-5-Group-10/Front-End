@@ -147,7 +147,7 @@ export const ActivityDisplay = () => {
 
                       {/* descrition */}
                       <label className="flex rounded-lg leading-10">
-                        <span className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg  focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                        <span className="sm:w-[120px] w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg  focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                           Days
                         </span>
                         <input
@@ -155,7 +155,7 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setNumberOfDays(e.target.value)}
                           type="number"
                           name="detial"
-                          className="[&::-webkit-inner-spin-button]:appearance-none  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Day"
                           maxLength="50"
                           rows="2"
@@ -163,7 +163,7 @@ export const ActivityDisplay = () => {
                       </label>
                       {/* duration  */}
                       <label className="flex rounded-lg leading-10">
-                        <span className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                        <span className="sm:w-[120px] w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                           Duration (Min)
                         </span>
                         <input
@@ -171,13 +171,13 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setTime(e.target.value)}
                           type="number"
                           name="duration"
-                          className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Minute"
                         />
                       </label>
                       {/* Weight */}
                       <label className="flex rounded-lg leading-10">
-                        <span className="w-[120px]  flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                        <span className="flex items-center justify-center sm:w-[120px] w-[200px] bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                           Current weight
                         </span>
                         <input
@@ -185,7 +185,7 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setWeight(e.target.value)}
                           type="number"
                           name="weight"
-                          className="[&::-webkit-inner-spin-button]:appearance-none  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Kilogram"
                         />
                       </label>
@@ -230,9 +230,17 @@ export const ActivityDisplay = () => {
                       {/* Total KCAL : {totalkcal || "0"} Kg */}
                     </div>
                     <div className="w-full">
-                      <h2 className="uppercase absolute bottom-1 right-3 ">
-                        <span className="text-lg font-bold">
-                          TOTAL BURN : {totalkcal || 0} KCAL / {allburnkg || 0}{" "}
+                      <h2 className="uppercase text-center">
+                        <span className="text-lg ">
+                          TOTAL BURN KCAL :{" "}
+                          <span className="font-bold">{totalkcal || 0} </span>
+                          KCAL
+                        </span>
+                      </h2>
+                      <h2 className="uppercase text-center">
+                        <span className="text-lg ">
+                          TOTAL BURN KG :
+                          <span className="font-bold"> {allburnkg || 0} </span>{" "}
                           KG
                         </span>
                       </h2>

@@ -135,8 +135,8 @@ const ActivityForm = () => {
   // console.log(addActivity);
 
   return (
-    <div className="flex min-h-screen gap-5">
-      <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
+    <div className="xl:flex inline min-h-screen gap-5">
+      <div className="mt-5 xl:m-auto flex flex-col  items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600">
           Activity Form
         </h1>
@@ -196,7 +196,7 @@ const ActivityForm = () => {
               </div>
               {/* activity-name */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Activity Name
                 </span>
                 <input
@@ -207,13 +207,13 @@ const ActivityForm = () => {
                   }
                   type="name"
                   name="detial"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Activity Name"
                 />
               </label>
               {/* descrition */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Description
                 </span>
                 <input
@@ -223,7 +223,7 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="detial"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Descrition"
                   maxLength={30}
                   rows="2"
@@ -231,7 +231,7 @@ const ActivityForm = () => {
               </label>
               {/* duration  */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Duration (Min)
                 </span>
                 <input
@@ -244,13 +244,13 @@ const ActivityForm = () => {
                   }
                   type="number"
                   name="duration"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white w-full text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
                 />
               </label>
               {/* Weight */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Current weight
                 </span>
                 <input
@@ -263,13 +263,13 @@ const ActivityForm = () => {
                   }
                   type="number"
                   name="weight"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white w-full text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
                 />
               </label>
               {/* Calories Burned  */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Calories Burn
                 </span>
                 <input
@@ -280,13 +280,13 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
               {/* kilogram bure */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Kilogram Burn
                 </span>
                 <input
@@ -297,7 +297,7 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
@@ -305,7 +305,7 @@ const ActivityForm = () => {
                 {!toggle ? (
                   <button
                     type="submit"
-                    className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 hover:bg-indigo-800 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     CONFIRM
                   </button>
@@ -319,13 +319,13 @@ const ActivityForm = () => {
         <ToastContainer />
       </div>
       {/* display activitycard before submit */}
-      <div className="dark:border-gray-700 hidden h-[668px] max-w-[400px] xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
+      <div className="dark:border-gray-700 mt-3 xl:m-auto xl:h-[668px] xl:max-w-[400px] xl:flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
           Activity Card
         </h1>
         <div
-          className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:h-[400px] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
-            lg:h-[400px] lg:hover:scale-105"
+          className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+            xl:h-[400px] lg:hover:scale-105"
         >
           <div className="p-2 mr-3 flex items-center absolute ">
             {/* {item.icon} */}
@@ -348,9 +348,9 @@ const ActivityForm = () => {
             <div className="mb-1 text-center break-all">
               Description : {addActivity.act_desc || "Description"}
             </div>
-            <div className="w-full">
+            <div className="w-full m-2">
               <h2 className="uppercase absolute bottom-1 right-3 underline">
-                <span className="text-[#ff6c3b] underline">Total Burn:</span>{" "}
+                <span className="text-indigo-500   underline">Total Burn:</span>{" "}
                 {addActivity.cal_burn || 0} kcal / {addActivity.kg_burn || 0} kg
               </h2>
             </div>

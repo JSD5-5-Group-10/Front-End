@@ -126,7 +126,7 @@ const PopupActivity = ({ item }) => {
               <div className="flex leading-10">
                 <label
                   htmlFor="type"
-                  className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
+                  className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg"
                 >
                   Activity Type
                 </label>
@@ -139,10 +139,10 @@ const PopupActivity = ({ item }) => {
                       act_type: e.target.value,
                     })
                   }
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                 >
                   <option className="text-[#131c85] dark:text-cyan-50" value="">
-                    Please Select Activity type
+                    Select Activity type
                   </option>
                   <option
                     className="text-[#131c85] dark:text-cyan-50"
@@ -178,7 +178,7 @@ const PopupActivity = ({ item }) => {
               </div>
               {/* activity-name */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800  focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg  focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Activity Name
                 </span>
                 <input
@@ -192,13 +192,13 @@ const PopupActivity = ({ item }) => {
                   }
                   type="name"
                   name="detial"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Activity Name"
                 />
               </label>
               {/* descrition */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2  flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg  focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Description
                 </span>
                 <input
@@ -211,7 +211,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="detial"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="bg-white w-full text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Descrition"
                   maxLength={30}
                   rows="2"
@@ -219,7 +219,7 @@ const PopupActivity = ({ item }) => {
               </label>
               {/* duration  */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Duration (Min)
                 </span>
                 <input
@@ -232,13 +232,13 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="duration"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
                 />
               </label>
               {/* Weight */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Current weight
                 </span>
                 <input
@@ -251,13 +251,13 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="weight"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
                 />
               </label>
               {/* Calories Burned  */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Calories Burn
                 </span>
                 <input
@@ -266,13 +266,13 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
               {/* kilogram bure */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Kilogram Burn
                 </span>
                 <input
@@ -281,7 +281,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>

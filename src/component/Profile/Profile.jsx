@@ -163,17 +163,19 @@ const Profile = () => {
     if (editProfile.password !== pwconfirm) {
       return toast.error("Passwords do NOT match.");
     }
-    // console.log(editProfile);
+
     const updateField = {};
     if (editProfile.name !== "") updateField.name = editProfile.name;
     if (editProfile.password !== "")
       updateField.password = editProfile.password;
-    if (editProfile.age !== "") updateField.age = editProfile.age;
+    if (editProfile.age !== 0) updateField.age = editProfile.age;
     if (editProfile.profile_img !== "")
       updateField.profile_img = editProfile.profile_img;
     if (editProfile.description !== "")
       updateField.description = editProfile.description;
     // console.log(updateField);
+    // console.log(updateField);
+
     try {
       const response = await axios.put(
         `https://backend-group10.onrender.com/api/user/update`,
@@ -237,11 +239,13 @@ const Profile = () => {
     <div className="w-full dark:bg-gray-800 bg-white">
       <header>
         <div className="relative">
-          <img
-            src={data.image?.cover_img || `${coverImage}`}
-            alt="coverImage"
-            className="h-[200px] w-screen"
-          />
+          <div className="h-full">
+            <img
+              src={data.image?.cover_img || `${coverImage}`}
+              alt="coverImage"
+              className="w-screen h-[200px] object-cover object-top"
+            />
+          </div>
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
             className="bg-indigo-600 cursor-pointer text-white text-sm rounded-lg hover:bg-indigo-800 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
@@ -414,7 +418,7 @@ const Profile = () => {
             User Email : <span className="font-normal">{data?.email}</span>
           </p>
           <p className="my-2 text-lg font-bold">
-            Age : <span className="font-normal">{data?.age} year</span>
+            Age : <span className="font-normal">{data?.age} years</span>
           </p>
           <p className="my-2 text-lg font-bold">
             Information :{" "}
