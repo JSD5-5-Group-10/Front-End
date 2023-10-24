@@ -24,6 +24,7 @@ const ActivityForm = () => {
   const month = String(new Date().getMonth() + 1).padStart(2, "0");
   const day = String(new Date().getDate()).padStart(2, "0");
   const formattedDateTime = `${day}-${month}-${year}`;
+  const [toggle, setToggle] = useState();
 
   const isValidate = () => {
     let proceed = true;
@@ -58,6 +59,7 @@ const ActivityForm = () => {
   const saveData = async (e) => {
     e.preventDefault();
     if (isValidate()) {
+      setToggle(true);
       try {
         const response = await axios.post(
           `https://backend-group10.onrender.com/api/activity/add`,
@@ -71,7 +73,7 @@ const ActivityForm = () => {
         // console.log("POST", response.status);
         // console.log(response);
         if (response.status === 200) {
-          toast.success("Update successfully.");
+          toast.success("Create  successfully.");
           setTimeout(() => {
             navigate("/home");
           }, 3000);
@@ -119,11 +121,12 @@ const ActivityForm = () => {
       setAddActivity({
         ...addActivity,
         cal_burn: parseFloat(kcal.toFixed(2)),
-        kg_burn: parseFloat(kgburn.toFixed(2)),
+        kg_burn: parseFloat(kgburn.toFixed(3)),
       });
     }
     setChange();
   };
+  console.log(addActivity);
 
   useEffect(() => {
     calculateActivity();
@@ -299,12 +302,16 @@ const ActivityForm = () => {
                 />
               </label>
               <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  CONFIRM
-                </button>
+                {!toggle ? (
+                  <button
+                    type="submit"
+                    className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    CONFIRM
+                  </button>
+                ) : (
+                  <p className="text-[#0f0]">Card Created</p>
+                )}
               </div>
             </div>
           </form>

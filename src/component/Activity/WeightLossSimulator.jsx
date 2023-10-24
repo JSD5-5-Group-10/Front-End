@@ -89,8 +89,8 @@ export const WeightLossSimulator = () => {
           <div className="flex flex-col gap-10 justify-center items-center my-20 xl:flex xl:flex-row">
             {/* Form */}
             <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
-              <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600">
-                Simulate Form
+              <h1 className="my-5 text-center text-3xl font-bold leading-9 tracking-tight text-indigo-600">
+                Kilogram Calculator
               </h1>
               <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={calculateActivity} className="flex">
@@ -156,7 +156,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setNumberOfDays(e.target.value)}
                         type="number"
                         name="detial"
-                        className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Day"
                         maxLength="50"
                         rows="2"
@@ -172,8 +172,8 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setLossWeight(e.target.value)}
                         type="number"
                         name="duration"
-                        className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
-                        placeholder="Weight you want to lose (KG)"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        placeholder="Target Weight"
                       />
                     </label>
                     {/* Weight */}
@@ -186,7 +186,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setWeight(e.target.value)}
                         type="number"
                         name="weight"
-                        className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Kilogram"
                       />
                     </label>
@@ -207,7 +207,7 @@ export const WeightLossSimulator = () => {
             {/* display activitycard before submit */}
             <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
               <h1 className="my-5 text-center text-3xl font-bold leading-9 tracking-tight text-indigo-600">
-                Weight Loss Simulator
+                Weight Calculator
               </h1>
               <div
                 className="w-[350px] h-[200px] m-4 shadow-xl border border-indigo-600 relative rounded-2xl flex flex-row break-all  text-ellipsisp overflow-hidden 
@@ -245,14 +245,14 @@ export const WeightLossSimulator = () => {
                         </div>
                       )}
                       {time >= 120 && time < 180 && (
-                        <div className="text-end ">
+                        <div className="text-center">
                           <span className="text-xs text-red-600">
                             Difficult, requires a lot of discipline
                             <br />
                           </span>
                         </div>
                       )}
-                      <span className="text-lg text-center font-bold">
+                      <span className="text-sm text-center font-bold">
                         You should exercise for{" "}
                         <p className="font-bold">{time || 0} minutes daily.</p>
                       </span>

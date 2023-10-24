@@ -36,7 +36,7 @@ export const ActivityDisplay = () => {
       Muaythai: 6,
       Training: 8,
     };
-    console.log(totalkcal);
+    // console.log(totalkcal);
 
     if (type in METs) {
       const met = METs[type];
@@ -89,7 +89,7 @@ export const ActivityDisplay = () => {
               {/* Form */}
               <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
                 <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600 ">
-                  Activity Form
+                  CAL Calculator
                 </h1>
                 <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
                   <form onSubmit={calculateActivity} className="flex">
@@ -98,7 +98,7 @@ export const ActivityDisplay = () => {
                       <div className="flex leading-10">
                         <label
                           htmlFor="type"
-                          className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
+                          className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg"
                         >
                           Activity Type
                         </label>
@@ -148,7 +148,7 @@ export const ActivityDisplay = () => {
 
                       {/* descrition */}
                       <label className="flex rounded-lg leading-10">
-                        <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                        <span className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg  focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                           Days
                         </span>
                         <input
@@ -156,7 +156,7 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setNumberOfDays(e.target.value)}
                           type="number"
                           name="detial"
-                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="[&::-webkit-inner-spin-button]:appearance-none  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Day"
                           maxLength="50"
                           rows="2"
@@ -164,7 +164,7 @@ export const ActivityDisplay = () => {
                       </label>
                       {/* duration  */}
                       <label className="flex rounded-lg leading-10">
-                        <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                        <span className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                           Duration (Min)
                         </span>
                         <input
@@ -172,13 +172,13 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setTime(e.target.value)}
                           type="number"
                           name="duration"
-                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Minute"
                         />
                       </label>
                       {/* Weight */}
                       <label className="flex rounded-lg leading-10">
-                        <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                        <span className="w-[120px]  flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                           Current weight
                         </span>
                         <input
@@ -186,7 +186,7 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setWeight(e.target.value)}
                           type="number"
                           name="weight"
-                          className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className="[&::-webkit-inner-spin-button]:appearance-none  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Kilogram"
                         />
                       </label>
