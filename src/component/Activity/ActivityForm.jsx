@@ -126,7 +126,7 @@ const ActivityForm = () => {
     }
     setChange();
   };
-  console.log(addActivity);
+  // console.log(addActivity);
 
   useEffect(() => {
     calculateActivity();

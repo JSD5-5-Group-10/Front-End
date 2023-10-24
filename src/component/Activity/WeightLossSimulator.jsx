@@ -112,7 +112,7 @@ export const WeightLossSimulator = () => {
                           className="text-[#131c85] dark:text-cyan-50"
                           value=""
                         >
-                          Please Select Activity type
+                          Select Activity type
                         </option>
                         <option
                           className="text-[#131c85] dark:text-cyan-50"
