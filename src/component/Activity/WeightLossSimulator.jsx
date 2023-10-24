@@ -77,7 +77,7 @@ export const WeightLossSimulator = () => {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="flex  w-full  max-w-[1360px] bg-white text-black dark:bg-gray-800 dark:text-cyan-50">
+      <div className="flex  w-full  max-w-[1380px] bg-white text-black dark:bg-gray-800 dark:text-cyan-50">
         {/* nav */}
         <div className="absolute z-50 md:hidden">
           <Navbar />
@@ -89,30 +89,30 @@ export const WeightLossSimulator = () => {
           <div className="flex flex-col gap-10 justify-center items-center my-20 xl:flex xl:flex-row">
             {/* Form */}
             <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
-              <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600">
-                Simulate Form
+              <h1 className="my-5 text-center text-3xl font-bold leading-9 tracking-tight text-indigo-600">
+                Kilogram Calculator
               </h1>
               <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={calculateActivity} className="flex">
                   <div className="space-y-6">
                     {/* activity type */}
-                    <div className="flex leading-10">
+                    <div className="flex leading-10 w-full">
                       <label
                         htmlFor="type"
-                        className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
-                        >
+                        className=" flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg "
+                      >
                         Activity Type
                       </label>
                       <select
                         name="type"
                         onChange={(e) => setType(e.target.value)}
                         className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent ring-2 ring-inset ring-indigo-600"
-                        >
+                      >
                         <option
                           className="text-[#131c85] dark:text-cyan-50"
                           value=""
                         >
-                          Please Select Activity type
+                          Select Activity type
                         </option>
                         <option
                           className="text-[#131c85] dark:text-cyan-50"
@@ -148,7 +148,7 @@ export const WeightLossSimulator = () => {
                     </div>
                     {/* descrition */}
                     <label className="flex rounded-lg leading-10">
-                    <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Duration
                       </span>
                       <input
@@ -156,7 +156,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setNumberOfDays(e.target.value)}
                         type="number"
                         name="detial"
-                        className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Day"
                         maxLength="50"
                         rows="2"
@@ -164,7 +164,7 @@ export const WeightLossSimulator = () => {
                     </label>
                     {/* duration  */}
                     <label className="flex rounded-lg leading-10">
-                    <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Weight (KG)
                       </span>
                       <input
@@ -172,13 +172,13 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setLossWeight(e.target.value)}
                         type="number"
                         name="duration"
-                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
-                        placeholder="Weight you want to lose (KG)"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        placeholder="Target Weight"
                       />
                     </label>
                     {/* Weight */}
                     <label className="flex rounded-lg leading-10">
-                    <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Current weight
                       </span>
                       <input
@@ -186,7 +186,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setWeight(e.target.value)}
                         type="number"
                         name="weight"
-                        className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Kilogram"
                       />
                     </label>
@@ -195,7 +195,7 @@ export const WeightLossSimulator = () => {
                       <button
                         type="submit"
                         className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        >
+                      >
                         CONFIRM
                       </button>
                     </div>
@@ -206,12 +206,12 @@ export const WeightLossSimulator = () => {
             </div>
             {/* display activitycard before submit */}
             <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
-              <h1 className="my-5 text-center text-3xl font-bold leading-9 tracking-tight text-[#8278d9]">
-                Weight Loss Simulator
+              <h1 className="my-5 text-center text-3xl font-bold leading-9 tracking-tight text-indigo-600">
+                Weight Calculator
               </h1>
               <div
-                className="w-[350px] h-[200px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row break-all  text-ellipsisp overflow-hidden 
-                hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+                className="w-[350px] h-[200px] m-4 shadow-xl border border-indigo-600 relative rounded-2xl flex flex-row break-all  text-ellipsisp overflow-hidden 
+                hover:bg-indigo-600 hover:shadow-indigo-600 hover:drop-shadow-2xl duration-700
             xl:h-[400px] xl:w-[350px] lg:hover:scale-105  "
               >
                 <div className="p-2 mr-3 flex items-center absolute ">
@@ -245,14 +245,14 @@ export const WeightLossSimulator = () => {
                         </div>
                       )}
                       {time >= 120 && time < 180 && (
-                        <div className="text-end ">
+                        <div className="text-center">
                           <span className="text-xs text-red-600">
                             Difficult, requires a lot of discipline
                             <br />
                           </span>
                         </div>
                       )}
-                      <span className="text-lg text-center font-bold">
+                      <span className="text-sm text-center font-bold">
                         You should exercise for{" "}
                         <p className="font-bold">{time || 0} minutes daily.</p>
                       </span>

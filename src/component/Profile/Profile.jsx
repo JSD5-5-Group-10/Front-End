@@ -279,7 +279,7 @@ const Profile = () => {
           </button>
           <button
             onClick={() => setEdit(!edit)}
-            className="bg-[#827BD9] cursor-pointer text-white rounded-lg border-gray-300 hover:bg-indigo-800 p-1 px-3 md:hidden"
+            className="bg-indigo-600  cursor-pointer text-white rounded-lg border-gray-300 hover:bg-indigo-800 p-1 px-3 md:hidden"
           >
             <FaUserEdit size={20} />
           </button>
@@ -414,7 +414,7 @@ const Profile = () => {
             User Email : <span className="font-normal">{data?.email}</span>
           </p>
           <p className="my-2 text-lg font-bold">
-            Age : <span className="font-normal">{data?.age} yaer</span>
+            Age : <span className="font-normal">{data?.age} year</span>
           </p>
           <p className="my-2 text-lg font-bold">
             Information :{" "}
