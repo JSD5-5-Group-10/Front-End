@@ -99,14 +99,14 @@ export const WeightLossSimulator = () => {
                     <div className="flex leading-10 w-full">
                       <label
                         htmlFor="type"
-                        className=" flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg "
+                        className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg "
                       >
                         Activity Type
                       </label>
                       <select
                         name="type"
                         onChange={(e) => setType(e.target.value)}
-                        className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent ring-2 ring-inset ring-indigo-600"
                       >
                         <option
                           className="text-[#131c85] dark:text-cyan-50"
@@ -148,7 +148,7 @@ export const WeightLossSimulator = () => {
                     </div>
                     {/* descrition */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Duration
                       </span>
                       <input
@@ -156,7 +156,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setNumberOfDays(e.target.value)}
                         type="number"
                         name="detial"
-                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="w-full [&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Day"
                         maxLength="50"
                         rows="2"
@@ -164,7 +164,7 @@ export const WeightLossSimulator = () => {
                     </label>
                     {/* duration  */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-[200px]  flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Weight (KG)
                       </span>
                       <input
@@ -172,13 +172,13 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setLossWeight(e.target.value)}
                         type="number"
                         name="duration"
-                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="w-full [&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Target Weight"
                       />
                     </label>
                     {/* Weight */}
                     <label className="flex rounded-lg leading-10">
-                      <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                      <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                         Current weight
                       </span>
                       <input
@@ -186,7 +186,7 @@ export const WeightLossSimulator = () => {
                         onChange={(e) => setWeight(e.target.value)}
                         type="number"
                         name="weight"
-                        className="[&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                        className="w-full [&::-webkit-inner-spin-button]:appearance-none bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                         placeholder="Kilogram"
                       />
                     </label>
