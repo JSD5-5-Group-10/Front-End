@@ -73,7 +73,7 @@ const ActivityForm = () => {
         if (response.status === 200) {
           toast.success("Update successfully.");
           setTimeout(() => {
-            navigate("/");
+            navigate("/home");
           }, 3000);
         }
       } catch (err) {
