@@ -1,7 +1,16 @@
 import Navbar from "../../component/Navbar";
 import ActivityForm from "../../component/Activity/ActivityForm";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ActivityFormPage() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (!token) {
+      return navigate("/");
+    }
+  }, [token]);
   return (
     <div className="md:flex max-w-[1380px] m-auto bg-white dark:bg-gray-800">
       <div className="absolute z-50 md:hidden">

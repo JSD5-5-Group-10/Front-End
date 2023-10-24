@@ -75,7 +75,7 @@ export const ForgotPassword = () => {
               <button
                 onClick={() => setToggle(true)}
                 type="submit"
-                className="bg-[#8278d9] px-3 py-1.5 text-sm font-semibold rounded-lg mt-10 leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="bg-indigo-600  px-3 py-1.5 text-sm font-semibold rounded-lg mt-10 leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Send
               </button>
@@ -88,7 +88,7 @@ export const ForgotPassword = () => {
               Remember Password ?
               <Link
                 to="/login"
-                className="cursor-pointer font-bold text-blue-500"
+                className="cursor-pointer font-bold text-indigo-600"
               >
                 {" "}
                 Login
