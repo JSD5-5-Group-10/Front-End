@@ -98,7 +98,7 @@ const IndexActivity = ({ act_type }) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filter.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(currentItems);
+  // console.log(currentItems);
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

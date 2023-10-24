@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import Navbar from "../../component/Navbar";
 import { ThaiBoxing } from "../../component/ExerciseContent/ThaiBoxing";
 import { useNavigate } from "react-router-dom";

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import profileImage from "../../public/profile.gif";
-import coverImage from "../../public/cover.jpg";
+import coverImage from "../../public/cover.svg";
 import { FaUserEdit } from "react-icons/fa";
 import { BiEdit } from "react-icons/bi";
 
@@ -299,7 +299,7 @@ const Profile = () => {
           <form className="flex justify-center my-3 ">
             <div className="space-y-6">
               <label className="flex rounded-lg leading-10 ">
-                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[200px] px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Full name
                 </span>
                 <input
@@ -313,7 +313,7 @@ const Profile = () => {
                 />
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[200px] px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Birthday
                 </span>
                 <input
@@ -325,24 +325,24 @@ const Profile = () => {
                 />
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="w-[260px] flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[260px] flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Profile picture
                 </span>
                 <input
                   onChange={(e) => setUplaodProfileimg(e.target.files[0])}
                   type="file"
                   name="profile_img"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 w-full placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white file:bg-indigo-600  text-black dark:bg-gray-800 dark:text-cyan-50 w-full placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
                 />
                 <button
-                  className="flex items-center px-3 justify-center bg-[#8278d9] text-white font-semibold rounded-r-lg hover:bg-indigo-500"
+                  className="flex items-center px-3 justify-center bg-indigo-600 text-white font-semibold rounded-r-lg hover:bg-indigo-500"
                   onClick={uploadImages}
                 >
                   Upload
                 </button>
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="px-2 w-[200px] flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="px-2 w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Information
                 </span>
                 <input
@@ -359,7 +359,7 @@ const Profile = () => {
                 />
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[200px] px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Password
                 </span>
                 <input
@@ -376,7 +376,7 @@ const Profile = () => {
                 />
               </label>
               <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-[200px] px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-500">
                   Repassword
                 </span>
                 <input
@@ -391,7 +391,7 @@ const Profile = () => {
                 <button
                   onClick={saveData}
                   type="submit"
-                  className="flex w-1/2 justify-center rounded-full  bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-1/2 justify-center rounded-full bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Update
                 </button>
