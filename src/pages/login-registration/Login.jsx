@@ -54,26 +54,25 @@ export const Login = () => {
   // console.log(email);
   // console.log(password);
   return (
-    <div className="flex items-center justify-center dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
-      <div className="flex w-[1360px] flex-col md:flex">
+    <div className="lg:w-[1380px] mx-auto dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
+      <div className="flex flex-col md:flex">
         <NavbarLogin />
         <div className="mx-auto">
-          <div className="flex mt-20 h-screen">
-            <div className=" w-1/2  m-auto hidden ab lg:inline">
+          <div className="flex h-screen">
+            <div className=" w-1/2  m-auto hidden lg:inline">
               <div className="flex h-[600px]">
                 <img className="bg-cover" src={bgRegister} alt="" />
               </div>
             </div>
 
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
+            <div className="w-[450px] flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h1 className="text-3xl text-center text-[#8278d9] font-bold leading-9 ">
-                  FITBOD
+                <h1 className="text-3xl  text-center text-indigo-600 font-bold leading-9 pb-5">
+                  WELCOME TO FITBOD
                 </h1>
               </div>
-
               <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
-                <h2 className="mb-10 dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                <h2 className="mb-10 uppercase dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                   Login to your account
                 </h2>
                 <form
@@ -114,7 +113,7 @@ export const Login = () => {
                       <div className="text-sm">
                         <Link
                           to="/forgot-password"
-                          className="font-semibold dark:text-cyan-50 text-indigo-600 hover:text-indigo-500"
+                          className="font-semibold  text-indigo-600 hover:text-indigo-500"
                         >
                           Forgot password?
                         </Link>
@@ -137,7 +136,7 @@ export const Login = () => {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center dark:text-cyan-50 rounded-md bg-[#8278d9] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center dark:text-cyan-50 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Login
                     </button>
@@ -153,9 +152,9 @@ export const Login = () => {
                   Not a member?{" "}
                   <Link
                     to="/Registration"
-                    className="font-semibold leading-6 dark:text-cyan-50 text-[#8278d9]  hover:text-indigo-100"
+                    className="font-semibold leading-6 dark:text-cyan-50 hover:text-indigo-100"
                   >
-                    Register Now
+                    <span className="text-indigo-600">Register Now </span>
                   </Link>
                 </p>
               </div>
