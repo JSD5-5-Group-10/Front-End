@@ -90,7 +90,7 @@ export const Registration = () => {
           </div>
         </div>
         <div className="flex min-h-full w-[300px] flex-1 flex-col justify-center items-center lg:items-start px-6 py-12 lg:px-8 ">
-          <div className="w-[400px]">
+          <div className="w-[325px] sm:w-[400px]">
             <div className="rounded-xl shadow-lg border-2 p-10 mt-3 sm:mx-auto sm:w-full sm:max-w-sm ">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mb-5 dark:text-cyan-50 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

@@ -65,7 +65,7 @@ export const Login = () => {
               </div>
             </div>
 
-            <div className="w-[450px] flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
+            <div className="sm:w-[450px] flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h1 className="text-3xl  text-center text-indigo-600 font-bold leading-9 pb-5">
                   WELCOME TO FITBOD

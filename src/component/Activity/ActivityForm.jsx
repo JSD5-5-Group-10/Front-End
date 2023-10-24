@@ -129,12 +129,12 @@ const ActivityForm = () => {
     calculateActivity();
   }, [addActivity.act_type, addActivity.duration, addActivity.cur_weight]);
 
-  console.log(addActivity);
+  // console.log(addActivity);
 
   return (
     <div className="flex min-h-screen gap-5">
       <div className="flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
-        <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-[#8278d9]">
+        <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600">
           Activity Form
         </h1>
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -144,7 +144,7 @@ const ActivityForm = () => {
               <div className="flex leading-10 ">
                 <label
                   htmlFor="type"
-                  className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500"
+                  className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
                 >
                   Activity Type
                 </label>
@@ -154,7 +154,7 @@ const ActivityForm = () => {
                   onChange={(e) =>
                     setAddActivity({ ...addActivity, act_type: e.target.value })
                   }
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 appearance-none rounded-r-lg px-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent ring-2 ring-inset ring-indigo-600"
                 >
                   <option className="text-[#131c85] dark:text-cyan-50" value="">
                     Please Select Activity type
@@ -193,7 +193,7 @@ const ActivityForm = () => {
               </div>
               {/* activity-name */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 px-2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500  ">
+                <span className="w-1/2 px-2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Activity Name
                 </span>
                 <input
@@ -204,13 +204,13 @@ const ActivityForm = () => {
                   }
                   type="name"
                   name="detial"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Activity Name"
                 />
               </label>
               {/* descrition */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Description
                 </span>
                 <input
@@ -220,7 +220,7 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="detial"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 leading-snug rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Descrition"
                   maxLength={30}
                   rows="2"
@@ -228,7 +228,7 @@ const ActivityForm = () => {
               </label>
               {/* duration  */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2 flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Duration (Min)
                 </span>
                 <input
@@ -241,13 +241,13 @@ const ActivityForm = () => {
                   }
                   type="number"
                   name="duration"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
                 />
               </label>
               {/* Weight */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center  justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2 flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Current weight
                 </span>
                 <input
@@ -260,13 +260,13 @@ const ActivityForm = () => {
                   }
                   type="number"
                   name="weight"
-                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
                 />
               </label>
               {/* Calories Burned  */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Calories Burn
                 </span>
                 <input
@@ -277,13 +277,13 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
               {/* kilogram bure */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-1/2 flex items-center justify-center bg-[#8278d9] text-white font-semibold rounded-l-lg hover:bg-indigo-500">
+                <span className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800 focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Kilogram Burn
                 </span>
                 <input
@@ -294,14 +294,14 @@ const ActivityForm = () => {
                   }
                   type="text"
                   name="date"
-                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-2 focus:ring-[#8278d9] focus:border-transparent ring-1 ring-inset ring-[#8278d9]"
+                  className="bg-white dark:bg-slate-600 px-2 rounded-r-lg placeholder:text-[#131c85] focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   disabled
                 />
               </label>
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-[#8278d9] px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className=" flex w-1/2 justify-center rounded-full rounded-tl-lg bg-indigo-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   CONFIRM
                 </button>
