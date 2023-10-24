@@ -7,7 +7,6 @@ export const RegistrationPage = () => {
       {/* <div>
         <Navbar />
       </div> */}
-
       <Registration />
     </div>
   );

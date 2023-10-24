@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { ToggleDarkmode } from "../../component/ToggleDarkmode";
 const NavbarLogin = () => {
   return (
-    <div className="navbar bg-[#8278d9] max-w-[1380px] fixed rounded-b-lg shadow-2xl">
+    <div className="navbar bg-indigo-600 max-w-[1380px] fixed rounded-b-lg shadow-2xl">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-white text-xl">
-          Thor Exercise Tracking
+          Fitbod Exercise Tracking
         </Link>
       </div>
       <div>
@@ -16,17 +16,17 @@ const NavbarLogin = () => {
         <ul className="hidden lg:menu lg:menu-horizontal text-white px-1">
           <Link to="/aboutus">
             <li>
-              <a>About Us</a>
+              <a className="text-[1rem]">About Us</a>
             </li>
           </Link>
           <Link to="/Registration">
             <li>
-              <a>Register</a>
+              <a className="text-[1rem]">Register</a>
             </li>
           </Link>
           <Link to="/login">
             <li>
-              <a>Login</a>
+              <a className="text-[1rem]">Login</a>
             </li>
           </Link>
         </ul>
