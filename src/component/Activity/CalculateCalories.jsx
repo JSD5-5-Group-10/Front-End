@@ -98,7 +98,7 @@ export const ActivityDisplay = () => {
                       <div className="flex leading-10">
                         <label
                           htmlFor="type"
-                          className="w-[120px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg"
+                          className="w-1/2 flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg hover:bg-indigo-800"
                         >
                           Activity Type
                         </label>
