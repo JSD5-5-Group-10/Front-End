@@ -18,14 +18,15 @@ export const ResetPassword = () => {
     if (password.length < 8) {
       return toast.warning("Password is less than 8 words");
     }
-
+    // console.log(password);
     try {
       const newPassword = await axios.post(
         `https://backend-group10.onrender.com/api/user/reset-password/${token}`,
         {
-          password: password,
+          password,
         }
       );
+      // console.log(newPassword);
       if (!newPassword) {
         return console.log("error");
       }
