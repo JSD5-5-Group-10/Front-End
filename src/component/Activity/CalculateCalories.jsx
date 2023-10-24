@@ -230,9 +230,17 @@ export const ActivityDisplay = () => {
                       {/* Total KCAL : {totalkcal || "0"} Kg */}
                     </div>
                     <div className="w-full">
-                      <h2 className="uppercase absolute bottom-1 right-3 ">
-                        <span className="text-lg font-bold">
-                          TOTAL BURN : {totalkcal || 0} KCAL / {allburnkg || 0}{" "}
+                      <h2 className="uppercase text-center">
+                        <span className="text-lg ">
+                          TOTAL BURN KCAL :{" "}
+                          <span className="font-bold">{totalkcal || 0} </span>
+                          KCAL
+                        </span>
+                      </h2>
+                      <h2 className="uppercase text-center">
+                        <span className="text-lg ">
+                          TOTAL BURN KG :
+                          <span className="font-bold"> {allburnkg || 0} </span>{" "}
                           KG
                         </span>
                       </h2>
