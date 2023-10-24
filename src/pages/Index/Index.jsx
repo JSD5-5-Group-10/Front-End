@@ -13,11 +13,14 @@ export const Index = () => {
         </div>
 
         <div className="w-full h-screen z-0 ">
-          <div className="flex justify-center items-center dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
-            <Link to="/ActivityForm" className="flex items-center">
-              <h1 className="text-3xl font-medium my-8">Add Activity</h1>
-              <span className="pl-2 ">
-                <BiMessageSquareAdd size={40} />
+          <div className="flex justify-center items-center  dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
+            <Link
+              to="/ActivityForm"
+              className=" flex items-center rounded-full hover:scale-105 hover:text-indigo-600 duration-200 dark:hover:text-indigo-400"
+            >
+              <h1 className="text-3xl  font-medium my-8">Add Activity</h1>
+              <span className="pl-2 hover:scale-10">
+                <BiMessageSquareAdd size={40} className=" " />
               </span>
             </Link>
           </div>

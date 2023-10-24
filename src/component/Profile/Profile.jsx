@@ -239,11 +239,13 @@ const Profile = () => {
     <div className="w-full dark:bg-gray-800 bg-white">
       <header>
         <div className="relative">
-          <img
-            src={data.image?.cover_img || `${coverImage}`}
-            alt="coverImage"
-            className="h-[200px] w-screen"
-          />
+          <div className="h-full">
+            <img
+              src={data.image?.cover_img || `${coverImage}`}
+              alt="coverImage"
+              className="w-screen h-[200px] object-cover object-top"
+            />
+          </div>
           <label
             onChange={(e) => setUploadCover(e.target.files[0])}
             className="bg-indigo-600 cursor-pointer text-white text-sm rounded-lg hover:bg-indigo-800 p-[5px] top-[9rem] right-[1rem] absolute md:inline hidden"
