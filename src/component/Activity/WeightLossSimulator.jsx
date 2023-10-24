@@ -51,9 +51,7 @@ export const WeightLossSimulator = () => {
       // const kcal = met * 0.0175 * weight * time;
       if (timeByOneDay > 180) {
         return (
-          toast.error(
-            "การออกกำลังกายมากกว่า 3 ชั่วโมงต่อวัน เป็นสิ่งไม่ดีนะครับ"
-          ),
+          toast.error("Exercising more than 3 hours per day It's a bad thing."),
           setTime(0),
           setWeight(""),
           setTime(""),
