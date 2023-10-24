@@ -163,17 +163,19 @@ const Profile = () => {
     if (editProfile.password !== pwconfirm) {
       return toast.error("Passwords do NOT match.");
     }
-    // console.log(editProfile);
+
     const updateField = {};
     if (editProfile.name !== "") updateField.name = editProfile.name;
     if (editProfile.password !== "")
       updateField.password = editProfile.password;
-    if (editProfile.age !== "") updateField.age = editProfile.age;
+    if (editProfile.age !== 0) updateField.age = editProfile.age;
     if (editProfile.profile_img !== "")
       updateField.profile_img = editProfile.profile_img;
     if (editProfile.description !== "")
       updateField.description = editProfile.description;
     // console.log(updateField);
+    // console.log(updateField);
+
     try {
       const response = await axios.put(
         `https://backend-group10.onrender.com/api/user/update`,

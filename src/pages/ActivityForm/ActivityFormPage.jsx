@@ -12,7 +12,7 @@ function ActivityFormPage() {
     }
   }, [token]);
   return (
-    <div className="md:flex max-w-[1380px] m-auto bg-white dark:bg-gray-800">
+    <div className="md:flex max-w-[1380px] mx-auto bg-white dark:bg-gray-800">
       <div className="absolute z-50 md:hidden">
         <Navbar />
       </div>
