@@ -55,7 +55,7 @@ export const Login = () => {
   // console.log(password);
   return (
     <div className="flex items-center justify-center dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
-      <div className="flex w-[1360px] flex-col md:flex">
+      <div className="flex w-[1380px] flex-col md:flex">
         <NavbarLogin />
         <div className="mx-auto">
           <div className="flex mt-20 h-screen">
