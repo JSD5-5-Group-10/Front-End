@@ -90,7 +90,7 @@ export const WeightLossSimulator = () => {
             {/* Form */}
             <div className="w-[400px] h-[440px] xl:h-[640px] justify-center flex flex-col items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
               <h1 className="my-5 text-center text-3xl font-bold leading-9 tracking-tight text-indigo-600">
-                Kilogram Calculator
+                Weight Calculator
               </h1>
               <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={calculateActivity} className="flex">

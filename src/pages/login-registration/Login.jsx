@@ -25,7 +25,7 @@ export const Login = () => {
   // console.log(token);
   useEffect(() => {
     if (token) {
-      return navigate("/");
+      return navigate("/home");
     }
   }, [token]);
   // console.log(login);
