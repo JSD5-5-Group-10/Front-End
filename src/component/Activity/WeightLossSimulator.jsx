@@ -233,21 +233,21 @@ export const WeightLossSimulator = () => {
                     <h2 className="">
                       {time > 0 && time < 60 && (
                         <div className="text-center">
-                          <span className="text-xs text-green-600">
+                          <span className="text-lg text-green-600">
                             Very easy, not even an hour a day. <br />
                           </span>
                         </div>
                       )}
                       {time >= 60 && time < 120 && (
                         <div className="text-center">
-                          <span className="text-xs text-yellow-600">
+                          <span className="text-lg text-yellow-600">
                             It's still possible. <br />
                           </span>
                         </div>
                       )}
                       {time >= 120 && time < 180 && (
                         <div className="text-center">
-                          <span className="text-xs text-red-600">
+                          <span className="text-lg text-red-600">
                             Difficult, requires a lot of discipline
                             <br />
                           </span>
