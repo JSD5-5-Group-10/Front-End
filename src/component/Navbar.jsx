@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { AiOutlineAlignLeft } from "react-icons/ai";
 import { authActions } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { googleLogout } from "@react-oauth/google";
 import { ToggleDarkmode } from "./ToggleDarkmode";
-
+import FitbodLogo from "./Activity/assets/fitbod.png";
+import darkLogo from "./Activity/assets/darkfitbod.png";
+import { DarkModeContext } from "./DarkmodeContext";
 export default function Navbar() {
   const [isHidden, setIsHidden] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const theme = useContext(DarkModeContext);
+  const dark = theme.darkMode;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,8 +41,26 @@ export default function Navbar() {
 
   const navListMainPage = () => {
     return (
-      <div className="z-50 mt-28">
-        <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold ">
+      <div className="z-50 ">
+        <div className="flex justify-center  text-indigo-500">
+          <h1 className="absolute font-bold  dark:text-cyan-50 text-xl">
+            FITBOD
+          </h1>
+          {dark ? (
+            <img
+              src={darkLogo}
+              className="w-1/4 my-5 mt-6 dark:text-white"
+              alt="FitbodLogo"
+            />
+          ) : (
+            <img
+              src={FitbodLogo}
+              className="w-1/4 my-5 mt-6 dark:text-white"
+              alt="FitbodLogo"
+            />
+          )}
+        </div>
+        <h1 className=" text-indigo-500 text-xl  text-center dark:text-cyan-50 font-bold">
           MENU
         </h1>
         <hr className="my-2 text-gray-600" />
@@ -77,17 +99,18 @@ export default function Navbar() {
   const activityNavList = () => {
     return (
       <div className="">
-        <div className="w-full ">
+        <div className="w-full">
           <button
             onClick={toggleDropdown}
-            className="text-lg font-bold text-[#5446C9] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse"
+            className="text-lg font-bold  text-[#5446C9] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse"
           >
             Exercise Content
           </button>
         </div>
         <div
-          className={`${isHidden ? "hidden" : ""
-            } p-2.5 mt-2 flex items-end px-4  duration-300 w-4/5 `}
+          className={`${
+            isHidden ? "hidden" : ""
+          } p-2.5 mt-2 flex items-end px-4  duration-300 w-4/5 `}
         >
           <ul>
             <Link to="/allExercise">
@@ -131,8 +154,9 @@ export default function Navbar() {
       <div>
         <button
           onClick={toggleSidebar}
-          className={`${isDesktop ? "md:hidden" : "block"
-            } text-black dark:text-indigo-600 `}
+          className={`${
+            isDesktop ? "md:hidden" : "block"
+          } text-black dark:text-indigo-600 `}
         >
           <AiOutlineAlignLeft size={40} />
         </button>
@@ -143,8 +167,9 @@ export default function Navbar() {
         >
           <button
             onClick={toggleSidebar}
-            className={`${isDesktop ? "md:hidden" : "block"
-              } text-black dark:text-cyan-50`}
+            className={`${
+              isDesktop ? "md:hidden" : "block"
+            } text-black dark:text-cyan-50`}
           >
             <AiOutlineAlignLeft size={40} />
           </button>

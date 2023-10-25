@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import aerobics from "../../public/aerobics.svg";
 import run from "../../public/run.svg";
@@ -136,10 +136,16 @@ const ActivityForm = () => {
 
   return (
     <div className="xl:flex inline min-h-screen gap-5">
+      <Link to="/home" className=" absolute top-10">
+        <button className="btn  border-none bg-red-500 text-white hover:bg-red-700">
+          Close
+        </button>
+      </Link>
       <div className="mt-5 xl:m-auto flex flex-col  items-center m-auto sm:p-10 p-5 rounded-xl dark:border-gray-700 shadow-lg border-2">
         <h1 className="my-5 text-center text-4xl font-bold leading-9 tracking-tight text-indigo-600">
           Activity Form
         </h1>
+
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={saveData} className="flex max-[370px]:text-[0.7rem] ">
             <div className="space-y-6">

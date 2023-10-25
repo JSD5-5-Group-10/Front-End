@@ -42,7 +42,7 @@ export const Login = () => {
       if (!user) {
         return toast.warning("Your email or password has wrong!");
       }
-      console.log(user.data.token);
+      // console.log(user.data.token);
       localStorage.setItem("token", user.data.token);
       dispatch(authActions.login());
       navigate("/Home");
