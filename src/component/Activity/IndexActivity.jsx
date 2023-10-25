@@ -232,7 +232,7 @@ const IndexActivity = ({ act_type }) => {
           return (
             <div
               key={index}
-              className="w-[350px] h-[200px] hover:h-[300px] m-4 shadow-xl border border-[#827BD9] relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+              className="w-[350px] h-[200px] hover:h-[300px] m-4 shadow-xl border-none relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
             lg:h-[300px] lg:mx-auto bg-contain bg-no-repeat bg-center"
               style={{
                 backgroundImage: `url(${
