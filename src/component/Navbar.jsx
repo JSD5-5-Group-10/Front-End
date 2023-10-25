@@ -37,30 +37,30 @@ export default function Navbar() {
 
   const navListMainPage = () => {
     return (
-      <div className="z-50 ">
-        <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold">
+      <div className="z-50 mt-28">
+        <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold ">
           MENU
         </h1>
         <hr className="my-2 text-gray-600" />
         <div className="font-bold ">
           <ul className=" ">
             <Link to="/Home">
-              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Home
               </li>
             </Link>
             <Link to="/profilePage">
-              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Profile
               </li>
             </Link>
             <Link to="/calculate">
-              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 CAL Calculator
               </li>
             </Link>
             <Link to="/weightloss">
-              <li className="text-lg p-2.5 my-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 my-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Weight Calculator
               </li>
             </Link>
@@ -80,44 +80,43 @@ export default function Navbar() {
         <div className="w-full ">
           <button
             onClick={toggleDropdown}
-            className="text-lg font-bold text-indigo-500 ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] dark:text-cyan-50 dark:hover:text-indigo-600"
+            className="text-lg font-bold text-[#5446C9] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse"
           >
             Exercise Content
           </button>
         </div>
         <div
-          className={`${
-            isHidden ? "hidden" : ""
-          } p-2.5 mt-2 flex items-end px-4  duration-300 w-4/5 `}
+          className={`${isHidden ? "hidden" : ""
+            } p-2.5 mt-2 flex items-end px-4  duration-300 w-4/5 `}
         >
           <ul>
             <Link to="/allExercise">
-              <li className="font-bold text-lg p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 All content
               </li>
             </Link>
             <Link to="/yogaPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Yoga
               </li>
             </Link>
             <Link to="/runningPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Running
               </li>
             </Link>
             <Link to="/thaiBoxingPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Thai Boxing
               </li>
             </Link>
             <Link to="/weightPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Weight Training
               </li>
             </Link>
             <Link to="/aerobicsPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Aerobics
               </li>
             </Link>
@@ -132,9 +131,8 @@ export default function Navbar() {
       <div>
         <button
           onClick={toggleSidebar}
-          className={`${
-            isDesktop ? "md:hidden" : "block"
-          } text-black dark:text-indigo-600 `}
+          className={`${isDesktop ? "md:hidden" : "block"
+            } text-black dark:text-indigo-600 `}
         >
           <AiOutlineAlignLeft size={40} />
         </button>
@@ -145,9 +143,8 @@ export default function Navbar() {
         >
           <button
             onClick={toggleSidebar}
-            className={`${
-              isDesktop ? "md:hidden" : "block"
-            } text-black dark:text-cyan-50`}
+            className={`${isDesktop ? "md:hidden" : "block"
+              } text-black dark:text-cyan-50`}
           >
             <AiOutlineAlignLeft size={40} />
           </button>
@@ -161,7 +158,7 @@ export default function Navbar() {
                     </button> */}
             <button
               onClick={handleLogout}
-              className={` h-10 px-5 mt-3 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+              className={` h-10 px-5 mt-3 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-black hover:animate-pulse`}
             >
               Logout
             </button>
