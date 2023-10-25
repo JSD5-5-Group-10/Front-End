@@ -17,7 +17,7 @@ export const Index = () => {
           <div className="flex justify-center items-center  dark:text-cyan-50 text-black dark:bg-gray-800 bg-white ">
             <Link
               to="/ActivityForm"
-              className=" flex items-center rounded-full hover:scale-105 hover:drop-shadow-md   hover:text-black rounded-bl-lg hover:animate-bounce duration-200 dark:hover:text-[#5446C9] border-solid border-2 border-[#4351CC] z-20 "
+              className=" flex items-center rounded-full hover:scale-105 hover:drop-shadow-md hover:text-black rounded-bl-lg hover:animate-bounce duration-200 dark:hover:text-[#5446C9] border-solid border-2 border-[#4351CC] z-20 "
             >
               <h1 className="text-3xl font-bold my-8  ">Add Activity</h1>
               <span className="pl-2 hover:scale-10">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import Navbar from "../Navbar";
 import aerobics from "./assets/aerobiclogo.png";
 import run from "./assets/runlogo.png";
@@ -7,7 +7,6 @@ import thaiboxing from "./assets/boxinglogo.png";
 import yoga from "./assets/yogalogo.png";
 import training from "./assets/weightlogo.png";
 import { useNavigate } from "react-router-dom";
-import { width } from "@mui/system";
 
 export const ActivityDisplay = () => {
   const [type, setType] = useState("");

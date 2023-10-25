@@ -114,7 +114,7 @@ export const Registration = () => {
                       }
                       type="email"
                       autoComplete="email"
-                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-1 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 "
                     />
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export const Registration = () => {
                       type="text"
                       required
                       autoComplete="fullname"
-                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-1 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -162,7 +162,7 @@ export const Registration = () => {
                       type="password"
                       required
                       autoComplete="current-password"
-                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-1 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -189,7 +189,7 @@ export const Registration = () => {
                       type="password"
                       required
                       autoComplete="current-password"
-                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-0 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="bg-white text-black dark:bg-gray-800 dark:text-cyan-50 block w-full rounded-md border-1 py-1.5 px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
