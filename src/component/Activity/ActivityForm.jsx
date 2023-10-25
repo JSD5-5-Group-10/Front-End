@@ -135,9 +135,9 @@ const ActivityForm = () => {
   // console.log(addActivity);
 
   return (
-    <div className="xl:flex inline min-h-screen gap-5">
-      <Link to="/home" className=" absolute top-10">
-        <button className="btn  border-none bg-red-500 text-white hover:bg-red-700">
+    <div className="w-full xl:flex inline min-h-screen gap-5">
+      <Link to="/home" className="absolute top-10 hidden xl:inline-block">
+        <button className="btn  border-none bg-black-500 text-white  hover:bg-black-700">
           Close
         </button>
       </Link>
