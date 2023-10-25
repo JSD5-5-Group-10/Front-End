@@ -5,6 +5,7 @@ import { authActions } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { googleLogout } from "@react-oauth/google";
 import { ToggleDarkmode } from "./ToggleDarkmode";
+import FitbodLogo from "./Activity/assets/fitbod.png";
 
 export default function Navbar() {
   const [isHidden, setIsHidden] = useState(true);
@@ -38,6 +39,12 @@ export default function Navbar() {
   const navListMainPage = () => {
     return (
       <div className="z-50 ">
+        <div className="flex justify-center text-indigo-500">
+          <h1 className="absolute font-bold dark:text-cyan-50 text-xl">
+            FITBOD
+          </h1>
+          <img src={FitbodLogo} className="w-1/4 my-5 mt-8" alt="FitbodLogo" />
+        </div>
         <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold">
           MENU
         </h1>
