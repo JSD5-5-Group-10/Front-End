@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { AiOutlineAlignLeft } from "react-icons/ai";
 import { authActions } from "../redux/store";
@@ -6,10 +6,13 @@ import { useDispatch } from "react-redux";
 import { googleLogout } from "@react-oauth/google";
 import { ToggleDarkmode } from "./ToggleDarkmode";
 import FitbodLogo from "./Activity/assets/fitbod.png";
-
+import darkLogo from "./Activity/assets/darkfitbod.png";
+import { DarkModeContext } from "./DarkmodeContext";
 export default function Navbar() {
   const [isHidden, setIsHidden] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const theme = useContext(DarkModeContext);
+  const dark = theme.darkMode;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,35 +42,47 @@ export default function Navbar() {
   const navListMainPage = () => {
     return (
       <div className="z-50 ">
-        <div className="flex justify-center text-indigo-500">
-          <h1 className="absolute font-bold dark:text-cyan-50 text-xl">
+        <div className="flex justify-center  text-indigo-500">
+          <h1 className="absolute font-bold  dark:text-cyan-50 text-xl">
             FITBOD
           </h1>
-          <img src={FitbodLogo} className="w-1/4 my-5 mt-8" alt="FitbodLogo" />
+          {dark ? (
+            <img
+              src={darkLogo}
+              className="w-1/4 my-5 mt-6 dark:text-white"
+              alt="FitbodLogo"
+            />
+          ) : (
+            <img
+              src={FitbodLogo}
+              className="w-1/4 my-5 mt-6 dark:text-white"
+              alt="FitbodLogo"
+            />
+          )}
         </div>
-        <h1 className=" text-indigo-500 text-xl text-center dark:text-cyan-50 font-bold">
+        <h1 className=" text-indigo-500 text-xl  text-center dark:text-cyan-50 font-bold">
           MENU
         </h1>
         <hr className="my-2 text-gray-600" />
         <div className="font-bold ">
           <ul className=" ">
             <Link to="/Home">
-              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Home
               </li>
             </Link>
             <Link to="/profilePage">
-              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Profile
               </li>
             </Link>
             <Link to="/calculate">
-              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 mt-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 CAL Calculator
               </li>
             </Link>
             <Link to="/weightloss">
-              <li className="text-lg p-2.5 my-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="text-lg p-2.5 my-3 flex items-end rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Weight Calculator
               </li>
             </Link>
@@ -84,10 +99,10 @@ export default function Navbar() {
   const activityNavList = () => {
     return (
       <div className="">
-        <div className="w-full ">
+        <div className="w-full">
           <button
             onClick={toggleDropdown}
-            className="text-lg font-bold text-indigo-500 ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-[#E6E1FF] dark:text-cyan-50 dark:hover:text-indigo-600"
+            className="text-lg font-bold  text-[#5446C9] ml-4 p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-black hover:text-white dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse"
           >
             Exercise Content
           </button>
@@ -99,32 +114,32 @@ export default function Navbar() {
         >
           <ul>
             <Link to="/allExercise">
-              <li className="font-bold text-lg p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 All content
               </li>
             </Link>
             <Link to="/yogaPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Yoga
               </li>
             </Link>
             <Link to="/runningPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Running
               </li>
             </Link>
             <Link to="/thaiBoxingPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Thai Boxing
               </li>
             </Link>
             <Link to="/weightPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Weight Training
               </li>
             </Link>
             <Link to="/aerobicsPage">
-              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-[#E6E1FF] text-indigo-500 dark:text-cyan-50 dark:hover:text-indigo-600">
+              <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
                 Aerobics
               </li>
             </Link>
@@ -168,7 +183,7 @@ export default function Navbar() {
                     </button> */}
             <button
               onClick={handleLogout}
-              className={` h-10 px-5 mt-3 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800`}
+              className={` h-10 px-5 mt-3 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-black hover:animate-pulse`}
             >
               Logout
             </button>

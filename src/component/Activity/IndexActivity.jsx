@@ -109,17 +109,17 @@ const IndexActivity = ({ act_type }) => {
     <div className="z-0 flex flex-col  justify-center items-center bg-white dark:text-cyan-50 text-black dark:bg-gray-800 ">
       <div className="flex flex-col z-0 items-center lg:flex lg:flex-row lg:w-full lg:justify-between px-20 lg:gap-3">
         <div className="flex flex-row items-center z-0">
-          <h1 className="text-2xl mr-3 font-medium lg:text-3xl lg:font-medium lg:my-2">
+          <h1 className="text-2xl mr-3 font-bold lg:text-3xl lg:font-bold lg:my-2">
             Activity Card{" "}
           </h1>
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center font-bold">
             {Array.from({ length: pageNumbers }).map((_, index) => (
-              <div key={index} className="flex items-center">
+              <div key={index} className="flex items-center font-bold">
                 {showNextButton && index === 1 ? (
                   <>
                     {currentPage > 1 ? (
                       <button
-                        className="btn mx-2 text-black bg-indigo-200 font-bold text-lg hover:bg-indigo-600 dark:hover:bg-indigo-500  border-none dark:bg-gray-700 dark:text-white"
+                        className="btn mx-2 text-white rounded-full border-solid border-2 border-[#4351CC] font-bold text-lg hover:black dark:hover:bg-black dark:bg-gray-700 dark:text-white"
                         onClick={() => paginate(currentPage - 1)}
                       >
                         &lt;
@@ -130,7 +130,7 @@ const IndexActivity = ({ act_type }) => {
                     </div>
                     {currentPage < pageNumbers ? (
                       <button
-                        className="btn mx-2 text-black bg-indigo-200 border-none font-bold text-lg hover:bg-indigo-600 dark:hover:bg-indigo-500 dark:bg-gray-700 dark:text-white"
+                        className="btn mx-2 text-white rounded-full border-solid border-2 border-[#4351CC] font-bold text-lg hover:black dark:hover:bg-black dark:bg-gray-700 dark:text-white"
                         onClick={() => paginate(currentPage + 1)}
                         disabled={currentPage === pageNumbers}
                       >
@@ -147,10 +147,10 @@ const IndexActivity = ({ act_type }) => {
           <div className="menu menu-horizontal  px-1">
             <li>
               <details>
-                <summary className="text-2xl dropdown z-50 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
+                <summary className="text-2xl dropdown z-50 font-medium hover:text-white hover:bg-black dark:hover:bg-black dark:text-cyan-50 text-black lg:text-3xl lg:font-medium lg:my-2">
                   Filter
                 </summary>
-                <ul className="p-1 z-10 bg-indigo-600/90 max-w-[100px]">
+                <ul className="p-1 z-10 bg-black text-white max-w-[100px]">
                   <li>
                     <button onClick={() => setFilter(data)}>All</button>
                   </li>
@@ -191,7 +191,7 @@ const IndexActivity = ({ act_type }) => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content z-50 max-w-[100px] text-white bg-indigo-600/90 menu p-2 shadow  rounded-box w-52"
+            className="dropdown-content z-50 max-w-[100px] text-white bg-black menu p-2 shadow  rounded-box w-52"
           >
             <li>
               <button onClick={() => setFilter(data)}>All</button>
