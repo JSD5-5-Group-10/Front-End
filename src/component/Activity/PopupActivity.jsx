@@ -232,7 +232,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="duration"
-                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="[&::-webkit-inner-spin-button]:appearance-none w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
                 />
               </label>
@@ -251,7 +251,7 @@ const PopupActivity = ({ item }) => {
                   }
                   type="number"
                   name="weight"
-                  className="w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                  className="[&::-webkit-inner-spin-button]:appearance-none w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
                 />
               </label>

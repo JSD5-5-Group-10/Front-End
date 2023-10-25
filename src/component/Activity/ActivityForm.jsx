@@ -256,7 +256,7 @@ const ActivityForm = () => {
               </label>
               {/* Weight */}
               <label className="flex rounded-lg leading-10">
-                <span className="w-[200px] flex items-center  justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
+                <span className="w-[200px] flex items-center justify-center bg-indigo-600 text-white font-semibold rounded-l-lg focus:ring-indigo-600 focus:border-transparent ring-1 ring-inset ring-indigo-600">
                   Current weight
                 </span>
                 <input
