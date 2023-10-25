@@ -232,7 +232,7 @@ const IndexActivity = () => {
           return (
             <div
               key={index}
-              className="w-[350px] h-[200px] hover:h-[300px] m-4 shadow-xl border-none relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-[#827BD9] hover:shadow-[#827bd9] hover:drop-shadow-2xl duration-700
+              className="w-[350px] h-[200px] hover:h-[300px] m-4 shadow-xl border-none relative rounded-2xl flex flex-row  text-ellipsisp overflow-hidden hover:bg-indigo-500 dark:hover:shadow-indigo-500 hover:shadow-black hover:drop-shadow-2xl duration-700
             lg:h-[300px] lg:mx-auto bg-contain bg-no-repeat bg-center"
               style={{
                 backgroundImage: `url(${
@@ -294,7 +294,9 @@ const IndexActivity = () => {
                 </div>
               </dialog>
 
-              <h1 className="p-3 text-lg text-white">{index + 1}</h1>
+              <h1 className="p-3 text-lg text-black dark:text-white">
+                {index + 1 + indexOfFirstItem}
+              </h1>
 
               <div className="p-2 mr-3 flex items-center  absolute ">
                 {item.icon}
@@ -308,8 +310,8 @@ const IndexActivity = () => {
                 </div>
                 <div className=" mb-1 pr-20 mr-15">
                   Activity Type :{" "}
-                  <span className="text-xl font-medium text-[#b09aff]">
-                    {item.act_type} {index + 1}
+                  <span className="text-xl font-medium text-[#fff] dark:text-[#ff85ea]">
+                    {item.act_type}
                   </span>
                 </div>
                 <div className="mb-1 pr-20 mr-15 break-all text-center">
