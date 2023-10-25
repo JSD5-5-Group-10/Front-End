@@ -130,7 +130,7 @@ export default function Navbar() {
             </Link>
             <Link to="/thaiBoxingPage">
               <li className="font-bold text-lg  p-2 cursor-pointer mt-1 rounded-md hover:bg-black hover:text-white text-[#5446C9] dark:text-cyan-50 dark:hover:text-indigo-600 hover:animate-pulse">
-                Thai Boxing
+                KitaMuaythai
               </li>
             </Link>
             <Link to="/weightPage">

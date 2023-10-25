@@ -55,7 +55,7 @@ const PopupActivity = ({ item }) => {
     return proceed;
   };
 
-  const updatedActivityData = [activityData];
+  // const updatedActivityData = [activityData];
   // console.log(updatedActivityData);
 
   const Update = async (e) => {

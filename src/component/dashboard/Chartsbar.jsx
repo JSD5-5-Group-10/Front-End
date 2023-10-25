@@ -42,6 +42,10 @@ export const Chartsbar = () => {
   if (data && data[3] && data[3]._id) band.push(data[3]._id);
   if (data && data[4] && data[4]._id) band.push(data[4]._id);
 
+  // console.log(data);
+  // console.log(data[4]);
+  // console.log(data);
+
   const seriesA = [];
   if (data && data[0] && data[0].kgBurned) seriesA.push(data[0].kgBurned);
   if (data && data[1] && data[1].kgBurned) seriesA.push(data[1].kgBurned);

@@ -31,7 +31,7 @@ function RunningVideo() {
 
   return (
     <div>
-      <h1 className="text-3xl md:text-5xl font-medium text-center my-[20px]">
+      <h1 className="text-3xl md:text-5xl font-medium text-center my-[20px] py-5">
         Running Content
       </h1>
       <div className="place-items-center grid grid-cols-1 gap-5 min-[900px]:grid-cols-2 min-[1215px]:grid-cols-3 md:mx-[10px] md:gap-y-[110px] lg:gap-y-[80px]">
