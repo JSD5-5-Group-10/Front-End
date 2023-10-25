@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "../../component/Navbar";
 import IndexActivity from "../../component/Activity/IndexActivity";
 import { BiMessageSquareAdd } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export const Index = () => {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token]);
+
   return (
     <div className="flex justify-center min-h-[1000px] h-[1200px] md:h-[1300px] lg:h-[1200px] xl:h-screen dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
       <div className="flex w-full max-w-[1380px] md:flex md:h-screen">
