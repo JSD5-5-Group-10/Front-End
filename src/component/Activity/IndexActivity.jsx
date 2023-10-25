@@ -10,7 +10,7 @@ import Thaiboxing from "./assets/thaiboxing.svg";
 import Weight from "./assets/weight.svg";
 import Aerobics from "./assets/aerobics.svg";
 
-const IndexActivity = ({ act_type }) => {
+const IndexActivity = () => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
