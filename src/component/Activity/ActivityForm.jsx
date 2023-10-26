@@ -25,6 +25,7 @@ const ActivityForm = () => {
   const day = String(new Date().getDate()).padStart(2, "0");
   const formattedDateTime = `${day}-${month}-${year}`;
   const [toggle, setToggle] = useState();
+  const apiKey = import.meta.env.VITE_API;
 
   const isValidate = () => {
     let proceed = true;
@@ -55,14 +56,15 @@ const ActivityForm = () => {
     return proceed;
   };
 
+  // console.log(addActivity);
   // post add activity
   const saveData = async (e) => {
     e.preventDefault();
+    setToggle(true);
     if (isValidate()) {
-      setToggle(true);
       try {
         const response = await axios.post(
-          `https://backend-group10.onrender.com/api/activity/add`,
+          `${apiKey}/api/activity/add`,
           addActivity,
           {
             headers: {
@@ -70,6 +72,7 @@ const ActivityForm = () => {
             },
           }
         );
+
         // console.log("POST", response.status);
         // console.log(response);
         if (response.status === 200) {
@@ -79,6 +82,9 @@ const ActivityForm = () => {
           }, 3000);
         }
       } catch (err) {
+        if (err.response.status === 404) {
+          return toast.warn("Request is incomplete");
+        }
         toast.error("Failed: " + err.message);
       }
     }
@@ -120,8 +126,8 @@ const ActivityForm = () => {
       const kgburn = kcal / 7700;
       setAddActivity({
         ...addActivity,
-        cal_burn: parseFloat(kcal.toFixed(2)),
-        kg_burn: parseFloat(kgburn.toFixed(6)),
+        cal_burn: parseFloat(kcal.toFixed(2) || 0),
+        kg_burn: parseFloat(kgburn.toFixed(6) || 0),
       });
     }
     setChange();
@@ -252,6 +258,9 @@ const ActivityForm = () => {
                   name="duration"
                   className="bg-white w-full text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
+                  min={1}
+                  max={300}
+                  required
                 />
               </label>
               {/* Weight */}
@@ -271,6 +280,9 @@ const ActivityForm = () => {
                   name="weight"
                   className="bg-white w-full text-black dark:bg-gray-800 dark:text-cyan-50 [&::-webkit-inner-spin-button]:appearance-none px-2 placeholder:text-sm rounded-r-lg focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
+                  min={1}
+                  max={199}
+                  required
                 />
               </label>
               {/* Calories Burned  */}

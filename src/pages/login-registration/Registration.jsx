@@ -14,6 +14,7 @@ export const Registration = () => {
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const apiKeyImage = import.meta.env.VITE_KEY_UPLOAD_2;
   //IMAGE
   const [select, setSelect] = useState();
   const [img, setImg] = useState(
@@ -29,9 +30,9 @@ export const Registration = () => {
   const uploadImg = async () => {
     const formData = new FormData();
     formData.append("file", select);
-    formData.append("upload_preset", "afd9sh09"); //Key From Cloudinary
+    formData.append("upload_preset", import.meta.env.VITE_KEY_UPLOAD_2_Album);
     const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/dvktdqeof/image/upload", // key From Clound Name
+      `https://api.cloudinary.com/v1_1/${apiKeyImage}/image/upload`,
       formData
     );
     // console.log(res);
@@ -52,6 +53,7 @@ export const Registration = () => {
     pwConfirm: "",
     profile_img,
   });
+  const apiKey = import.meta.env.VITE_API;
   // console.log(register);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +62,7 @@ export const Registration = () => {
       if (register.password.length >= 8) {
         try {
           const User = await axios.post(
-            "https://backend-group10.onrender.com/api/user/register",
+            `${apiKey}/api/user/register`,
             register
           );
           if (User) {

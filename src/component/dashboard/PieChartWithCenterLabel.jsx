@@ -8,18 +8,16 @@ import { ToastContainer, toast } from "react-toastify";
 export default function PieChartWithCenterLabel() {
   const [dataSum, setDataSum] = useState([]);
   const token = localStorage.getItem("token");
+  const apiKey = import.meta.env.VITE_API;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://backend-group10.onrender.com/api/activity/chart",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`${apiKey}/api/activity/chart`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response) {
           return toast.error("error");
         }
