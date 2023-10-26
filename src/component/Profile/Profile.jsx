@@ -20,16 +20,27 @@ const Profile = () => {
   const [uplaodProfileimg, setUplaodProfileimg] = useState(null); //  upload pic profile
   const [uploadCover, setUploadCover] = useState(); // upload pic cover
   const [reload, setReload] = useState(!true);
+
   const [editProfile, setEditProfile] = useState({
-    name: "",
+    name: data.name,
     password: "",
     age: 0,
     profile_img: "",
-    description: "",
+    description: data.description,
   });
+
   const apiKey = import.meta.env.VITE_API;
   const apiKeyImage = import.meta.env.VITE_KEY_UPLOAD;
 
+  useEffect(() => {
+    setEditProfile({
+      ...editProfile,
+      name: data.name,
+      description: data.description,
+    });
+  }, [data.name]);
+
+  // console.log(editProfile.name);
   // calculate age
   useEffect(() => {
     const calculateAge = () => {
@@ -230,6 +241,9 @@ const Profile = () => {
       toast.error("Failed: " + err.message);
     }
   };
+
+  // console.log(data);
+  // console.log(editProfile);
 
   return (
     <div className="w-full dark:bg-gray-800 bg-white">
