@@ -28,6 +28,15 @@ export const ActivityDisplay = () => {
   }, [token]);
 
   const calculateActivity = (e) => {
+    if (numberOfDays < 0 || numberOfDays > 300) {
+      setNumberOfDays("");
+    }
+    if (time < 0 || time > 300) {
+      setTime("");
+    }
+    if (weight < 0 || weight > 300) {
+      setWeight("");
+    }
     const METs = {
       Run: 9.6,
       Yoga: 2.5,
@@ -154,10 +163,8 @@ export const ActivityDisplay = () => {
                           onChange={(e) => setNumberOfDays(e.target.value)}
                           type="number"
                           name="detial"
-                          className="[&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
+                          className=" [&::-webkit-inner-spin-button]:appearance-none sm:w-auto w-full  bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                           placeholder="Day"
-                          maxLength="50"
-                          rows="2"
                         />
                       </label>
                       {/* duration  */}

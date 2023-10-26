@@ -45,6 +45,16 @@ export const WeightLossSimulator = () => {
 
   const calculateActivity = (e) => {
     e.preventDefault();
+    if (!numberOfDays || numberOfDays < 0 || numberOfDays > 300) {
+      return toast.warning("Duration input 0-300");
+    }
+    if (!lossWeight || lossWeight < 0 || lossWeight > 300) {
+      return toast.warning("Target Weight input 0-300");
+    }
+    if (!weight || weight < 0 || weight > 300) {
+      return toast.warning("Weight input 0-300");
+    }
+
     const METs = {
       Run: 9.6,
       Yoga: 2.5,
@@ -62,7 +72,6 @@ export const WeightLossSimulator = () => {
       if (timeByOneDay > 180) {
         return (
           toast.error("Exercising more than 3 hours per day It's a bad thing."),
-          setTime(0),
           setWeight(""),
           setTime(""),
           setNumberOfDays(""),
