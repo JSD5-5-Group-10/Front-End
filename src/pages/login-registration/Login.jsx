@@ -21,6 +21,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+  const apiKey = import.meta.env.VITE_API;
 
   // console.log(token);
   useEffect(() => {
@@ -34,11 +35,7 @@ export const Login = () => {
     // console.log(login);
     try {
       // console.log(login);
-      const user = await axios.post(
-        "https://backend-group10.onrender.com/api/user/login",
-
-        login
-      );
+      const user = await axios.post(`${apiKey}/api/user/login`, login);
       if (!user) {
         return toast.warning("Your email or password has wrong!");
       }

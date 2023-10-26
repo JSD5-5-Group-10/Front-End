@@ -9,6 +9,7 @@ export const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(!true);
+  const apiKey = import.meta.env.VITE_API;
 
   // axios.defaults.withCredentials = true;
 
@@ -17,12 +18,9 @@ export const ForgotPassword = () => {
       // e.preventDefault();
       if (email !== "") {
         try {
-          const user = await axios.post(
-            "https://backend-group10.onrender.com/api/user/forgot-password",
-            {
-              email,
-            }
-          );
+          const user = await axios.post(`${apiKey}/api/user/forgot-password`, {
+            email,
+          });
           setEmail("");
           if (user.status === 200) {
             toast.success("please check your email.");

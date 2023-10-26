@@ -27,6 +27,8 @@ const Profile = () => {
     profile_img: "",
     description: "",
   });
+  const apiKey = import.meta.env.VITE_API;
+  const apiKeyImage = import.meta.env.VITE_KEY_UPLOAD;
 
   // calculate age
   useEffect(() => {
@@ -61,12 +63,12 @@ const Profile = () => {
       }
       const formData = new FormData();
       formData.append("file", uploadCover); //tpjsd5
-      formData.append("upload_preset", "tpjsd5");
+      formData.append("upload_preset", import.meta.env.VITE_KEY_UPLOAD_Album);
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
+        `https://api.cloudinary.com/v1_1/${apiKeyImage}/image/upload`,
         formData
       );
-      console.log(response.data);
+      // console.log(response.data);
       setCover_img(response.data.url);
     };
     uploadImage();
@@ -82,9 +84,9 @@ const Profile = () => {
       }
       const formData = new FormData();
       formData.append("file", uplaodProfileimg);
-      formData.append("upload_preset", "tpjsd5");
+      formData.append("upload_preset", import.meta.env.VITE_KEY_UPLOAD_Album);
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dfbvjjkbq/image/upload",
+        `https://api.cloudinary.com/v1_1/${apiKeyImage}/image/upload`,
         formData
       );
       // console.log(response.data);
@@ -106,7 +108,7 @@ const Profile = () => {
       // console.log(updateField);
       try {
         const response = await axios.put(
-          `https://backend-group10.onrender.com/api/user/update`,
+          `${apiKey}/api/user/update`,
           updateField,
           {
             headers: {
@@ -131,14 +133,11 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://backend-group10.onrender.com/api/user",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`${apiKey}/api/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!response) {
           return console.log("error");
         }
@@ -178,7 +177,7 @@ const Profile = () => {
 
     try {
       const response = await axios.put(
-        `https://backend-group10.onrender.com/api/user/update`,
+        `${apiKey}/api/user/update`,
         updateField,
         {
           headers: {
@@ -212,17 +211,14 @@ const Profile = () => {
       return alert("Entered wrong information");
     }
     try {
-      const response = await axios.delete(
-        `https://backend-group10.onrender.com/api/user/delete`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          data: {
-            is_active: false,
-          },
-        }
-      );
+      const response = await axios.delete(`${apiKey}/api/user/delete`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
+          is_active: false,
+        },
+      });
       // console.log(response);
       // console.log("DELETE", response.status);
       if (response.status === 200) {

@@ -11,7 +11,7 @@ export const LoginGoogle = () => {
   const [token, setToken] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const apiKey = import.meta.env.VITE_API;
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => setToken(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
@@ -25,12 +25,9 @@ export const LoginGoogle = () => {
           // console.log("User is not defined");
           return null;
         }
-        const response = await axios.post(
-          "https://backend-group10.onrender.com/api/user/loginGoogle",
-          {
-            token: token.access_token,
-          }
-        );
+        const response = await axios.post(`${apiKey}/api/user/loginGoogle`, {
+          token: token.access_token,
+        });
         // console.log(response);
         if (response.status === 200) {
           toast.success("Login Success");

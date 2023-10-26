@@ -9,6 +9,7 @@ export const ResetPassword = () => {
   const [ConfirmPassword, setConfirmPassword] = useState();
   const navigate = useNavigate();
   const { token } = useParams();
+  const apiKey = import.meta.env.VITE_API;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export const ResetPassword = () => {
     // console.log(password);
     try {
       const newPassword = await axios.post(
-        `https://backend-group10.onrender.com/api/user/reset-password/${token}`,
+        `${apiKey}/api/user/reset-password/${token}`,
         {
           password,
         }

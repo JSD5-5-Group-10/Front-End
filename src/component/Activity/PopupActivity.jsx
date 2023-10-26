@@ -31,7 +31,7 @@ const PopupActivity = ({ item }) => {
     act_type: act_type,
     duration: parseInt(duration),
   });
-
+  const apiKey = import.meta.env.VITE_API;
   const isValidate = () => {
     console.log(activityData);
     let proceed = true;
@@ -63,7 +63,7 @@ const PopupActivity = ({ item }) => {
     if (isValidate()) {
       try {
         const response = await axios.put(
-          `https://backend-group10.onrender.com/api/activity/update`,
+          `${apiKey}/api/activity/update`,
           activityData,
 
           {
@@ -234,6 +234,8 @@ const PopupActivity = ({ item }) => {
                   name="duration"
                   className="[&::-webkit-inner-spin-button]:appearance-none w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Minute"
+                  min={1}
+                  max={300}
                 />
               </label>
               {/* Weight */}
@@ -253,6 +255,8 @@ const PopupActivity = ({ item }) => {
                   name="weight"
                   className="[&::-webkit-inner-spin-button]:appearance-none w-full bg-white text-black dark:bg-gray-800 dark:text-cyan-50 px-2 rounded-r-lg placeholder:text-sm focus:outline-none focus:ring-3 focus:ring-indigo-800  focus:border-transparent ring-2 ring-inset ring-indigo-600"
                   placeholder="Kilogram"
+                  min={1}
+                  max={199}
                 />
               </label>
               {/* Calories Burned  */}

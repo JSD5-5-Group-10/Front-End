@@ -14,18 +14,16 @@ const IndexActivity = () => {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const apiKey = import.meta.env.VITE_API;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userActivity = await axios.get(
-          `https://backend-group10.onrender.com/api/activity`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const userActivity = await axios.get(`${apiKey}/api/activity`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (!userActivity) {
           return console.log("error");
         }
@@ -55,7 +53,7 @@ const IndexActivity = () => {
     // console.log(id);
     try {
       const response = await axios.delete(
-        `https://backend-group10.onrender.com/api/activity/delete`,
+        `${apiKey}/api/activity/delete`,
 
         {
           headers: {
@@ -67,7 +65,7 @@ const IndexActivity = () => {
         }
       );
       // console.log("DELETE", response.status);
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
         toast.success("Delete successfully.");
         setTimeout(() => {

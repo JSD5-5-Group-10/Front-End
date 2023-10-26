@@ -19,18 +19,16 @@ export default function HorizontalBars() {
   const [dataSum, setDataSum] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const apiKey = import.meta.env.VITE_API;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://backend-group10.onrender.com/api/activity/chart3",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`${apiKey}/api/activity/chart3`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log(response);
         if (!response) {
           return console.log("error");
