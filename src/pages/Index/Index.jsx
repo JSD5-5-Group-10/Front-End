@@ -18,7 +18,10 @@ export const Index = () => {
   return (
     <div className="flex justify-center min-h-[1000px] h-[1200px] md:h-[1300px] lg:h-[1200px] xl:h-screen dark:text-cyan-50 text-black dark:bg-gray-800 bg-white">
       <div className="flex w-full max-w-[1380px] md:flex md:h-screen">
-        <div className="z-10 h-[1200px] max-h-screen md:static">
+        <div className="absolute z-50 md:hidden">
+          <Navbar />
+        </div>
+        <div className="hidden md:inline z-10 h-[1200px] max-h-screen md:static">
           <Navbar />
         </div>
 
